@@ -1,0 +1,90 @@
+<div>
+
+<hr />
+
+<h1>Debugging Info</h1>
+
+<h2>Site Variables</h2>
+
+<p>site.url = {{ site.url }}</p>
+
+<p>site.baseurl = {{ site.baseurl }}</p>
+
+<p>site.posts = <em>title, url, permalink, path, id</em>
+  <ul>
+    {% for x in site.posts %}
+      <li>{{ x.title }}, {{ x.url }}, {{ x.permalink }}, {{ x.path }}, {{ x.id }}</li>
+    {% endfor %}
+  </ul>
+</p>
+
+<p>site.html_pages = <em>title, url, permalink, path, id</em>
+  <ul>
+    {% for x in site.html_pages %}
+      <li>{{ x.title }}, {{ x.url }}, {{ x.permalink }}, {{ x.path }}, {{ x.id }}</li>
+    {% endfor %}
+  </ul>
+</p>
+
+<p>site.pages = <em>title, url, permalink, path, id</em>
+  <ul>
+    {% for x in site.pages %}
+      <li>{{ x.title }}, {{ x.url }}, {{ x.permalink }}, {{ x.path }}, {{ x.id }}</li>
+    {% endfor %}
+  </ul>
+</p>
+
+<p>site.static_files = 
+  <ul>
+    {% for x in site.static_files %}
+      <li>{{ x.path }} - {{ x.extname }}</li>
+    {% endfor %}
+  </ul>
+</p>
+
+<p>site.collections = {{ site.collections }}</p>
+
+<p>site.data = {{ site.data }}</p>
+
+<p>site.documents = {{ site.documents }}</p>
+
+<p>site.categories = {{ site.categories }}</p>
+
+<p>site.tags = {{ site.tags }}</p>
+
+<p>site.[CONFIGURATION_DATA] = {{ site.[CONFIGURATION_DATA] }}</p>
+
+<h2>Page Variables</h2>
+
+<p>page.title = {{ page.title }}</p>
+
+<p>page.date = {{ page.date }}</p>
+
+<p>page.url = {{ page.url }}</p>
+
+<p>page.path = {{ page.path }}</p>
+
+<p>page.id = {{ page.id }}</p>
+
+<p>page.categories = {{ page.categories }}</p>
+
+<p>page.tags = {{ page.tags }}</p>
+
+<p>page.next =
+  {{ page.next.title }},
+  {{ page.next.url }},
+  {{ page.next.permalink }},
+  {{ page.next.path }},
+  {{ page.next.id }}
+</p>
+
+<p>page.previous =
+  {{ page.previous.title }},
+  {{ page.previous.url }},
+  {{ page.previous.permalink }},
+  {{ page.previous.path }},
+  {{ page.previous.id }}
+</p>
+
+</div>
+

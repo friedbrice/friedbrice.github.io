@@ -1,16 +1,19 @@
 # Site settings
-title: friedbrice.github.io
-email: danielbrice@gmail.com
-description: | # the > indicates a multi-line string, ignoring linebreaks
+title: 'friedbrice.github.io'
+description: |
   The personal website of Daniel Brice, PhD.
   Copyright 2014 Daniel Brice
   [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://friedbrice.github.io" # the base hostname & protocol for your site
-twitter_username: fried_brice
-github_username:  friedbrice
+baseurl: ''
+url: 'http://friedbrice.github.io'
+
+# Author settings
+email: 'danielbrice@gmail.com'
+twitter_username: 'fried_brice'
+github_username:  'friedbrice'
+stackex_username: '2387766/fried-brice'
 
 # Build settings
-markdown: kramdown
-
-exclude: [ README.md, Gemfile ]
+markdown: 'kramdown'
+exclude: [ 'README.md', 'Gemfile' ]
+debug: 'true' # comment this out before production
