@@ -3,7 +3,6 @@ title: friedbrice.github.io
 email: danielbrice@gmail.com
 description: | # the > indicates a multi-line string, ignoring linebreaks
   The personal website of Daniel Brice, PhD.
-
   Copyright 2014 Daniel Brice
   [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 baseurl: "" # the subpath of your site, e.g. /blog/
@@ -14,4 +13,4 @@ github_username:  friedbrice
 # Build settings
 markdown: kramdown
 
-exclude: README.md
+exclude: [ README.md, Gemfile ]
