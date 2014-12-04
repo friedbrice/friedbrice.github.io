@@ -2,7 +2,7 @@
 title: friedbrice.github.io
 email: danielbrice@gmail.com
 description: > # the > indicates a multi-line string, ignoring linebreaks
-  Nothing here yet.
+  Copyright 2014 Daniel Brice [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://friedbrice.github.io" # the base hostname & protocol for your site
 twitter_username: fried_brice
