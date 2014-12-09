@@ -2,6 +2,7 @@
 layout: page
 title: Blog
 permalink: /blog/
+topnav: true
 ---
 
 The personal blog of Daniel Brice. These terrible, Orwellian, and

@@ -6,6 +6,7 @@ description: |
   [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 baseurl: ''
 url: 'http://friedbrice.github.io'
+collections: [ 'keys' ]
 
 # Author settings
 email: 'danielbrice@gmail.com'
@@ -16,4 +17,6 @@ stackex_username: '2387766/fried-brice'
 # Build settings
 markdown: 'kramdown'
 exclude: [ 'README.md', 'Gemfile' ]
+include: [ '_course' ]
 debug: 'true' # comment this out before production
+

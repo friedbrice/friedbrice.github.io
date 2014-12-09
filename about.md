@@ -3,6 +3,7 @@ layout: page
 title: About Me
 permalink: /about/
 date: 2014-12-03
+topnav: true
 ---
 
 This is the base Jekyll theme. _I'd like to learn how to change the

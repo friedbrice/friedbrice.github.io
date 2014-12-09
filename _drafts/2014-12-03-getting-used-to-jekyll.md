@@ -4,7 +4,7 @@ title: "Getting Used to Jekyll"
 date: 2014-12-03
 #categories: math update
 author: Daniel
-#permalink: /blog/##/
+permalink: /blog/00/
 tags: jekyll yaml liquid
 ---
 

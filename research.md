@@ -3,6 +3,7 @@ layout: page
 title: Research
 permalink: /research/
 date: 2014-12-03
+topnav: true
 ---
 
 My research interests include [Lie algebras][] and [representation theory][],
