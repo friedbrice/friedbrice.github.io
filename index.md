@@ -6,6 +6,8 @@ The personal website of Daniel Brice, PhD.
 
 Made with [Jekyll](http://jekyllrb.com/) and hosted on [GitHub](https://github.com/).
 
+I'll be using this space to muse about Math and coding and games, mostly.
+
 <div class="home">
   <h1 class="page-heading">Recent Posts</h1>
   <ul class="post-list">

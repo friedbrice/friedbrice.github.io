@@ -7,10 +7,15 @@ topnav: true
 ---
 
 I'm an assistant professor of Mathematics at [Tuskegee University](http://www.tuskegee.edu).
-Here you'll find links to my course pages and resources that students
-might find helpful.
+Here you'll find links to my [course pages](#courses) and [resources](#resources)
+that students might find helpful.
 
-## Courses
+<h2 id="courses">Courses</h2>
+
+_Here's an algorithmically-generated course list, but there's no content
+yet. I'm using Blackboard (though [wish I were
+not](http://twitter.com/fried_brice/status/513101805077934081)), and all
+the course content is there._
 
 {% for page in site.pages reversed limit:6 %}
 {% if page.courselist %}
@@ -21,7 +26,7 @@ might find helpful.
 * [Full List](about:blank), including courses taught at [Auburn University](http://auburn.edu)
 -->
 
-## Resources
+<h2 id="resources">Resources</h2>
 
 * [Math | Khan Academy](http://www.khanacademy.org/math) - _Watch videos
   and practice your skills for almost any math subject._

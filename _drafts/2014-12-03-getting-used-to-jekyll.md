@@ -5,7 +5,7 @@ date: 2014-12-03
 #categories: math update
 author: Daniel
 permalink: /blog/00/
-tags: jekyll yaml liquid
+tags: code jekyll yaml liquid
 ---
 
 Hokay, I'm starting to make my site more robust.
@@ -56,7 +56,7 @@ breaks the testing environment, so I supposed I will always use relative
 links, and I think I'll use the "full" relative link instead of the
 short relative link, for the sake of portability.
 
-**Re-re-edit:** _Does that make me a re-re?_ Okay, final (hopefully)
-update on the issue of links. Use \{\{ site.baseurl \}\} to ensure that
-I'm using the value defined in _config.yml.
+**Re-re-edit:** Okay, final (hopefully) update on the issue of links.
+Use \{\{ site.baseurl \}\} to ensure that I'm using the value defined in
+_config.yml.
 
