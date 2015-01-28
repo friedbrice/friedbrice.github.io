@@ -3,7 +3,11 @@ layout: post
 title: Daniel's Day
 permalink: /blog/03/
 date: 2015-01-28
-tag: code, jekyll, haskell, bash
+tag:
+- code
+- jekyll
+- haskell
+- bash
 ---
 
 It's been a while since I've posted. Busy winter break, and just now

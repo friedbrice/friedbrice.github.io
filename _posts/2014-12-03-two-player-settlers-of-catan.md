@@ -3,7 +3,8 @@ layout: post
 title: Two-player Settlers of Catan
 permalink: /blog/02/
 date: 2014-12-03
-tag: games
+tag:
+- games
 ---
 
 Posting this before I forget. It's a set of adaptations to the rules of
