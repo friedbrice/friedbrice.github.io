@@ -19,7 +19,7 @@ Yesterday, I wanted to get two things done (asside from real work):
 2. Get [posting on my blog](#blogging) again, and maybe
    even work on some of the design elements.
 
-<!--more-->
+<!--break-->
 
 <h2 id="mailing-list">Mailing Lists</h2>
 

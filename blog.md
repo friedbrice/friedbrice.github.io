@@ -12,7 +12,7 @@ of anyone I am associated with.
 <p class="rss-subscribe">Subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a>.</p>
 
 <ul class="post-list">
-  {% for post in site.posts %}
+  {% for post in site.posts  limit:10 %}
     <li>
       <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
       <h2>
@@ -21,7 +21,12 @@ of anyone I am associated with.
           {{ post.title }}
         </a>
       </h2>
-      {{ post.excerpt }}
+      {% if post.content contains '<!--break-->' %}
+        {{ post.content | split:'<!--break-->' | first }}
+      {% else %}
+        {{ post.excerpt }}
+      {% endif %}
+      <a href="{{ post.url }}">more...</a>
     </li>
   {% endfor %}
 </ul>

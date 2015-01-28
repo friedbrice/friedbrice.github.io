@@ -14,6 +14,8 @@ tags:
 
 Hokay, I'm starting to make my site more robust.
 
+<!--break-->
+
 I rearranged the directory structure of the blog, so that all blog posts
 live in /blog/ordinal_number/index.html. I like that a lot better than
 the default, where the year is a directory, each month is a directory,

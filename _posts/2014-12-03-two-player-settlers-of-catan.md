@@ -10,6 +10,8 @@ tag:
 Posting this before I forget. It's a set of adaptations to the rules of
 [Settlers of Catan](http://www.catan.com) to accommodate two-players.
 
+<!--break-->
+
 Settlers is a table-top strategy games akin to [4X][wiki4x]
 video games. Three or four players race to colonize a continent while
 gaining relative advantage over one another.

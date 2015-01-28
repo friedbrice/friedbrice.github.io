@@ -19,6 +19,8 @@ of those disjunctions to find out which we need to keep and which we
 need to discard. It's tense. The games needs something to help us chill
 out a bit. We chose, of course, *drinking!*
 
+<!--break-->
+
 Definition of terms:
 
 * _Propose a theory_: What you spend most of your time doing in Clue,

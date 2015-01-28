@@ -8,6 +8,8 @@ date: 2014-12-03
 Welcome to my blog. I'll use this blog to post musings about math, maybe
 some games, maybe some coding. **Oh!** The possibilities are _endless._
 
+<!--break-->
+
 Well, let's not be over-dramatic. I'm mostly making this website because
 I needed a new outlet since I shut down my
 [Auburn webspace](http://www.auburn.edu/~dpb0006) a while ago.
