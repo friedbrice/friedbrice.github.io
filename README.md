@@ -1,5 +1,5 @@
-friedbrice.github.io
-====================
+DanielBrice.net
+===============
 
 The personal website of Daniel Brice, PhD.
 
