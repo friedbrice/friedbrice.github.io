@@ -5,7 +5,11 @@ date: 2014-12-03
 #categories: math update
 author: Daniel
 permalink: /blog/00/
-tags: code jekyll yaml liquid
+tags:
+- code
+- jekyll
+- yaml
+- liquid
 ---
 
 Hokay, I'm starting to make my site more robust.
