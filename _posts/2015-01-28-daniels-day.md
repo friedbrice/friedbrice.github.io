@@ -38,7 +38,7 @@ to use Haskell list comprehension! So, I made my *first ever* Haskell
 program:
 
 {% highlight haskell %}
--- searche_terms.hs
+-- search_terms.hs
 places = [ "Souther California"
          , "California"
          , "West Coast"
@@ -64,10 +64,10 @@ searches = [i ++ " " ++ j ++ " mailing list" | i <- places, j <- subjects]
 main = mapM_ print searches
 {% endhighlight %}
 
-Compiling gives an executable called <code>searche_terms</code>.
-<code>searche_terms</code> returns one search phrase per line (wrapped
+Compiling gives an executable called <code>search_terms</code>.
+<code>search_terms</code> returns one search phrase per line (wrapped
 in quotes for some reason) which I could output to a plain text file and
-then copy and paste the terms into google. But why would I go to *all
+then copy and paste each line into google. But why would I go to *all
 that work* if I could automate it in Bash!
 
 A while ago, I made a crappy little Bash script that lets me google
@@ -124,14 +124,16 @@ google_search $*
 Example: <code>web_search.sh -w "hello world"</code> will search
 Wikipedia with the search term "hello world". It's a little buggy: I'd
 like to be able to not wrap the search term in quotes, but that breaks
-it. However, searches.hs return strings pre-wrapped in quotes. Prefect!
+it. However, <code>search_terms</code> return strings pre-wrapped in
+quotes. Prefect!
 
-Now, I just have to loop over the lines of searches.hs output.
+Now, I just have to loop over the lines of <code>search_terms</code>'s
+output.
 
 {% highlight bash %}
 while read x; do
 	web_search.sh $x
-done < $(searche_terms)
+done < $(search_terms)
 {% endhighlight %}
 
 This will open 60 browser windows, each one with a different search
