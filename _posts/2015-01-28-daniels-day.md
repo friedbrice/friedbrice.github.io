@@ -124,7 +124,7 @@ google_search $*
 Example: <code>web_search.sh -w "hello world"</code> will search
 Wikipedia with the search term "hello world". It's a little buggy: I'd
 like to be able to not wrap the search term in quotes, but that breaks
-it. However, <code>search_terms</code> return strings pre-wrapped in
+it. However, <code>search_terms</code> returns strings pre-wrapped in
 quotes. Prefect!
 
 Now, I just have to loop over the lines of <code>search_terms</code>'s
