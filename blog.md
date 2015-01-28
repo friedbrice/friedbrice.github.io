@@ -5,8 +5,8 @@ permalink: /blog/
 ---
 
 The personal blog of Daniel Brice. These terrible, Orwellian, and
-often  Neanderthal opinions are my own, and do not reflect on anyone I
-am associated with.
+often  Neanderthal opinions are my own, and do not reflect the opinions
+of anyone I am associated with.
 
 <p class="rss-subscribe">Subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a>.</p>
 
