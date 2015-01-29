@@ -8,7 +8,7 @@ tags:
 - games
 ---
 
-My good friends, [Steven Clontz](http://stevenclontz.com/) and Alex, a
+My good friends, REDACTED and Alex, a
 few others, and I one night came up with some house rules for the board
 game [Clue](http://en.wikipedia.org/wiki/Cluedo).
 
