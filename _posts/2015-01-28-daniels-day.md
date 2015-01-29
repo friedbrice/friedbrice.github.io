@@ -12,7 +12,7 @@ tag:
 
 It's been a while since I've posted. Busy winter break, and just now
 getting to a place where where I'm on top of things in the new semester.
-Yesterday, I wanted to get two things done (asside from real work):
+Yesterday, I wanted to get two things done (aside from real work):
 
 1. Find some professional Math [mailing lists](#mailing-list)
    to join.
@@ -23,7 +23,7 @@ Yesterday, I wanted to get two things done (asside from real work):
 
 <h2 id="mailing-list">Mailing Lists</h2>
 
-So, I'm trying to learn to code. Asside from one semester of qBASIC in
+So, I'm trying to learn to code. Aside from one semester of qBASIC in
 high school and one semester of Javascript in undergrad, I have no
 formal experience with programming, but I know I can learn and I want to
 demonstrate it. The languages I want to start out with are Haskell and C
@@ -43,7 +43,7 @@ program:
 
 {% highlight haskell %}
 -- search_terms.hs
-places = [ "Souther California"
+places = [ "Southern California"
          , "California"
          , "West Coast"
          , "Western"
@@ -153,7 +153,7 @@ spits out a version error, in fact.
 After some frustration and googling, I relearned that I needed to
 use [Bundler](http://bundler.io/) to instance my Ruby environment. This
 will keep the versions of Ruby and Jekyll I'm using to build my site
-syncronized with the versions that GitHub Pages is using to build my
+synchronized with the versions that GitHub Pages is using to build my
 site. A few of the common commands are recorded below, mostly so I can
 come back here two months from now when I've forgotten everything again:
 
