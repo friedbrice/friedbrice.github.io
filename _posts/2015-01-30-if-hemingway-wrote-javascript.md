@@ -20,12 +20,14 @@ Christmas. I've basically devoured it.
 <!--break-->
 
 The book is organized into several exercises given to a class of
-beginning Javascript coders. I'll be writing my own solutions to the
-various exercises in the book, in Javascript, but also in C, Python,
-and Haskell.
+beginning Javascript coders (who all happen to be famous authors).
+It's very entertaining, and I highly recommend it, even if you're
+someone who, like me, has limited experience programming.
 
-I'll host the [project repository][2] on GitHub, and I might chime in
-on my progress here on the blog sporadically.
+I'll be writing my own solutions to the various exercises in the
+book, in Javascript, but also in C, Python, and Haskell. I'll host
+the [project repository][2] on GitHub. So far, I've done Haskell
+implementations of the first four exercises. and I might chime in on
+my progress here on the blog sporadically.
 
   [2]: http://github.com/friedbrice/hemingway
-
