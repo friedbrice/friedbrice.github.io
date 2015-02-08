@@ -18,9 +18,9 @@ not](http://twitter.com/fried_brice/status/513101805077934081)), and all
 the course content is there._
 
 {% for page in site.pages reversed limit:6 %}
-{% if page.courselist %}
+  {% if page.courselist %}
 * [{{ page.title }}]({{ page.permalink }})  --  {{ page.coursetitle }}
-{% endif %}
+  {% endif %}
 {% endfor %}
 <!--
 * [Full List](about:blank), including courses taught at [Auburn University](http://auburn.edu)

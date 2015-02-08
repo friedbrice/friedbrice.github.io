@@ -6,7 +6,7 @@ description: |
   [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 baseurl: ''
 url: 'http://www.danielbrice.net'
-collections: [ 'keys' ]
+include: [ '_courses' ]
 
 # Author settings
 email: 'danielbrice@gmail.com'
