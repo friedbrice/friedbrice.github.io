@@ -84,7 +84,7 @@ method `_` has the behavior of `sayIt` from above, but applies changes
 to the instance rather than to a global variable. Thus, in the Python3
 interactive prompt, we get the desired behavior:
 
-{% highlight python linenos %}
+{% highlight %}
 >>> sayIt = Words()
 >>> sayIt._("my")._("name")._("is")._("Daniel")._()
 my name is Daniel
