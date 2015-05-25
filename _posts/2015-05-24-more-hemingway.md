@@ -48,12 +48,12 @@ first go:
 words = []
 
 def sayIt( x = None ):
-	global words
-	if x is None:
-		message = ' '.join(words)
-		print(message)
-	else:
-		words = words + [x]
+    global words
+    if x is None:
+        message = ' '.join(words)
+        print(message)
+    else:
+        words = words + [x]
 {% endhighlight %}
 
 Here, we define the global variable `words` and the function `sayIt`
@@ -66,15 +66,15 @@ method calls on the end. Here's my second go:
 
 {% highlight python linenos %}
 class Words:
-	def __init__(self):
-		self.words = []
-	def _(self, x = None):
-		if x is None:
-			message = ' '.join(self.words)
-			print(message)
-		else:
-			self.words = self.words + [x]
-		return self
+    def __init__(self):
+        self.words = []
+    def _(self, x = None):
+        if x is None:
+            message = ' '.join(self.words)
+            print(message)
+        else:
+            self.words = self.words + [x]
+        return self
 {% endhighlight %}
 
 When an instance of `Words` is declared, it's given an internal variable
