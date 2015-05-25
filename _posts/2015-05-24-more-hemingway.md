@@ -16,13 +16,13 @@ semester is over, so I finally have some time to return to it.
 
   [1]: http://www.amazon.com/Hemingway-Wrote-JavaScript-Angus-Croll/dp/1593275854/ref=sr_1_1?ie=UTF8&qid=1422475515&sr=8-1&keywords=if+hemingway+wrote+javascript
 
-<!--break-->
-
 I was writing solutions to all the exercises in Haskell, when I
-basically hit a brick will when Exercise 5 asks the student to "Write a
+basically hit a brick wall when Exercise 5 asks the student to "Write a
 chainable function that accepts one word per function call but, when
 called without arguments, will report back all the previously passed
 words in order." In Haskell...
+
+<!--break-->
 
 In case you are uninitiated, Haskell is a strongly-typed, purely-
 functional programming language, which implies that data types for
