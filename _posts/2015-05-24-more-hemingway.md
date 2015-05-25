@@ -25,22 +25,24 @@ called without arguments, will report back all the previously passed
 words in order." In Haskell...
 
 In case you are uninitiated, Haskell is a strongly-typed, purely-
-functional programming language, which means data types for functions
-input and outputs must be clearly defined, and furthermore that
-variables cannot be muted in place. Exercise 5 asks us to write a
+functional programming language, which implies that data types for
+functions' inputs and outputs must be clearly defined, and furthermore
+that variables cannot be muted in place. Exercise 5 asks us to write a
 function that can accept as input a string _or_ nothing, and then will
 either produce an IO action _or_ mutate(!) a running list of strings,
 depending on the type of the input.
 
-I'm not saying this can't be done in Haskell---It totally can be done in
-Haskell. It's just that the notion of _function_ in Haskell and the
-notion of _function_ in other programming languages don't exactly
-overlap. Solving this problem in the most elegant way will involve
-clever use of the `State` monad and the `IO` monad and maybe even
-defining some of my own custom monads. You can see my work in progress
-on my [github repo](http://github.com/friedbrice/hemingway).
+I'm not saying that this can't be done in Haskell---It totally can be
+done in Haskell. It's just that the notions of _function_ in Haskell and
+_function_ in other programming languages don't exactly overlap. Solving
+this problem in the most elegant way will involve clever use of the
+`State` monad and the `IO` monad and maybe even defining some of my own
+monads. You can see my work in progress on my [github
+repo](http://github.com/friedbrice/hemingway).
 
-The problem Exercise 5 poses makes much more sense in an object-oriented paradigm: I decided I'd write my Python solution first. Here was my first go:
+The problem Exercise 5 poses makes much more sense in an object-oriented
+paradigm: I decided I'd write my Python solution first. Here was my
+first go:
 
 {% highlight python linenos %}
 words = []
@@ -58,7 +60,9 @@ Here, we define the global variable `words` and the function `sayIt`
 operates more or less how the problem statement requires, except for one
 detail: sayIt isn't chainable.
 
-In order to make it chainable, we need to make it a method of an object. Here's my second go:
+In order to make it chainable, we need to make it a method of an object.
+If it returns itself upon method calls, then we can just dot subsequent
+method calls on the end. Here's my second go:
 
 {% highlight python linenos %}
 class Words:
@@ -74,10 +78,11 @@ class Words:
 {% endhighlight %}
 
 When an instance of `Words` is declared, it's given an internal variable
-called `words` which stores the current state, a list of words that
-we've passed. The method `_` has the behavior of `sayIt` from above, but
-applies changes to the instance rather than to a global variable. Thus,
-in the Python3 interactive prompt, we get the desired behavior:
+called `words` which stores the current state, _ie,_ the list of all the
+words that we've passed to the object via its sole method `_`. The
+method `_` has the behavior of `sayIt` from above, but applies changes
+to the instance rather than to a global variable. Thus, in the Python3
+interactive prompt, we get the desired behavior:
 
 {% highlight python linenos %}
 >>> sayIt = Words()
