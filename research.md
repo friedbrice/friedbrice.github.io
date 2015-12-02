@@ -79,9 +79,9 @@ time in the future.
 
 <!-- we want to replace this list with a liquid script -->
 
-This part of my page is broken. I want to algorithmically generate this
+_This part of my page is broken. I want to algorithmically generate this
 list, but I haven't figured out how to do it yet. The links are all just
-place-holders, really.
+place-holders, really._
 
 * brice0000note ([article](about:blank))
 * brice0000derivations ([article](about:blank))
@@ -91,7 +91,7 @@ place-holders, really.
 
 <!-- we want to replace this list with a liquid script -->
 
-Ditto, here are some more broken links for your enjoyment...
+_Ditto, here are some more broken links for your enjoyment..._
 
 * latest presentation ([slideshow](about:blank))
 * some presentations in the middle ([slideshow](about:blank))
