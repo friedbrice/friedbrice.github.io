@@ -19,7 +19,7 @@ did my undergrad at [Cal State Channel Islands][5].
 
 In addition to [teaching][tp] and [researching][rp] mathematics, my
 hobbies include tabletop and video games, Linux, smatterings of coding,
-urban design and transportation, and guitar. I'm is also an Eagle Scout.
+urban design and transportation, and guitar. I'm also an Eagle Scout.
 
   [tp]: {{ site.baseurl }}/teaching/
   [rp]: {{site.baseurl }}/research/
