@@ -36,12 +36,12 @@ results of automatic differentiation are accurate up to the computer's
 full precision.
 
 We accomplish this by writing a data type and `Floating` instance for
-_dual numbers_. A dual number is a pair \\((x, x')\\). \\(x\\) is
+_dual numbers_. A dual number is a pair \\( (x, x') \\). \\( x \\) is
 thought of as the value of a differentiable function at an unspecified
-value of some unspecified parameter, so perhaps you might think of
-\\(x\\) being a particular value for a function \\(x(t)\\). \\(x'\\) is
-then thought of as the derivative of \\(x(t)\\) at the same value of
-\\(t\\). So, you'd think of the dual number \\((4, 0.5)\\) as saying
+value of some unspecified parameter, so perhaps you might think of \\( x
+\\) being a particular value for a function \\( x(t) \\). \\( x' \\) is
+then thought of as the derivative of \\( x(t) \\) at the same value of
+\\( t \\). So, you'd think of the dual number \\( (4, 0.5) \\) as saying
 _the function's value is 4 right now, and its derivative is 0.5 right
 now_.
 
@@ -110,8 +110,8 @@ derivative in the second component.
 We're teaching the computer the differentiation rules, but the astute
 reader will notice that the chain rule is conspicuously absent. If
 you'll look at line 12 above, you'll see why we don't need the chain
-rule. `recip u` is simply \\(1/u\\)). If we write out the second
-component of the right hand side we get \\(-u'/u^2\\), with the chain
+rule. `recip u` is simply \\( 1/u \\)). If we write out the second
+component of the right hand side we get \\( -u'/u^2 \\), with the chain
 rule correcly applied. Building the function's derivative into the
 structure of our data allows us to build the chain rule into all of our
 computations, automatically. (We'll still need the multivariable chain
@@ -169,7 +169,7 @@ simply loading my file into ghci.
 Let's play with our new toy in ghci. Define any function that takes a
 `Floating a` input, ie, any function that relies on the methods defined
 for the `Floating`, `Fractional`, and `Num` typeclasses. To find the
-derivative of your function at \\(a\\), simply have Haskell evaluate
+derivative of your function at \\( a \\), simply have Haskell evaluate
 the function at `Dual a 1`.
 
 {% highlight %}
