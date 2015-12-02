@@ -91,7 +91,7 @@ instance Num Dual where
   fromInteger n               = Dual (fromInteger n) 0
 
 instance Fractional Dual where
-  (/) (Dual u u') (Dual v v') = Dual (u / v) ((u' * v - u * v') / (v ** 2))
+  (/) (Dual u u') (Dual v v') = Dual (u / v) ((u' * v - u * v') / v ** 2)
   recip (Dual u u')           = Dual (recip u) (-1 * u' * (recip (u ** 2)))
   fromRational n              = Dual (fromRational n) 0
 {% endhighlight %}
@@ -110,7 +110,7 @@ derivative in the second component.
 We're teaching the computer the differentiation rules, but the astute
 reader will notice that the chain rule is conspicuously absent. If
 you'll look at line 12 above, you'll see why we don't need the chain
-rule. `recip u` is simply \\( 1/u \\)). If we write out the second
+rule. `recip u` is simply \\( 1/u \\). If we write out the second
 component of the right hand side we get \\( -u'/u^2 \\), with the chain
 rule correcly applied. Building the function's derivative into the
 structure of our data allows us to build the chain rule into all of our
@@ -125,23 +125,23 @@ boring part.
 {% highlight haskell linenos %}
 instance Floating Dual where
   pi                = Dual pi 0
-  exp (Dual u u')   = Dual (exp u) (u' * (exp u))
+  exp (Dual u u')   = Dual (exp u) (u' * exp u)
   sqrt (Dual u u')  = Dual (sqrt u) (u' / (2 * sqrt u))
   log (Dual u u')   = Dual (log u) (u' / u)
-  sin (Dual u u')   = Dual (sin u) (u' * (cos u))
-  cos (Dual u u')   = Dual (cos u) (-1 * u' * (sin u))
+  sin (Dual u u')   = Dual (sin u) (u' * cos u)
+  cos (Dual u u')   = Dual (cos u) (- u' * sin u)
   tan (Dual u u')   = Dual (tan u) (1 / ((cos u) ** 2))
-  asin (Dual u u')  = Dual (asin u) (u' / (sqrt(1 - (u ** 2))))
-  acos (Dual u u')  = Dual (acos u) ((- 1) * u' / (sqrt(1 - (u ** 2))))
-  atan (Dual u u')  = Dual (atan u) (u' / (1 + (u ** 2)))
+  asin (Dual u u')  = Dual (asin u) (u' / (sqrt(1 - u ** 2)))
+  acos (Dual u u')  = Dual (acos u) (- u' / (sqrt(1 - u ** 2)))
+  atan (Dual u u')  = Dual (atan u) (u' / (1 + u ** 2))
   sinh (Dual u u')  = Dual (sinh u) (u' * cosh u)
   cosh (Dual u u')  = Dual (cosh u) (u' * sinh u)
-  tanh (Dual u u')  = Dual (tanh u) (u' * (1 - ((tanh u) ** 2)))
-  asinh (Dual u u') = Dual (asinh u) (u' / (sqrt(1 + (u ** 2))))
-  acosh (Dual u u') = Dual (acosh u) ((u' / (sqrt((u ** 2) - 1))))
-  atanh (Dual u u') = Dual (atanh u) (u' / (1 - (u ** 2)))
+  tanh (Dual u u')  = Dual (tanh u) (u' * (1 - (tanh u) ** 2))
+  asinh (Dual u u') = Dual (asinh u) (u' / (sqrt(1 + u ** 2)))
+  acosh (Dual u u') = Dual (acosh u) (u' / (sqrt(u ** 2 - 1)))
+  atanh (Dual u u') = Dual (atanh u) (u' / (1 - u ** 2))
   (**) (Dual u u') (Dual v v')
-    = Dual (u ** v) ((u ** v) * (v' * (log u) + (v * u' / u)))
+    = Dual (u ** v) (u ** v * (v' * (log u) + (v * u' / u)))
   logBase (Dual u u') (Dual v v')
     = Dual (logBase u v) (((log v) * u' / u - (log u) * v' / v) / ((log u) ** 2))
 {% endhighlight %}
@@ -159,7 +159,7 @@ simply loading my file into ghci.
 
 {% highlight haskell linenos %}
 --f :: Dual -> Dual
---f x = (x ** 3) - sin (x ** 2)
+--f x = x ** 3 - sin (x ** 2)
 
 --main = do
 --  putStrLn "What's the derivative of f(x) = x^2 - sin(x^2) at x = 2?"
@@ -172,15 +172,15 @@ for the `Floating`, `Fractional`, and `Num` typeclasses. To find the
 derivative of your function at \\( a \\), simply have Haskell evaluate
 the function at `Dual a 1`.
 
-{% highlight %}
-AutoDiff.hs> let f x = (x ** 3) - sin (x ** 2)
+<pre><code><!--
+-->AutoDiff.hs> let f x = x ** 3 - sin (x ** 2)
 AutoDiff.hs> :type f
 f :: Floating a => a -> a
 AutoDiff.hs> f 2
 8.756802495307928
 AutoDiff.hs> f (Dual 2 1)
 Dual 8.756802495307928 14.614574483454447
-{% endhighlight %}
+</code></pre>
 
 Success!
 
