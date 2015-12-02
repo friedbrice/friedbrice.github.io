@@ -4,9 +4,11 @@ layout: default
 
 The personal website of Daniel Brice, PhD.
 
-Made with [Jekyll](http://jekyllrb.com/) and hosted on [GitHub](https://github.com/).
+Made with [Jekyll](http://jekyllrb.com/) and hosted on
+[GitHub](https://github.com/).
 
-I'll be using this space to muse about Math and coding and games, mostly.
+I'll be using this space to muse about Math and coding and games,
+mostly.
 
 <div class="home">
   <h1 class="page-heading">Recent Posts</h1>
@@ -23,4 +25,3 @@ I'll be using this space to muse about Math and coding and games, mostly.
   </ul>
   <p class="rss-subscribe">Subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a>.</p>
 </div>
-

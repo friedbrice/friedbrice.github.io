@@ -2,11 +2,11 @@
 layout: page
 title: Teaching
 permalink: /teaching/
-date: 2014-12-03
+date: 2015-12-01
 topnav: true
 ---
 
-I'm an assistant professor of Mathematics at [Tuskegee University](http://www.tuskegee.edu).
+I'm a Lecturer of Mathematics at [Cal State Bakersfield](http://csub.edu).
 Here you'll find links to my [course pages](#courses) and [resources](#resources)
 that students might find helpful.
 

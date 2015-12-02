@@ -5,9 +5,9 @@ permalink: /blog/
 topnav: true
 ---
 
-The personal blog of Daniel Brice. These terrible, Orwellian, and
-often  Neanderthal opinions are my own, and do not reflect the opinions
-of anyone I am associated with.
+The personal blog of Daniel Brice. These terrible, Orwellian, and often
+Neanderthal opinions are my own, and do not reflect the opinions of
+anyone I am associated with.
 
 <p class="rss-subscribe">Subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a>.</p>
 
@@ -30,4 +30,3 @@ of anyone I am associated with.
     </li>
   {% endfor %}
 </ul>
-

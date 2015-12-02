@@ -6,10 +6,10 @@ date: 2014-12-03
 topnav: true
 ---
 
-My research interests include [Lie algebras][] and [representation theory][],
-[linear algebra][] and [matrix][] theory, and related topics. Specifically,
-I've done work in derivations of Lie algebras and zero product determined
-algebras.
+My research interests include [Lie algebras][] and [representation
+theory][], [linear algebra][] and [matrix][] theory, and related topics.
+Specifically, I've done work in derivations of Lie algebras and zero
+product determined algebras.
 
   [Lie algebras]: http://en.wikipedia.org/wiki/Lie_algebra
   [representation theory]: http://en.wikipedia.org/wiki/Representation_theory
@@ -23,7 +23,8 @@ algebras.
 
 <h2 id="derivations">Derivations of parabolic Lie algebras</h2>
 
-A _derivation_ on a Lie algebra \\( L \\) is a map \\( f: L \to L \\) satisfying
+A _derivation_ on a Lie algebra \\( L \\) is a map \\( f: L \to L \\)
+satisfying
 
 \\[
   f\big([x,y]\big) = \big[f(x), y\big] + \big[x, f(y)\big]
@@ -31,13 +32,13 @@ A _derivation_ on a Lie algebra \\( L \\) is a map \\( f: L \to L \\) satisfying
 
 for all \\( x, y \in L \\).
 
-Huajun Huang and I proved that the derivations of a parabolic Lie algebra
-(a Lie algebra that is realized as parabolic subalgebras of some reductive
-Lie algebra) are the sums of inner derivations and linear maps into the
-center that kill the derived algebras.
+Huajun Huang and I proved that the derivations of a parabolic Lie
+algebra (a Lie algebra that is realized as parabolic subalgebras of some
+reductive Lie algebra) are the sums of inner derivations and linear maps
+into the center that kill the derived algebras.
 
-Explicitly, given a parabolic Lie algebra \\( L \\), the derivations algebra
-\\( \mathrm{Der} (L) \\) decomposes as the direct sum of ideals
+Explicitly, given a parabolic Lie algebra \\( L \\), the derivations
+algebra \\( \mathrm{Der} (L) \\) decomposes as the direct sum of ideals
 
 \\[
   \mathrm{Der} (L) = \mathrm{ad} (L) \oplus \mathcal L
@@ -79,8 +80,8 @@ time in the future.
 <!-- we want to replace this list with a liquid script -->
 
 This part of my page is broken. I want to algorithmically generate this
-list, but I haven't figured out how to do it yet. The links are all
-just place-holders, really.
+list, but I haven't figured out how to do it yet. The links are all just
+place-holders, really.
 
 * brice0000note ([article](about:blank))
 * brice0000derivations ([article](about:blank))
