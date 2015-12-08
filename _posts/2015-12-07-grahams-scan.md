@@ -29,133 +29,149 @@ Here's my implementation.
 
 <!--break-->
 
-**Input:** A finite list of points \\( (x_i, y_i) \\) in the plane.
+**Input:** A finite list of points \\( (x,y) \\) in the plane.
 
-_Sample Input:_ \\( \\{ (0,0), (0.5, 1), (1,0), (1,1), (0,1), (-10,-10) \\} \\).
+_Sample Input:_ `(0,0), (0.5, 1), (1,0), (1,1), (0,1), (-10,-10)`
 
 **Output:** The (ordered) list of vertices of the smallest convex
 polygon containing all of the input points.
 
-_Sample Output:_ \\( \\{ (-10,-10), (1,0), (1,1), (0,1) \\} \\).
+_Sample Output:_ `(-10,-10), (1,0), (1,1), (0,1)`
 
 By _ordered_ we mean that traversing the list of vertices should be
-analogous to taking a walk around the outside edge of the polygon,
-without cutting through the interior.
+analogous to taking a counterclockwise walk around the outside edge of
+the polygon, without cutting through the interior.
 
-**Strategy:**
+**Strategy:** By _extremal point_ we mean a point in the input set that
+is a vertex of the final convex polygon. Our task is to identify all of
+the extremal points and order them.
 
-1.  Find the leftmost point on the input list (using lowest
-    \\(y\\)-coordinate to break ties). Call it \\(b\\).
+We first find an obviously-extremal point, then we use a method not
+unlike ray tracing to order the remaining points. Once the remaining
+points are ordered, we can determine which points are extremal by
+taking a walk along the points, making sure we only ever take left
+turns (by throwing away points when we don't make a left).
 
-2.  Order the remaining input points by the slope formed by the line
-    joining said point with \\(b\\) (using lower \\(x\\)-coordinate
-    to break ties).
+1.  Remove any duplicates from the input list.
 
-    This is where the algorithm gets its name. We chose the leftmost
-    point \\(b\\) as a pivot, and then we scan across the plane by
-    pivoting a line through \\(b\\) across the plane, using this
-    sweeping motion to order the points of the input list.
+2.  Find the leftmost point on the input list (using lowest
+    \\(y\\)-coordinate to break ties). Call it `b`.
+    The description of `b` makes it clear that `b` is extremal.
 
-    ![img1](nopic.png)
-    ![img2](nopic.png)
+3.  For each of the remaining points `p`, find the slope and
+    distance between `b` and `p`. If multiple `p`s form the
+    same slope with `b`, then obviously the ones closer to `b` can't
+    be extremal, so only keep the furthest.
 
-3.  Starting with \\(b\\) and taking three points at a time, determine
-    determine if a left turn or a right turn is made at the second point
-    in order to proceed to the third point.
+    At this step, we worry about what will happen to points directly
+    above `b`, since the slope will be undefined. Haskell's `Double`
+    implementation will treat these slopes as `Infinity`.
 
-    ![img3](nopic.png)
-    ![img4](nopic.png)
+4.  Order the remaining points by increasing slope. Then append `b`
+    to the front of the ordered list. We now have a list `ps` of
+    points that starts with `b`, is ordered by increasing slope,
+    and contains at most one point for each slope.
 
-4.  If a left turn is make, then the middle point is extremal, and thus
-    is a vertex of the convex hull. If a right turn is made, then the
-    middle point is interior to the convex hull, so throw the middle
-    point away.
+    A quick check in GHCi shows `(1.0 / 0.0) > 1.0` evaluates to `True`,
+    so if there were any points directly above `b`, the furthest
+    such point will be the last entry of `ps`.
 
-    ![img5](nopic.png)
-    ![img6](nopic.png)
+5.  Now, we take a walk along our list, looking at three consecutive
+    points at a time. For each triple of points `p1`, `p2`, `p3` we
+    imagine that we travel from `p1` through `p2` to `p3`,
+    and we calculate the direction we turn at `p2`.
 
-5.  Continue removing points until what remains produces only left
-    turns.
+    Since our list is ordered in increasing slope, anything other than a
+    left turn at `p2` indicates that `p2` can't be extremal, so
+    in that case we throw it away. If we do make a left turn at
+    `p2`, then because of how our list is ordered `p2` is
+    extremal, and we can then move on to considering the trip from
+    `p2` through `p3` to `p4`, and so on.
 
-    ![img7](nopic.png)
-    ![img8](nopic.png)
-
-Let's take a look at the code. The whole file is 72 lines, and you can
+Let's take a look at the code. The whole file is 98 lines, and you can
 [see it][5] in its entirety on GitHub, but we dissect it below.
 
   [5]: http://github.com/friedbrice/RealWorldHaskell/blob/master/ch3/exB12.hs
 
-{% highlight haskell linenos %}
-import Data.List (sortBy)
+First, imports and a general convenience function.
 
--- | Type for encoding relative direction.
+{% highlight haskell linenos %}
+import Data.List (groupBy, sortBy)
+
+removeDuplicates :: Eq a => [a] -> [a]
+-- ^ Why isn't this in Prelude?
+removeDuplicates = foldr skipIfElem []
+  where
+    skipIfElem x ys = if x `elem` ys
+                      then ys
+                      else x : ys
+{% endhighlight %}
+
+`removeDuplicates` does exactly what it sounds like it does.
+
+Next we introduce a datatype for points in the plane and a few
+functions that we'll need later.
+
+{% highlight haskell linenos %}
+-- | Type for encoding points in the Cartesian plane.
+data Point = Point { xProj :: Double, yProj :: Double }
+             deriving (Eq, Read)
+
+-- | Show instance displays points in usual mathematical notation.
+instance Show Point where
+  show (Point x y) = "(" ++ show x ++ "," ++ show y ++ ")"
+
+p :: (Double, Double) -> Point
+-- ^ Function for creating points in usual mathematical notation.
+p (x, y) = Point x y
+
+slope :: Point -> Point -> Double
+-- ^ Calculates the slope between two points.
+slope (Point x1 y1) (Point x2 y2) = (y2 - y1) / (x2 - x1)
+
+norm :: Point -> Point -> Double
+-- ^ Calculates the taxicab distance between two points.
+norm (Point x1 y1) (Point x2 y2) = abs (x2 - x1) + abs (y2 - y1)
+
+coordinateSort :: [Point] -> [Point]
+-- ^ Sorts by lowest x-coord, then by lowest y-coord.
+coordinateSort = sortBy (\(Point x1 _) (Point x2 _) -> compare x1 x2)
+               . sortBy (\(Point _ y1) (Point _ y2) -> compare y1 y2)
+{% endhighlight %}
+
+We could implement this algorithm using angle instead of slope, but
+slope is easier to calculate and ends up being equivalent. _I.e._ if we
+were to calculate the angle that each point forms with the ray moving in
+the positive \\(x\\) direction eminating from a fixed point, we'd end up
+needing to calculate `atan` of the slope, anyway, and since `atan` is
+monotonic, sorting on `atan . slope` is the same as sorting on `slope`,
+so why compute `atan`? Likewise, we chose to use the [taxicab metric][6]
+instead of the usual distance formula, since the taxicab metric is
+easier to calculate (we avoid `sqrt`) and results in the same sort.
+
+  [6]: http://en.wikipedia.org/Taxicab_geometry
+
+Next we define a datatype for relative directions and a function that
+discerns the direction we need to turn at `p2` in order to proceed to
+`p3` from `p1`.
+
+{% highlight haskell linenos %}
 data Direction = GoLeft | GoStraight | GoRight | GoBackwards | GoNowhere
                  deriving (Eq, Read, Show)
 
--- | Type for encoding points in the Cartesian plane.
-data Point = Point Double Double
-             deriving (Eq, Read, Show)
-
-xProj :: Point -> Double
-xProj (Point x _) = x
-
-yProj :: Point -> Double
-yProj (Point _ y) = y
-{% endhighlight %}
-
-Relative directions are hard. Our type for describing them includes
-possibilities arising from bad/confusing data. For representing points,
-we could have simply used `type Point = (Double, Double)`, but giving
-them a distinct data constructor doesn't hurt. We also write some
-convenience functions for pulling coordinates off of a `Point`.
-
-{% highlight haskell linenos %}
-reverseDictSort :: [Point] -> [Point]
--- ^ Sorts by leftmostness (picking lowest in a tie)
-reverseDictSort = do
-  sortBy (\p1 p2 -> compare (yProj p1) (yProj p2))
-  sortBy (\p1 p2 -> compare (xProj p1) (xProj p2))
-
-slopeSort :: Point -> [Point] -> [Point]
--- ^ Sorts a list of points by the slope they form with the given point.
-slopeSort (Point x y) = sortBy (\p1 p2 -> compare (slope p1) (slope p2))
-  where slope p = (yProj p - y) / (xProj p - x)
-{% endhighlight %}
-
-`reverseDictSort` and `slopeSort` implement steps one and two described
-above.
-
-`reverseDictSort` sorts on \\(y\\)-coordinate first, then on
-\\(x\\)-coordinate, so the result will be a list sorted by \\(x\\)
-first, then by \\(y\\), turning this sample input
-\\[ \\{ (0,0), (0.5, 1), (1,0), (1,1), (0,1), (-10,-10) \\} \\]
-into this
-\\[ \\{ (-10,-10), (0,0), (0,1), (0.5, 1), (1,0), (1,1) \\}\text{.} \\]
-
-With this sample data, we get \\(b = (-10,-10)\\). `slopeSort` will sort
-\\( \\{ (0,0), (0,1), (0.5, 1), (1,0), (1,1) \\} \\) by the slope formed
-with \\(b\\), resulting in
-\\[ \\{ (1,0), (0,0), (1,1), (0.5, 1), (0,1) \\}\text{.} \\]
-
-The meat of the algorithm is the function that determines relative
-direction among three points.
-
-{% highlight haskell linenos %}
 direction :: Point -> Point -> Point -> Direction
--- ^ Given points p1, p2, and p3, returns the direction to p3 when
---   traveling from p1 through p2.
---   Relative directions are hard.
---   After checking a few edge cases, we do a coordinate transformation
---   that makes the problem easy to check.
+-- ^ Given points p1, p2, and p3, returns the direction to turn at `p2`
+--   when traveling from `p1` through `p2` to `p3`.
 direction p1@(Point x1 y1) p2@(Point x2 y2) p3@(Point x3 y3) = do
-  if p1 == p2 || p2 == p3 -- Silly input.
+  -- Check a few easy edge cases.
+  if p1 == p2 || p2 == p3 -- direction is not well-defined
   then GoNowhere
-  else if p1 == p3 -- Silly input.
+  else if p1 == p3 -- direction is backwards
   then GoBackwards
   else do
-    -- Here, we do a coordinate transformation that moves p1 to the
-    -- origin and moves p2 to (1,0). This puts p3' somewhere in the
-    -- plane, and then we branch on the trichotomy of y3'.
+    -- Here, we do a coordinate transformation that moves `p1` to the
+    -- origin and moves `p2` to (1,0). This puts `p3'` somewhere in the
+    -- plane, and then we branch on the trichotomy of `y3'`.
     let det = (x2 - x1) ** 2 + (y2 - y1) ** 2
         a   = (x2 - x1) / det
         b   = (y2 - y1) / det
@@ -163,75 +179,113 @@ direction p1@(Point x1 y1) p2@(Point x2 y2) p3@(Point x3 y3) = do
         d   = x2 - x1
         x3' = a * (x3 - x1) + b * (y3 - y1)
         y3' = c * (x3 - x1) + d * (y3 - y1)
-    if y3' > 0 -- p3' is in the upper half plane.
+    if y3' > 0 -- `p3'` is in the upper half plane
     then GoLeft
-    else if y3' < 0 -- p3' is in the lower half plane.
+    else if y3' < 0 -- `p3'` is in the lower half plane
     then GoRight
-    else if x3' > 1 -- p3' is on the x-axis, beyond (1,0).
+    else if x3' > 1 -- `p3'` is on the x-axis, beyond (1,0)
     then GoStraight
-    else GoBackwards -- p3' is on the x-axis behind (1, 0).
+    else GoBackwards -- `p3'` is on the x-axis behind (1, 0)
 {% endhighlight %}
 
-I've annotated the code itself,
-so I hope that explains most of its inner workings.
-There's not much else I can add without repeating myself.
-It's worth mentioning that the [Wikipedia article][3] on Graham's scan
-suggests a shorter method for assigning direction.
-The method they give, however, misses a few edge cases, and accounting
-for those edge cases results in a function no less complicated as
-mine above.
+Lines 17 through 23 perform a coordinate transformation on `p3`. We
+could pull the coordinate transformation out of `direction` and make it
+a distinct top-level function, but I don't see any reason to at this
+point.
 
-Finally, we have `grahamScan`, which implements the algorithm.
+Wikipedia [suggests][7] embedding our points in three space
+and using the \\(z\\)-coordinate of the cross
+product of the vector \\(\vec{p_1 p_2}\\) with the vector
+\\(\vec{p_2 p_3}\\) to determine direction.
+That approach works, but it misses a good number of edge cases,
+and taking care of those edge cases results in a function that's
+not any simpler than the one at hand.
+
+  [7]: http://en.wikipedia.org/wiki/Graham_scan#Algorithm
+
+We're ready for the algorithm itself:
 
 {% highlight haskell linenos %}
 grahamScan :: [Point] -> [Point]
--- ^ Returns the vertices of the convex hull of the input list.
-grahamScan input = walkPerimeter sorted
+-- ^ Takes a list of points in the plane and returns the vertices of
+--   the smallest convex polygon containing the input points, ordered
+--   counterclockwise around the perimeter.
+grahamScan input = walkPerimeter . sort $ input
   where
-    (b : bs) = reverseDictSort input -- sort by coordinates
-    sorted   = (b :) . slopeSort b $ bs -- Sort by slope
+    sort ps = (b :)
+            . map (\(p,_,_) -> p)
+            -- ^ forget slopes and norms, and push `b`
+            . map last
+            -- ^ take the furthest from each slope group
+            . map (sortBy (\(_,_,n1) (_,_,n2) -> compare n1 n2))
+            -- ^ sort each slope group by norm
+            . groupBy (\(_,s1,_) (_,s2,_) -> s1 == s2)
+            -- ^ group by slope
+            . sortBy (\(_,s1,_) (_,s2,_) -> compare s1 s2)
+            -- ^ sort by slope
+            . map (\p -> (p, slope b p, norm b p)) $ bs
+            -- ^ calculate slope and norm for remaning points
+      where
+        (b : bs) = coordinateSort . removeDuplicates $ ps
+        -- ^ remove duplicates and find the lowest-leftmost point `b`
     walkPerimeter (p1 : p2 : p3 : ps) =
-      -- exmine three points at a time
+      -- ^ examine three points at a time
+      --   notably, assumes p1 is good
       if direction p1 p2 p3 == GoLeft
-      then p1 : (walkPerimeter (p2 : p3 : ps)) -- GoLeft -> p1 is good
+      then p1 : (walkPerimeter (p2 : p3 : ps)) -- GoLeft -> p2 is good
       else walkPerimeter (p1 : p3 : ps) -- not GoLeft -> p2 is bad
     walkPerimeter ps = ps -- base case, fewer than three points -> end
 {% endhighlight %}
 
-On line 4, we find \\(b\\). Line 5 sorts the remaining points by slope,
-and pushes \\(b\\) back on to the top of the result. At this point, we
-will have in hand a list that looks like this:
-\\[ \\{ (-10,-10), (1,0), (0,0), (1,1), (0.5, 1), (0,1) \\}\text{.} \\]
+The algorithm flows through two phases: `sort` massages our input data
+into a form that is easy to recurse on, `walkPerimeter` process the
+sorted data, three points at a time.
 
-Finally, we take a walk along the perimeter, throwing away points
-that don't form a left turn. We take a look at the first three entries,
-and if we get anything other than `GoLeft`, we throw away the second
-point and start over. If we get `GoLeft`, then we peel the first point
-out of the loop and continue with the remaining points.
+I've annotated `sort` and `walkPerimeter`, and you'll see they
+implement the five-step strategy described at the start of this post.
+One thing to remember while reading the annotations, though: _read from
+bottom to top_. This is functional language, and `sort` is a composition
+of a bunch of functions. The rightmost (here, lowest) function is the
+first to touch our input data.
 
-\\[ \mathrm{walkPerimeter} ((-10,-10) : (1,0) : (0,0) : (1,1) : (0.5, 1) : (0,1)) \\]
-Since \\( \mathrm{direction} ((-10,-10), (1,0), (0,0)) \equiv
-\mathrm{GoLeft} \\), we peel peel off \\( (-10,-10) \\).
-\\[ \equiv (-10,-10) : (\mathrm{walkPerimeter} ((1,0) : (0,0) : (1,1) : (0.5, 1) : (0,1))) \\]
-Since \\( \mathrm{direction} ((1,0), (0,0), (1,1)) \equiv
-\mathrm{GoRight} \\), we delete \\( (0,0) \\).
-\\[ \equiv (-10,-10) : (\mathrm{walkPerimeter} ((1,0) : (1,1) : (0.5, 1) : (0,1))) \\]
-\\( \mathrm{direction} (1,0), (1,1), (0.5,1) \equiv \mathrm{GoLeft} \\),
-so peel off \\( (1,0) \\).
-\\[ \equiv (-10,-10) : (1,0) : (\mathrm{walkPerimeter} ((1,1) : (0.5, 1) : (0,1))) \\]
-\\( \mathrm{direction} (1,1), (0.5,1), (0,1) \equiv
-\mathrm{GoStraight} \\), so delete \\( (0.5,1) \\).
-\\[ \equiv (-10,-10) : (1,0) : (\mathrm{walkPerimeter} ((1,1) : (0,1))) \\]
-Only two points left, keep them both.
-\\[ \equiv (-10,-10) : (1,0) : (1,1) : (0,1) \\]
+`walkPerimeter` assumes that its first argument is a point that we
+intend to keep (it has no way of deleting the first point it's fed),
+and this is okay since we know `b` is an extremal point.
 
-Let's try it out. Load the file into ghci.
+Let's give it a test drive in GHCi.
 
 {% highlight haskell %}
-ghci> let input = [Point 0 0, Point 0.5 1, Point 1 0, Point 1 1, Point 0 1, Point (-10) (-10)]
-ghci> grahamScan input
-[Point (-10.0) (-10.0),Point 1.0 0.0,Point 1.0 1.0,Point 0.0 1.0]
-ghci> let input = [Point 0 0, Point 0 1, Point 0 2, Point 0 3, Point 2 2]
-ghci> grahamScan input
-[Point 0.0 0.0,Point 2.0 2.0,Point 0.0 3.0]
+ghci> let ps = [p(0,0), p(0.5,1), p(1,0), p(1,1), p(0,1), p(-10,-10)]
+ghci> grahamScan ps
+[(-10.0,-10.0),(1.0,0.0),(1.0,1.0),(0.0,1.0)]
+ghci> let ps = [p(0,0), p(0,1), p(0,2), p(0,3), p(1,1), p(2,2), p(0.5,2)]
+ghci> grahamScan ps
+[(0.0,0.0),(2.0,2.0),(0.0,3.0)]
 {% endhighlight %}
+
+Let's noise-up our data a little and see what happens.
+
+{% highlight haskell linenos %}
+noiseEm :: [Point] -> [Point]
+noiseEm = concatMap noiseIt
+  where
+    noiseIt (Point x y) = [Point (x + e) (y + e) | e <- [-0.1, 0, 0.1]]
+{% endhighlight %}
+
+{% highlight haskell %}
+ghci> let ps = [p(0,0),p(0,1),p(0,2),p(0,3),p(1,1),p(2,2),p(0.5,2)]
+ghci> grahamScan ps
+[(0.0,0.0),(2.0,2.0),(0.0,3.0)]
+ghci> grahamScan . noiseEm $ ps
+[(-0.1,-0.1),(2.1,2.1),(0.6,2.1),(0.4,1.9),
+(0.1,3.1),(-0.1,2.9)]
+ghci> grahamScan . noiseEm . noiseEm $ ps
+[(-0.2,-0.2),(2.2,2.2),(0.7,2.2),(0.4,1.9),
+(0.30000000000000004,1.7999999999999998),
+(0.2,2.2),(0.2,3.2),(0.0,3.0),(-0.2,2.8)]
+{% endhighlight %}
+
+Hmm, a nonagon. I believe we should only get a hexagon, though.
+I wonder if it's round-off error or a bug in my implementation.
+Maybe there are a few more things to work out.
+Anyway, that's enough for tonight.
