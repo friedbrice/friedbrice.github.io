@@ -277,8 +277,7 @@ ghci> let ps = [p(0,0),p(0,1),p(0,2),p(0,3),p(1,1),p(2,2),p(0.5,2)]
 ghci> grahamScan ps
 [(0.0,0.0),(2.0,2.0),(0.0,3.0)]
 ghci> grahamScan . noiseEm $ ps
-[(-0.1,-0.1),(2.1,2.1),(0.6,2.1),(0.4,1.9),
-(0.1,3.1),(-0.1,2.9)]
+[(-0.1,-0.1),(2.1,2.1),(0.6,2.1),(0.4,1.9),(0.1,3.1),(-0.1,2.9)]
 {% endhighlight %}
 
 I'd like to write some robust some testing suites,
