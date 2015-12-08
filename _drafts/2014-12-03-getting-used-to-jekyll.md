@@ -66,3 +66,32 @@ short relative link, for the sake of portability.
 Use \{\{ site.baseurl \}\} to ensure that I'm using the value defined in
 _config.yml.
 
+**Re-re-re-edit:** Here's a helpful table to see how things are expanded.
+
+<table>
+  <tr>
+    <th>Control Sequence</th>
+    <th>Expanded As</th>
+    <th>Explanation</th>
+  </tr>
+  <tr>
+    <td><code>&#123;&#123; baseurl &#125;&#125;</code></td>
+    <td>{{ baseurl }}</td>
+    <td>I really don't know...<br />Do not use!</td>
+  </tr>
+  <tr>
+    <td><code>&#123;&#123; url &#125;&#125;</code></td>
+    <td>{{ url }}</td>
+    <td>Ditto, do not use.</td>
+  </tr>
+  <tr>
+    <td><code>&#123;&#123; site.baseurl &#125;&#125;</code></td>
+    <td>{{ site.baseurl }}</td>
+    <td>Defined in <code>_config.yml</code>.<br />Use for all internal links.</td>
+  </tr>
+  <tr>
+    <td><code>&#123;&#123; site.url &#125;&#125;</code></td>
+    <td>{{ site.url }}</td>
+    <td>Defined in <code>_config.yml</code>.<br />Breaks testing environment.</td>
+  </tr>
+</table>

@@ -109,6 +109,8 @@ removeDuplicates = foldr skipIfElem []
 
 `removeDuplicates` does exactly what it sounds like it does.
 
+> **Edit:** The function I'm looking for is `nub` from `Data.List`.
+
 Next we introduce a datatype for points in the plane and a few
 functions that we'll need later.
 
@@ -138,6 +140,12 @@ coordinateSort :: [Point] -> [Point]
 coordinateSort = sortBy (\(Point x1 _) (Point x2 _) -> compare x1 x2)
                . sortBy (\(Point _ y1) (Point _ y2) -> compare y1 y2)
 {% endhighlight %}
+
+> **Edit:** Using a type alias, such as `type Point = (Double, Double)`
+> instead of a `data` declaration
+> allows us to use the default `Ord`, `Read`, and `Write` instances,
+> greatly simplifying the code. These changes are reflected on the
+> GitHub version of `exB12.hs`.
 
 We could implement this algorithm using angle instead of slope, but
 slope is easier to calculate and ends up being equivalent. _I.e._ if we
