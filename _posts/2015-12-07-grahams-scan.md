@@ -279,13 +279,8 @@ ghci> grahamScan ps
 ghci> grahamScan . noiseEm $ ps
 [(-0.1,-0.1),(2.1,2.1),(0.6,2.1),(0.4,1.9),
 (0.1,3.1),(-0.1,2.9)]
-ghci> grahamScan . noiseEm . noiseEm $ ps
-[(-0.2,-0.2),(2.2,2.2),(0.7,2.2),(0.4,1.9),
-(0.30000000000000004,1.7999999999999998),
-(0.2,2.2),(0.2,3.2),(0.0,3.0),(-0.2,2.8)]
 {% endhighlight %}
 
-Hmm, a nonagon. I believe we should only get a hexagon, though.
-I wonder if it's round-off error or a bug in my implementation.
-Maybe there are a few more things to work out.
+I'd like to write some robust some testing suites,
+but I don't really know how.
 Anyway, that's enough for tonight.
