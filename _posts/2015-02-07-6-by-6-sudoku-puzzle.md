@@ -2,7 +2,6 @@
 layout: post
 title: "6-by-6 Sudoku Solver"
 date: 2015-02-07
-author: Daniel
 permalink: /blog/06/
 tags:
 - code

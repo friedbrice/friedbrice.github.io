@@ -5,8 +5,8 @@ permalink: /blog/01/
 date: 2014-12-03
 ---
 
-Welcome to my blog. I'll use this blog to post musings about math, maybe
-some games, maybe some coding. **Oh!** The possibilities are _endless._
+Welcome to my blog. I'll use this blog to post musings about \\(math\\), maybe
+some games, maybe some `coding`. **Oh!** The possibilities are _endless._
 
 <!--break-->
 

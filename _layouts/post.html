@@ -3,6 +3,16 @@ layout: default
 ---
 <div class="post">
 
+  <div>
+    {% if page.previous %}
+      <span style="float: left;">Previous: <a href="{{ page.previous.permalink }}">{{ page.previous.title }}</a></span>
+    {% endif %}
+    {% if page.next %}
+      <span style="float: right;">Next: <a href="{{ page.next.permalink }}">{{ page.next.title }}</a></span>
+    {% endif %}
+    <div style="clear: both;"></div>
+  </div>
+
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
@@ -11,5 +21,15 @@ layout: default
   <article class="post-content">
     {{ content }}
   </article>
+
+  <div>
+    {% if page.previous %}
+      <span style="float: left;">Previous: <a href="{{ page.previous.permalink }}">{{ page.previous.title }}</a></span>
+    {% endif %}
+    {% if page.next %}
+      <span style="float: right;">Next: <a href="{{ page.next.permalink }}">{{ page.next.title }}</a></span>
+    {% endif %}
+    <div style="clear: both;"></div>
+  </div>
 
 </div>

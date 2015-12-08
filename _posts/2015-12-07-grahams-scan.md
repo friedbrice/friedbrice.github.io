@@ -2,7 +2,6 @@
 layout: post
 title: "Graham's Scan Convex Hull Algorithm"
 date: 2015-12-07
-author: Daniel
 permalink: /blog/11/
 tags:
 - code

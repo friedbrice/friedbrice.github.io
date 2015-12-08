@@ -2,8 +2,6 @@
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">{{ site.title }}</h2>
-
     <div class="footer-col-wrapper">
       <div class="footer-col  footer-col-1">
         <ul class="contact-list">
@@ -42,11 +40,32 @@
             </a>
           </li>
           {% endif %}
+
+          {% if site.stackex_username %}
+          <li>
+            <a href="http://stackexchange.com/users/{{ site.stackex_username }}">
+              <span class="icon  icon--stackex">
+                <img width="16" heigh="16" src="{{ site.baseurl }}/img/se-icon.png"/>
+              </span>
+
+              <span class="username">{{ site.stackex_username }}</span>
+            </a>
+          </li>
+          {% endif %}
         </ul>
       </div>
 
       <div class="footer-col  footer-col-3">
-        <p class="text">{{ site.description }}</p>
+        <p class="text">
+          {{ site.description }}
+          <br />
+          Copyright 2014-2015
+          <a href="https://creativecommons.org/licenses/by/4.0/">[CC BY 4.0]</a>
+        </p>
+        <p class="text">
+          Created with <a href="http://jekyllrb.com/">Jekyll</a>.
+          Hosted on <a href="https://pages.github.com/">GitHub Pages</a>.
+        </p>
       </div>
     </div>
 

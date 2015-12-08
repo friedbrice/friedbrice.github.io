@@ -3,7 +3,6 @@ layout: post
 title: "Getting Used to Jekyll"
 date: 2014-12-03
 #categories: math update
-author: Daniel
 permalink: /blog/00/
 tags:
 - code

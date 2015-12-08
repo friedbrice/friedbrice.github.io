@@ -2,7 +2,6 @@
 layout: post
 title: "Self-returning Function"
 date: 2015-05-25
-author: Daniel
 permalink: /blog/09/
 tags:
 - code

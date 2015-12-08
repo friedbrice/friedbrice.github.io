@@ -1,9 +1,6 @@
 # Site settings
 title: 'DanielBrice.net'
-description: |
-  The personal website of Daniel Brice, PhD.
-  Copyright 2014-2015
-  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+description: 'The personal website of Daniel Brice, PhD'
 baseurl: ''
 url: 'http://www.danielbrice.net'
 include: [ '_courses' ]
@@ -12,10 +9,9 @@ include: [ '_courses' ]
 email: 'danielbrice@gmail.com'
 twitter_username: 'fried_brice'
 github_username:  'friedbrice'
-stackex_username: '2387766/fried-brice'
+stackex_username: '2387766'
 
 # Build settings
 markdown: 'kramdown'
 exclude: [ 'README.md', 'Gemfile' ]
 # debug: 'true' # comment this out before production
-

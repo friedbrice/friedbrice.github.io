@@ -2,7 +2,6 @@
 layout: post
 title: "More Hemingway"
 date: 2015-05-24
-author: Daniel
 permalink: /blog/08/
 tags:
 - code
