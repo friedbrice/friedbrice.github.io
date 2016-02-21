@@ -18,10 +18,11 @@ in Linux, so I finally strung one together.
 
 A `.url` files in windows looks something like this:
 
-    ~/example.url
-    ------------------------------------------------
-    [InternetShortcut]
-    URL=http://www.example.com
+{% highlight ini %}
+; ~/example.url
+[InternetShortcut]
+URL=http://www.example.com
+{% endhighlight %}
 
 Simple, elegant, clean.
 
@@ -29,36 +30,43 @@ In order to pull the url out of a file like that, we just have to find
 the line that begins with `URL=`, cut that line at the `=`, and take
 the second piece. That's a one-liner in Bash:
 
-    cat "${MY_FILE}" | grep "URL=" | cut -d = -f 2
+{% highlight bash %}
+cat "${MY_FILE}" | grep "URL=" | cut -d = -f 2
+{% endhighlight %}
 
 Once we have the URL, we can feed it to `xdg-open` to open it in the
 default browser. Here's a Bash script that does that with a few
 embellishments.
 
-    ~/bin/openurl
-    ------------------------------------------------
-    #!/bin/bash
-    # A script for opening windows `.url` files.
+{% highlight bash %}
+#!/bin/bash
+# ~/bin/openurl
+# A script for opening windows `.url` files.
 
-    URL=$(cat "$1" | grep "URL=" | cut -d= -f2)
-    echo -e "Opening\n$URL\nin default browser..."
-    xdg-open "$URL" & sleep 3
+URL=$(cat "$1" | grep "URL=" | cut -d= -f2)
+echo -e "Opening\n$URL\nin default browser..."
+xdg-open "$URL" & sleep 3
+{% endhighlight %}
 
 Remember to make it executable:
 
-    ~ $ chmod +x ~/bin/openurl
+{% highlight text %}
+$ chmod +x ~/bin/openurl
+{% endhighlight %}
 
 The `$1` refers to the first argument, so if we invoke as
 `openurl example.url`, then `$1` will expand to `example.url`.
 We can try this from the command line, and you should see that it works
 as intended.
 
-    ~ $ openurl example.url
-    Opening
-    http://www.example.com
-    in default browser...
-    Created new window in existing browser session.
-    ~ $
+{% highlight text %}
+$ openurl example.url
+Opening
+http://www.example.com
+in default browser...
+Created new window in existing browser session.
+$
+{% endhighlight %}
 
 The last line of output is created by `chromium-browser`, my default
 browser.
@@ -72,25 +80,30 @@ For this, we need to create a `.desktop` file for `~/bin/openurl`.
 
 We need to know the MIME-type of a `.url` files, so we check real quick:
 
-    ~ $ xdg-mime query filetype example.url
-    application/x-mswinurl
+{% highlight text %}
+$ xdg-mime query filetype example.url
+application/x-mswinurl
+{% endhighlight %}
 
 And now we can write our `.desktop` file.
 
-    ~/.local/share/applications/openurl.desktop
-    ------------------------------------------------
-    [Desktop Entry]
-    Version=1.0
-    Name=openurl
-    Comment=A script for opening windows `.url` files.
-    Exec=<FULL PATH TO EXECUTABLE, eg /home/me/bin/openurl>
-    Type=Application
-    MimeType=application/x-mswinurl
+{% highlight ini %}
+; ~/.local/share/applications/openurl.desktop
+[Desktop Entry]
+Version=1.0
+Name=openurl
+Comment=A script for opening windows `.url` files.
+Exec=<FULL PATH TO EXECUTABLE, eg /home/me/bin/openurl>
+Type=Application
+MimeType=application/x-mswinurl
+{% endhighlight %}
 
 Finally, we just need to tell xdg to open `application/x-mswinurl` types
 with `openurl.desktop`.
 
-    ~ $ xdg-mime default openurl.desktop application/x-mswinurl
+{% highlight text %}
+$ xdg-mime default openurl.desktop application/x-mswinurl
+{% endhighlight %}
 
 Now, we can open `.url` files in Linux by double clicking them. Not sure
 how I'm going to do all this wiring in OS X, though.

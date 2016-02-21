@@ -24,7 +24,9 @@ Croll provides.
 Here are the implementations, both as a function with global and as a
 class:
 
-{% highlight python linenos %}
+{% highlight python %}
+# sayIt.py
+
 ### As a function that returns itself
 
 words = []
@@ -56,7 +58,7 @@ class Words:
 
 And here's its usage in the Python 3 interpreter:
 
-{% highlight python linenos %}
+{% highlight text %}
 >>> words
 []
 >>> sayIt("this")("is")("it")()

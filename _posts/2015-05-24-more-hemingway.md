@@ -43,7 +43,8 @@ The problem Exercise 5 poses makes much more sense in an object-oriented
 paradigm: I decided I'd write my Python solution first. Here was my
 first go:
 
-{% highlight python linenos %}
+{% highlight python %}
+# sayIt.py
 words = []
 
 def sayIt( x = None ):
@@ -63,7 +64,8 @@ In order to make it chainable, we need to make it a method of an object.
 If it returns itself upon method calls, then we can just dot subsequent
 method calls on the end. Here's my second go:
 
-{% highlight python linenos %}
+{% highlight python %}
+# sayItClassy.py
 class Words:
     def __init__(self):
         self.words = []
@@ -83,7 +85,7 @@ method `_` has the behavior of `sayIt` from above, but applies changes
 to the instance rather than to a global variable. Thus, in the Python3
 interactive prompt, we get the desired behavior:
 
-{% highlight python linenos %}
+{% highlight text %}
 >>> sayIt = Words()
 >>> sayIt._("my")._("name")._("is")._("Daniel")._()
 my name is Daniel

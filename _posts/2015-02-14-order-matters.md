@@ -16,32 +16,39 @@ It has to do with the interplay between `filter` and `takeWhile`.
 In [Chapter 6][hof] we learn how to map and filter over lists.
 We see a short example of a one-liner that will sum the odd squares smaller than 10,000.
 
-	ghci> sum . takeWhile (<10000) . filter odd . map (^2) $ [1..]
-	166650
+{% highlight text %}
+ghci> sum . takeWhile (<10000) . filter odd . map (^2) $ [1..]
+166650
+{% endhighlight %}
 
 Everything seems to work fine.
 (I can tell, because I know the sum of the odd squares smaller than 10,000 off the top of my head.)
 Let's capitalize on our small victory by defining this as a function.
 
-	ghci> let funnySum = sum . takeWhile (<10000) . filter odd . map (^2)
-	ghci> :type funnySum
-	funnySum :: [Integer] -> Integer
-	ghci> funnySum [1..]
-	166650
+{% highlight text %}
+ghci> let funnySum = sum . takeWhile (<10000) . filter odd . map (^2)
+ghci> :type funnySum
+funnySum :: [Integer] -> Integer
+ghci> funnySum [1..]
+166650
+{% endhighlight %}
 
 Great!
 `funnySum` is now a general function that takes a list of integers and returns an integer.
 Let's feed it some other lists of integers.
 How about every number that's 3 modulo 4?
 
-	ghci> funnySum [n | n <- [1..], n `mod` 4 == 3]
-	85825
+{% highlight text %}
+ghci> funnySum [n | n <- [1..], n `mod` 4 == 3]
+85825
+{% endhighlight %}
 
 Now, let's intentionally feed it a list without any odd numbers.
 We should just get the sum of the empty list (namely 0) right?
 
-	ghci> funnySum [2,4..]
-	
+{% highlight text %}
+ghci> funnySum [2,4..]
+{% endhighlight %}
 
 Nothing gets printed.
 The program is looping forever!
@@ -56,13 +63,15 @@ Fortunately, this is easy to fix.
 We'll define a new function, `funnySum'` that will still solve the problem but will also be more flexible with allowable inputs.
 All we need to do is swap the order of `takeWhile (<10000)` and `filter odd`.
 
-	ghci> let funnySum' = sum . filter odd . takeWhile (<10000) . map (^2)
-	ghci> funnySum [1..]
-	166650
-	ghci> funnySum [n | n <- [1..], n `mod` 4 == 3]
-	85825
-	ghci> funnySum [2,4..]
-	0
+{% highlight text %}
+ghci> let funnySum' = sum . filter odd . takeWhile (<10000) . map (^2)
+ghci> funnySum [1..]
+166650
+ghci> funnySum [n | n <- [1..], n `mod` 4 == 3]
+85825
+ghci> funnySum [2,4..]
+0
+{% endhighlight %}
 
 We still answer the original questions correctly, and we're able to evaluate the sum of all the odd members of an infinite list of even numbers.
 Success!
@@ -74,13 +83,15 @@ However, this is simply not the case, because `filter odd` might remove a list e
 
 Example:
 
-	ghci> let f = filter odd . takeWhile (<10000)
-	ghci> let g = takeWhile (<10000) . filter odd
-	ghci> let x = [3,10000,5]
-	ghci> f x
-	[3]
-	ghci> g x
-	[3,5]
+{% highlight text %}
+ghci> let f = filter odd . takeWhile (<10000)
+ghci> let g = takeWhile (<10000) . filter odd
+ghci> let x = [3,10000,5]
+ghci> f x
+[3]
+ghci> g x
+[3,5]
+{% endhighlight %}
 
 Since they are different function, neither is better than the other.
 Use the one that produces what you want for your particular piece of code.

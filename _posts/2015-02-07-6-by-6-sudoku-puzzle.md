@@ -38,6 +38,8 @@ added, for brevity:
   [2]: http://github.com/friedbrice/Haskell/blob/master/sudoku.hs
 
 {% highlight haskell linenos %}
+-- sudoku.hs --
+---------------
 import Data.List
 import System.IO
 
@@ -87,6 +89,8 @@ with 2-by-3 blocks. Notice line 18 in the definition of
 <code>sameBlock</code>.
 
 {% highlight haskell linenos %}
+-- sudoku-6-by-6.hs --
+----------------------
 import Data.List (lines, unlines, words, unwords, delete)
 import System.IO (getContents, putStr)
 

@@ -171,7 +171,7 @@ for the `Floating`, `Fractional`, and `Num` typeclasses. To find the
 derivative of your function at \\( a \\), simply have Haskell evaluate
 the function at `Dual a 1`.
 
-<pre><code><!--
+{% highlight text %}
 -->AutoDiff.hs> let f x = x ** 3 - sin (x ** 2)
 AutoDiff.hs> :type f
 f :: Floating a => a -> a
@@ -179,7 +179,7 @@ AutoDiff.hs> f 2
 8.756802495307928
 AutoDiff.hs> f (Dual 2 1)
 Dual 8.756802495307928 14.614574483454447
-</code></pre>
+{% endhighlight %}
 
 Success!
 

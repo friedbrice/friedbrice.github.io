@@ -35,7 +35,9 @@ beginning programming homework exercise.
 I found that I wanted to try about 60 different search phrases, and I
 found that they all had the same basic form:
 
-	{ place } + " " + { subject } + " mailing list"
+{% highlight haskell %}
+{ place } + " " + { subject } + " mailing list"
+{% endhighlight %}
 
 I could make a double-nested loop in C... But this is the perfect time
 to use Haskell list comprehension! So, I made my *first ever* Haskell

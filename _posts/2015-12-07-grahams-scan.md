@@ -261,7 +261,7 @@ and this is okay since we know `b` is an extremal point.
 
 Let's give it a test drive in GHCi.
 
-{% highlight haskell %}
+{% highlight text %}
 ghci> let ps = [p(0,0), p(0.5,1), p(1,0), p(1,1), p(0,1), p(-10,-10)]
 ghci> grahamScan ps
 [(-10.0,-10.0),(1.0,0.0),(1.0,1.0),(0.0,1.0)]
@@ -279,7 +279,7 @@ noiseEm = concatMap noiseIt
     noiseIt (Point x y) = [Point (x + e) (y + e) | e <- [-0.1, 0, 0.1]]
 {% endhighlight %}
 
-{% highlight haskell %}
+{% highlight text %}
 ghci> let ps = [p(0,0),p(0,1),p(0,2),p(0,3),p(1,1),p(2,2),p(0.5,2)]
 ghci> grahamScan ps
 [(0.0,0.0),(2.0,2.0),(0.0,3.0)]
