@@ -10,18 +10,24 @@ Made with [Jekyll](http://jekyllrb.com/) and hosted on
 I'll be using this space to muse about Math and coding and games,
 mostly.
 
-<div class="home">
-  <h1 class="page-heading">Recent Posts</h1>
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+## Latest Blog Posts
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-  <p class="rss-subscribe">Subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a>.</p>
-</div>
+<ul class="post-list">
+  {% for post in site.posts  limit:5 %}
+    <li>
+      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <h2>
+        <a class="post-link"
+          href="{{ post.url | prepend: site.baseurl }}">
+          {{ post.title }}
+        </a>
+      </h2>
+      {% if post.content contains '<!--break-->' %}
+        {{ post.content | split:'<!--break-->' | first }}
+      {% else %}
+        {{ post.excerpt }}
+      {% endif %}
+      <a href="{{ post.url }}">more...</a>
+    </li>
+  {% endfor %}
+</ul>

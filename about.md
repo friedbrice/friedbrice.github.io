@@ -21,7 +21,7 @@ and did my undergrad at [Cal State Channel Islands][6] in
   [7]: http://en.wikipedia.org/wiki/Camarillo,_California
 
 In addition to [teaching][tp] and [researching][rp] mathematics, my
-hobbies include tabletop and video games, Linux, smatterings of coding,
+hobbies include tabletop and video games, Linux, coding,
 urban design and transportation, and guitar. I'm also an Eagle Scout.
 
   [tp]: {{ site.baseurl }}/teaching/
