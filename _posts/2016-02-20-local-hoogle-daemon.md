@@ -57,14 +57,12 @@ Categories=Development;
 -   Create `~/.icon` tree
 
     This part is just tedious. To make your life easier, I'll provide a
-    [zip archive][1]. Just unpack it and move the `.icon` directory to
-    your home directory.
+    [zip archive][1]. Just unpack it and move the `.icon`
+    directory to your home directory.
 
     This archive provides something of a minimal example for creating
     your own custom icons for Freedesktop.org-compliant environments,
     so you might peek inside to get an idea for how things work.
-
-  [1]: {{ site.baseurl }}/assets/hoogle-icons.zip
 
 -   Create `/etc/systemd/system/hoogle.service`
 
@@ -118,3 +116,5 @@ WantedBy=multi-user.target
 And, that's it. Once Hoogle is running as a daemon, you can use
 then find "Hoogle" in your GUI application launcher and launch it like
 any other app.
+
+  [1]: {{ site.baseurl }}/assets/downloads/hoogle-icons.zip

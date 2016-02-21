@@ -1,0 +1,35 @@
+- file: brice2010continuous.pdf
+  title: "Continuous Symmetry Groups"
+  date: 2010-07-07
+  description: "Auburn University Summer 2010 REU on Algebra and Combinatorics."
+
+- file: brice2011symmetry.pdf
+  title: "Symmetry Groups, an introduction to group theory through geometry and graph theory"
+  date: 2011-07-05
+  description: "Auburn University Summer 2011 REU on Algebra and Combinatorics."
+
+- file: brice2014derivations.pdf
+  title: "Derivations of Parabolic Lie Algebras with Applications to Zero Product Determined Algebras"
+  date: 2014-11-09
+  description: "AMS Fall 2014 Southeastern Sectional Meeting, University of North Carolina at Greensboro."
+
+- file: brice2015linear.pdf
+  title: "Linear Lie Algebras, Block Matrices, and Ladder Matrices"
+  date: 2015-11-14
+  description: "MAA Golden Section/So-Cal-Nevada Section Joint Meeting, California Polytechnic State University."
+
+- file: brice2015parabolic.pdf
+  title: "Parabolic Lie Algebras are Zero Product Determined"
+  date: 2015-03-27
+  description: "AMS Spring 2015 Southeastern Sectional Meeting, University of Alabama, Huntsville."
+
+- file: brice2015upper.pdf
+  title: "Upper Triangular Ladder Matrix Algebras, A Preliminary Report"
+  date: 2015-10-24
+  description: "AMS Fall 2015 Western Sectional Meeting, California State University, Fullerton."
+  description:
+
+- file: brice2016linear.pdf
+  title: "Linear Algebra and Data Analysis"
+  date: 2016-02-01
+  description: "Mathematics and Physics Seminar, California State University, Channel Islands."

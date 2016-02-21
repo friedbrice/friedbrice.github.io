@@ -77,23 +77,34 @@ time in the future.
 
 <h2 id="publications">List of Publications</h2>
 
-<!-- we want to replace this list with a liquid script -->
+A selection of my peer-reviewed and submitted research articles.
 
-_This part of my page is broken. I want to algorithmically generate this
-list, but I haven't figured out how to do it yet. The links are all just
-place-holders, really._
-
-* brice0000note ([article](about:blank))
-* brice0000derivations ([article](about:blank))
-* brice2015zero ([article](about:blank))
+<ul>
+  {% assign pubs = site.data.publications | sort: 'date' | reverse %}
+  {% for pub in pubs %}
+    <li>
+      <a href="{{ site.baseurl }}/assets/publications/{{ pub.file }}">
+        {{ pub.title }}
+      </a>
+      · {{ pub.date | date: "%b, %Y" }}<br />
+      <em>{{ pub.description }}</em>
+    </li>
+  {% endfor %}
+</ul>
 
 <h2 id="presentations">List of Presentations</h2>
 
-<!-- we want to replace this list with a liquid script -->
+Selected conference and seminar presentations.
 
-_Ditto, here are some more broken links for your enjoyment..._
-
-* latest presentation ([slideshow](about:blank))
-* some presentations in the middle ([slideshow](about:blank))
-* earliest presentation ([slideshow](about:blank))
-
+<ul>
+  {% assign press = site.data.presentations | sort: 'date' | reverse %}
+  {% for pres in press %}
+    <li>
+      <a href="{{ site.baseurl }}/assets/presentations/{{ pres.file }}">
+        {{ pres.title }}
+      </a>
+      · {{ pres.date | date: "%b, %Y" }}<br />
+      <em>{{ pres.description }}</em>
+    </li>
+  {% endfor %}
+</ul>
