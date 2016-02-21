@@ -60,3 +60,9 @@ project.
     ```
     bundle exec jekyll serve
     ```
+
+    or with drafts
+
+    ```
+    bundle exec jekyll serve --drafts
+    ```
