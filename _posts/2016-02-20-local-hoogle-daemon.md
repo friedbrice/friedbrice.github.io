@@ -92,9 +92,9 @@ WantedBy=multi-user.target
     We don't want our Hoogle server running as root, so we'll create a
     special non-login user.
 
-    {% highlight text %}
-    # useradd -r hoogle
-    {% endhighlight %}
+{% highlight text %}
+# useradd -r hoogle
+{% endhighlight %}
 
 -   Create `/var/log/hoogle` and set ownership and mod rules
 
