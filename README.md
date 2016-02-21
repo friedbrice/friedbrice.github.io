@@ -22,8 +22,8 @@ per-project basis, helping you keep a consistent environment.
     install it through `apt-get`. To learn more, see the
     [Bundler project page][1] or the [GitHub Pages help page][2].
 
-      [1]: http://http://bundler.io/
-      [2]: http://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/
+  [1]: http://http://bundler.io/
+  [2]: http://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/
 
 2.  Pull in the required Ruby gems.
 
