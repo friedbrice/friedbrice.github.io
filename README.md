@@ -29,7 +29,6 @@ install it through `apt-get`. To learn more, see the
 
 ```
 bundle install
-git add Gemfile Gemfile.lock
 ```
 
 The file `Gemfile` is a human-readable list of the packages required for
