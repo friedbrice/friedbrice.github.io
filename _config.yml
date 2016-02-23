@@ -1,6 +1,6 @@
 # Site settings
 title: 'DanielBrice.net'
-description: 'The personal website of Daniel Brice, PhD'
+description: 'The personal website of Daniel Brice'
 baseurl: ''
 url: 'http://www.danielbrice.net'
 include: [ '_courses' ]

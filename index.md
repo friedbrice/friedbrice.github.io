@@ -2,7 +2,7 @@
 layout: default
 ---
 
-The personal website of Daniel Brice, PhD.
+The personal website of Daniel Brice.
 
 Made with [Jekyll](http://jekyllrb.com/) and hosted on
 [GitHub](https://github.com/).
