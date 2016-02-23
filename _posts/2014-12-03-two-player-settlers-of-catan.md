@@ -2,6 +2,7 @@
 layout: post
 title: Two-player Settlers of Catan
 permalink: /blog/02/
+comments: true
 date: 2014-12-03
 tag:
 - games

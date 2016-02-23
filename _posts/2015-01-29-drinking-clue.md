@@ -3,6 +3,7 @@ layout: post
 title: "Drinking Clue"
 date: 2015-01-29
 permalink: /blog/04/
+comments: true
 tags:
 - games
 ---
@@ -61,7 +62,7 @@ writing, I can find two:
   when we get together and play (roll-and-move is for tools), so I don't
   really like these rules. Also, they unfairly penalize people who ended
   up with the Billiard Room or the Library in their hand.
-  
+
 * [StudentBeans.com](http://www.studentbeans.com/mag/en/campus/top-ten-genius-drinking-board-games):
   These rules are pretty similar to ours, mixed with some campiness.
   Our concerns were mostly penalizing/incentivizing certain behavior,

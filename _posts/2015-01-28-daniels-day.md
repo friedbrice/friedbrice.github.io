@@ -1,7 +1,8 @@
 ---
 layout: post
-title: Daniel's Day
+title: Daniel&#8217;s Day
 permalink: /blog/03/
+comments: true
 date: 2015-01-28
 tag:
 - code

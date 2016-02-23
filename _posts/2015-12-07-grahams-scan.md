@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Graham's Scan Convex Hull Algorithm"
+title: "Graham&#8217;s Scan Convex Hull Algorithm"
 date: 2015-12-07
 permalink: /blog/11/
+comments: true
 tags:
 - code
 - haskell

@@ -3,6 +3,7 @@ layout: post
 title: "Opening `.url` Files Like a Pro"
 date: 2015-12-14
 permalink: /blog/12/
+comments: true
 tags:
 - code
 - bash

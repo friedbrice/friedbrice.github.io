@@ -3,6 +3,7 @@ layout: post
 title: "Order Matters"
 date: 2015-02-14
 permalink: /blog/07/
+comments: true
 tags:
 - code
 - haskell

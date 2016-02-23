@@ -3,6 +3,7 @@ layout: post
 title: "Self-returning Function"
 date: 2015-05-25
 permalink: /blog/09/
+comments: true
 tags:
 - code
 - python

@@ -2,6 +2,7 @@
 layout: post
 title: First Post
 permalink: /blog/01/
+comments: true
 date: 2014-12-03
 ---
 

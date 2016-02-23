@@ -3,6 +3,7 @@ layout: post
 title: "6-by-6 Sudoku Solver"
 date: 2015-02-07
 permalink: /blog/06/
+comments: true
 tags:
 - code
 - haskell

@@ -3,6 +3,7 @@ layout: post
 title: "More Hemingway"
 date: 2015-05-24
 permalink: /blog/08/
+comments: true
 tags:
 - code
 - haskell

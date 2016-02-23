@@ -3,6 +3,7 @@ layout: post
 title: "Automatic Differentiation is Trivial in Haskell"
 date: 2015-12-01
 permalink: /blog/10/
+comments: true
 tags:
 - code
 - haskell

@@ -3,6 +3,7 @@ layout: post
 title: "If Hemingway Wrote Javascript"
 date: 2015-01-30
 permalink: /blog/05/
+comments: true
 tags:
 - code
 - c
