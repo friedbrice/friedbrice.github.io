@@ -1,0 +1,9 @@
+  <div>
+    {% if page.previous %}
+      <div style="float: left;"><p>Previous: <a href="{{ page.previous.permalink }}">{{ page.previous.title }}</a></p></div>
+    {% endif %}
+    {% if page.next %}
+      <div style="float: right;"><p>Next: <a href="{{ page.next.permalink }}">{{ page.next.title }}</a></p></div>
+    {% endif %}
+    <div style="clear: both;"></div>
+  </div>
