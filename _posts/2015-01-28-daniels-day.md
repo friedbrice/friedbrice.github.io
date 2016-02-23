@@ -4,7 +4,7 @@ title: Daniel&#8217;s Day
 permalink: /blog/03/
 comments: true
 date: 2015-01-28
-tag:
+tags:
 - code
 - jekyll
 - haskell

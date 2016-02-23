@@ -21,9 +21,9 @@ anyone I am associated with.
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
         {% if post.tags %}
-          <span class="post-meta">|
+          <span class="post-meta">
             {% for tag in post.tags %}
-              {{ tag }} |
+              [ {{ tag }} ]
             {% endfor %}
           </span>
         {% endif %}
