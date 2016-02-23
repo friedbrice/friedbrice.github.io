@@ -119,3 +119,11 @@ then find "Hoogle" in your GUI application launcher and launch it like
 any other app.
 
   [1]: {{ site.baseurl }}/assets/downloads/hoogle-icons.zip
+
+{{ site.baseurl }}
+
+{{ site.baseurl }}{{ page.permalink }}
+
+{{ page.permalink }}
+
+{{ page.title }}
