@@ -3,7 +3,7 @@ layout: post
 title: "Local Hoogle Daemon"
 date: 2016-02-20
 permalink: /blog/13/
-comments: false
+comments: true
 tags:
 - code
 - haskell
@@ -119,11 +119,3 @@ then find "Hoogle" in your GUI application launcher and launch it like
 any other app.
 
   [1]: {{ site.baseurl }}/assets/downloads/hoogle-icons.zip
-
-{{ site.baseurl }}
-
-{{ site.baseurl }}{{ page.permalink }}
-
-{{ page.permalink }}
-
-{{ page.title }}
