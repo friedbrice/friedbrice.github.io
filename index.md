@@ -5,7 +5,7 @@ layout: default
 The personal website of Daniel Brice.
 
 Made with [Jekyll](http://jekyllrb.com/) and hosted on
-[GitHub](https://github.com/).
+[GitHub Pages](https://pages.github.com/).
 
 I'll be using this space to muse about Math and coding and games,
 mostly.

@@ -2,8 +2,7 @@
 
 The personal website of Daniel Brice.
 
-Copyright 2014 Daniel Brice [CC BY
-4.0](https://creativecommons.org/licenses/by/4.0/)
+Copyright 2014 Daniel Brice [CC BY 4.0][1]
 
 ## Development Environment Setup
 
@@ -20,10 +19,9 @@ per-project basis, helping you keep a consistent environment.
     Ubuntu 15.10 should come preloaded with `ruby` and `gem`. If not, just
     install them. You can install `bundle` through `gem`, but I prefer to
     install it through `apt-get`. To learn more, see the
-    [Bundler project page][1] or the [GitHub Pages help page][2].
+    [Bundler project page][2] or the [GitHub Pages help page][3].
 
-  [1]: http://http://bundler.io/
-  [2]: http://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/
+    I should mention that you need Ruby version 2 or higher.
 
 2.  Pull in the required Ruby gems.
 
@@ -66,3 +64,7 @@ project.
     ```
     bundle exec jekyll serve --drafts
     ```
+
+  [1]: https://creativecommons.org/licenses/by/4.0/
+  [2]: http://http://bundler.io/
+  [3]: http://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/
