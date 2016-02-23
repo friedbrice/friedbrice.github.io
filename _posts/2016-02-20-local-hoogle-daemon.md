@@ -3,7 +3,7 @@ layout: post
 title: "Local Hoogle Daemon"
 date: 2016-02-20
 permalink: /blog/13/
-comments: true
+comments: false
 tags:
 - code
 - haskell
