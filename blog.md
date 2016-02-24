@@ -23,7 +23,7 @@ anyone I am associated with.
         {% if post.tags %}
           <span class="post-meta">
             {% for tag in post.tags %}
-              [ {{ tag }} ]
+              <span style="white-space: nowrap;">[ {{ tag }} ]</span>
             {% endfor %}
           </span>
         {% endif %}
