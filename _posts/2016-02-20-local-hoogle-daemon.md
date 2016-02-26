@@ -25,6 +25,9 @@ sources. However, I did need more than a few sources, especially to get
 the systemd stuff worked out, so I'm writing everything down here so
 it'll be in one place.
 
+> **Edit:** I was poking around in Twitter and I found my main source.
+> It's John Wiegley on [Lost in Technopolis][2]
+
 -   Install `hoogle` and `luakit`.
 
     Pretty obvious, except we have a choice. We can install with
@@ -117,9 +120,6 @@ WantedBy=multi-user.target
 And, that's it. Once Hoogle is running as a daemon, you can use
 then find "Hoogle" in your GUI application launcher and launch it like
 any other app.
-
-> **Edit:** I was poking around in Twitter and I found my main source.
-> It's John Wiegley on [Lost in Technopolis][2]
 
   [1]: {{ site.baseurl }}/assets/downloads/hoogle-icons.zip
   [2]: http://newartisans.com/2012/09/running-a-fully-local-hoogle/
