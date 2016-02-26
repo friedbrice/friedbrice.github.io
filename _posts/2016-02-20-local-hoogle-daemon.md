@@ -118,4 +118,8 @@ And, that's it. Once Hoogle is running as a daemon, you can use
 then find "Hoogle" in your GUI application launcher and launch it like
 any other app.
 
+> **Edit:** I was poking around in Twitter and I found my main source.
+> It's John Wiegley on [Lost in Technopolis][2]
+
   [1]: {{ site.baseurl }}/assets/downloads/hoogle-icons.zip
+  [2]: http://newartisans.com/2012/09/running-a-fully-local-hoogle/
