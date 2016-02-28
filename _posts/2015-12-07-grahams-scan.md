@@ -11,7 +11,7 @@ tags:
 - geometry
 - convex hull
 - graham scan
-- Real World Haskell
+- real world haskell
 ---
 
 Was spending my free time working through [Real World Haskell][1] by
