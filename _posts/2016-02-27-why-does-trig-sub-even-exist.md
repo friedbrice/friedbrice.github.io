@@ -94,13 +94,13 @@ we just remember a few basic templates:
 $$
 \begin{align*}
   \int \frac{1}{\sqrt{A^2 - (Bx)^2}} \, dx
-  &= \frac{A}{B}\sin^{-1}(Bx/A) + C
+  &= \frac{1}{AB}\sin^{-1}(Bx/A) + C
   \\
   \int \frac{1}{A^2 + (Bx)^2} \, dx
-  &= \frac{A}{B}\tan^{-1}(Bx/A) + C
+  &= \frac{1}{AB}\tan^{-1}(Bx/A) + C
   \\
   \int \frac{1}{Bx\sqrt{(Bx)^2 - A^2}} \, dx
-  &= \frac{A}{B}\sec^{-1}(Bx/A) + C
+  &= \frac{1}{AB}\sec^{-1}(Bx/A) + C
 \end{align*}
 $$
 
