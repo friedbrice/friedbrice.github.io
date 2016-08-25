@@ -19,7 +19,7 @@ tags:
 
 You can find the [source code][4] on GitHub, but I'll inline the interesting bits.
 
-{% highlight haskell linenos %}
+{% highlight haskell %}
 data Dual a = Dual a a
   deriving (Eq, Read, Show)
 
@@ -82,15 +82,15 @@ There are some [illustrative examples][5] in the repo that you might want to che
 For symbolic differentiation, I literally copied portions of code from Benjamin Kovach's "Abstract Nonsense" blog post, [Symbolic Calculus in Haskell][6]. Kovach defines a type `Expr a` for algebraic expressions that accept and produce values of type `a` ("accept" and "produce" in paper-pencil-land, not in Haskell).
 
 {% highlight haskell %}
-infixl 4 :+:
-infixl 5 :*:
+    infixl 4 :+:
+    infixl 5 :*:
 
-data Expr a
-  = Var Char
-  | Const a
-  | (Expr a) :+: (Expr a)
-  | (Expr a) :*: (Expr a)
-  deriving (Eq, Read, Show)
+    data Expr a
+      = Var Char
+      | Const a
+      | (Expr a) :+: (Expr a)
+      | (Expr a) :*: (Expr a)
+      deriving (Eq, Read, Show)
 {% endhighlight %}
 
 (In practice, you'd want more than just `:+:` and `:*:`, but we're only going to implement `Num (Expr a)` today.)
@@ -103,8 +103,8 @@ instance Num a => Num (Expr a) where
   u * v         = u :*: v
   u - v         = u :+: Const (-1) :*: v
   fromInteger n = Const $ fromInteger n
-  abs u         = undefined -- pay no attention to the
-  signum u      = undefined -- unimplemented methods <.<;
+  abs u         = undefined
+  signum u      = undefined
 {% endhighlight %}
 
 Automatic differentiation doesn't do anything to `Expr a`s. It requires a _Haskell_ function--something like `Num a => a -> a`. So, the last ingredient we need is a way to think of an `Expr a` as a Haskell function. We get this by writing a function that evaluates an `Expr a` at a given `a`. Kovach implements a nice one. I'm going to just take one on credit for now:
