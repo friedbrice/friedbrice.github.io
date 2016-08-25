@@ -82,17 +82,15 @@ There are some [illustrative examples][5] in the repo that you might want to che
 For symbolic differentiation, I literally copied portions of code from Benjamin Kovach's "Abstract Nonsense" blog post, [Symbolic Calculus in Haskell][6]. Kovach defines a type `Expr a` for algebraic expressions that accept and produce values of type `a` ("accept" and "produce" in paper-pencil-land, not in Haskell).
 
 {% highlight haskell %}
+infixl 4 :+:
+infixl 5 :*:
 
-    infixl 4 :+:
-    infixl 5 :*:
-
-    data Expr a
-      = Var Char
-      | Const a
-      | (Expr a) :+: (Expr a)
-      | (Expr a) :*: (Expr a)
-      deriving (Eq, Read, Show)
-
+data Expr a
+  = Var Char
+  | Const a
+  | (Expr a) :+: (Expr a)
+  | (Expr a) :*: (Expr a)
+  deriving (Eq, Read, Show)
 {% endhighlight %}
 
 (In practice, you'd want more than just `:+:` and `:*:`, but we're only going to implement `Num (Expr a)` today.)
