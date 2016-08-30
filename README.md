@@ -40,7 +40,7 @@ Instructions for keeping the development environment up to date.
     bundle update
     ```
 
-2.  **Keep `bundle` up to date.
+2.  **Keep `bundle` up to date**
 
     Update `bundle` using whatever package manager you installed it with.
 
@@ -50,7 +50,7 @@ That's all there is to that.
 
 Instructions for updating and demoing the project.
 
-1.  Build site.
+1.  **Build site locally**
 
     ```
     bundle exec jekyll build
@@ -58,9 +58,9 @@ Instructions for updating and demoing the project.
 
     The build artifacts are found in `./_site`
 
-**OR**
+*OR*
 
-2.  Run local development server.
+2.  **Run local development server**
 
     ```
     bundle exec jekyll serve
@@ -73,6 +73,10 @@ Instructions for updating and demoing the project.
     ```
 
     Server runs on `http://localhost:4000`
+
+3.  **Publish Site**
+
+    Simply `git push` the source code. GitHub will build the site from source on their build servers and deploy the build artifacts to their GitHub Pages hosts.
 
   [1]: http://creativecommons.org/licenses/by/4.0/
   [2]: http://http://bundler.io/
