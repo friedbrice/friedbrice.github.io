@@ -2,7 +2,6 @@
 layout: post
 title: First Post
 permalink: /blog/01/
-permalink: /blog/2014-01-03-first-post/
 comments: true
 date: 2014-12-03
 ---
