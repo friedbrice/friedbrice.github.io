@@ -6,9 +6,7 @@ date: 2015-12-01
 topnav: true
 ---
 
-I'm a Lecturer of Mathematics at [Cal State Bakersfield](http://csub.edu).
-Here you'll find links to my [course pages](#courses) and [resources](#resources)
-that students might find helpful.
+I'm was a Lecturer of Mathematics at [Cal State Bakersfield](http://csub.edu) during the 2015-2016 academic year. Here you'll find links to my [course pages](#courses) and [resources](#resources) that students might find helpful.
 
 <h2 id="courses">Courses</h2>
 
@@ -52,4 +50,3 @@ the course content is there._
 * [Wolfram|Alpha](http://www.wolframalpha.com) - _Computational
   knowledge engine._ Basically an online graphing calculator and
   computer algebra system.
-

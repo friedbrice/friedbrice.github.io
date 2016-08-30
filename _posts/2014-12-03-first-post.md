@@ -20,4 +20,3 @@ so I won't have a lot of time to make blog posts. So, with very
 infrequent updates planned, you might as well subscribe to the RSS feed.
 It's not like I'm going to crowd your feed reader with tons of updates
 ^_^
-
