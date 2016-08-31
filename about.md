@@ -2,11 +2,11 @@
 layout: page
 title: About Me
 permalink: /about/
-date: 2015-12-07
+date: 2016-08-30
 topnav: true
 ---
 
-I'm a software engineer with [CJ Affiliate][1]. We do online advertising, but we do it the right way. Instead of automated cookie scrutiny belching out formulaic, irrelevant ads, we build tools that allow _publishers_ (e.g., your favorite blogs) to connect directly with _advertisers_ (e.g., the stores you shop at) so that the publishers can hand-pick the most relevant ads for their audiences. This kind of advertising is called "affiliate."
+I'm a software engineer with [CJ Affiliate][1]. We do online advertising, but we do it the right way. Instead of automated cookie scrutiny belching out formulaic, irrelevant ads, we build tools that allow _publishers_ (_e.g.,_ your favorite blogs) to connect directly with _advertisers_ (_e.g.,_ the stores you shop at) so that the publishers can hand-pick the most relevant ads for their audiences. This kind of advertising is called _affiliate._
 
 I finished my PhD in Mathematics (specifically, [Algebra][2] and [Lie Theory][3]) at [Auburn University][4] under Huajun Huang in June 2014. I still find time to do [research][rp] on occasion.
 

@@ -2,11 +2,11 @@
 layout: page
 title: Teaching
 permalink: /teaching/
-date: 2015-12-01
+date: 2016-08-30
 topnav: true
 ---
 
-I'm was a Lecturer of Mathematics at [Cal State Bakersfield](http://csub.edu) during the 2015-2016 academic year. Here you'll find links to my [course pages](#courses) and [resources](#resources) that students might find helpful.
+I was a Lecturer of Mathematics at [Cal State Bakersfield](http://csub.edu) during the 2015-2016 academic year. Here you'll find links to my [course pages](#courses) and [resources](#resources) that students might find helpful.
 
 <h2 id="courses">Courses</h2>
 

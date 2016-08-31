@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /
 ---
 
 The personal website of Daniel Brice.

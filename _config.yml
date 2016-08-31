@@ -13,5 +13,5 @@ stackex_username: '2387766'
 
 # Build settings
 markdown: 'kramdown'
-exclude: [ 'README.md', 'Gemfile' ]
+exclude: [ 'README.md', 'Gemfile', 'Gemfile.lock' ]
 # debug: 'true' # comment this out before production

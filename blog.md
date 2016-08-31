@@ -2,6 +2,7 @@
 layout: page
 title: Blog
 permalink: /blog/
+date: 2016-08-30
 topnav: true
 ---
 
