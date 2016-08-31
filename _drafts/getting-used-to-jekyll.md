@@ -1,9 +1,8 @@
 ---
 layout: post
 title: "Getting Used to Jekyll"
-date: 2014-12-03
-#categories: math update
-permalink: /blog/00/
+date: 1999-12-31
+permalink: /blog/1999-12-31-getting-used-to-jekyll/
 tags:
 - code
 - jekyll

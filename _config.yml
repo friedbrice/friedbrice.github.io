@@ -3,7 +3,7 @@ title: 'DanielBrice.net'
 description: 'The personal website of Daniel Brice'
 baseurl: ''
 url: 'http://www.danielbrice.net'
-include: [ '_courses' ]
+include: [ '_courses', '_pages' ]
 
 # Author settings
 email: 'danielbrice@gmail.com'

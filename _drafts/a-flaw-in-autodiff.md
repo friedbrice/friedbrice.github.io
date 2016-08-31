@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Automatic Differentiation Revisited"
-date: 9999-12-31
-permalink: /blog/9999-12-31-a-flaw-in-autodiff/
+date: 1999-12-31
+permalink: /blog/1999-12-31-a-flaw-in-autodiff/
 comments: true
 tags:
 - math
