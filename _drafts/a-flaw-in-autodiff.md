@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Automatic Differentiation Revisited"
+title: "A Flaw in AutoDiff"
 date: 1999-12-31
 permalink: /blog/1999-12-31-a-flaw-in-autodiff/
 comments: true
