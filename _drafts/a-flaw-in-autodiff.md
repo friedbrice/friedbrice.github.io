@@ -15,13 +15,17 @@ tags:
 
 _So, it turns out that the example that we thought broke the thing doesn't actually break the thing. I am still trying to make the counterexample work, though, because I still think the claim is not true._
 
-some wonderful content, basically a self-contained abstract
+some wonderful content, basically a self-contained abstract.
+
+The intent of this section is to give a dependency-free overview of everything in this blog post.
 
 <!--break-->
 
 ## My Implicit Assumption
 
-some expository remarks, getting new readers up to speed
+some expository remarks, getting new readers up to speed.
+
+The intent of this section is to introduce AutoDiff and summarize from the previous posts only that which is necessary for an understanding of this post. In particular, I want to talk about `fib`, how/why `d fib` is wrong, and how/why this is not a particularly bad problem (Hint, I wasn't worried about `fib` because I tacitly assumed the below claim).
 
 ## Definitions of Terms
 
