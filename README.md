@@ -32,6 +32,10 @@ Now you're all set up.
 
 Instructions for keeping the development environment up to date.
 
+2.  **Keep `bundle` up to date**
+
+    Update `bundle` using whatever package manager you installed it with. I guess that would be `apt-get` on Ubuntu and `gem` on OS X.
+
 1.  **Keep `jekyll` and external libraries up to date**
 
     In the project directory, invoke
@@ -39,10 +43,6 @@ Instructions for keeping the development environment up to date.
     ```
     bundle update
     ```
-
-2.  **Keep `bundle` up to date**
-
-    Update `bundle` using whatever package manager you installed it with.
 
 That's all there is to that.
 
