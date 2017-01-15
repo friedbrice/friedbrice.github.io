@@ -103,8 +103,8 @@ A value of type `Option[T]` is either a `Some[T]` which wraps a `T` or the singl
 {% highlight scala %}
 sealed abstract class Option[+T] { ... }
 
-final case class Some[+T](value: T) { ... }
-  extends Option[T]
+final case class Some[+T](value: T)
+  extends Option[T] { ... }
 
 object None extends Option[Nothing] { ... }
 {% endhighlight %}
