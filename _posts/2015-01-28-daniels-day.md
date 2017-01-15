@@ -15,14 +15,14 @@ It's been a while since I've posted. Busy winter break, and just now
 getting to a place where where I'm on top of things in the new semester.
 Yesterday, I wanted to get two things done (aside from real work):
 
-1. Find some professional Math [mailing lists](#mailing-list)
+1. Find some professional Math [mailing lists](#mailing-lists)
    to join.
 2. Get [posting on my blog](#blogging) again, and maybe
    even work on some of the design elements.
 
 <!--break-->
 
-<h2 id="mailing-list">Mailing Lists</h2>
+## Mailing Lists
 
 So, I'm trying to learn to code. Aside from one semester of qBASIC in
 high school and one semester of Javascript in undergrad, I have no
@@ -71,10 +71,10 @@ searches = [i ++ " " ++ j ++ " mailing list" | i <- places, j <- subjects]
 main = mapM_ print searches
 {% endhighlight %}
 
-Compiling gives an executable called <code>search_terms</code>.
-<code>search_terms</code> returns one search phrase per line (wrapped
+Compiling gives an executable called `search_terms`.
+`search_terms` returns one search phrase per line (wrapped
 in quotes for some reason) which I could output to a plain text file and
-then copy and paste each line into google. But why would I go to *all
+then copy and paste each line into Google. But why would I go to *all
 that work* if I could automate it in Bash!
 
 A while ago, I made a crappy little Bash script that lets me google
@@ -128,13 +128,13 @@ echo "Didn't trigger any of the cases. Defaulting to google_search"
 google_search $*
 {% endhighlight %}
 
-Example: <code>web_search.sh -w "hello world"</code> will search
+Example: `web_search.sh -w "hello world"` will search
 Wikipedia with the search term "hello world". It's a little buggy: I'd
 like to be able to not wrap the search term in quotes, but that breaks
-it. However, <code>search_terms</code> returns strings pre-wrapped in
+it. However, `search_terms` returns strings pre-wrapped in
 quotes. Prefect!
 
-Now, I just have to loop over the lines of <code>search_terms</code>'s
+Now, I just have to loop over the lines of `search_terms`'s
 output.
 
 {% highlight bash %}
@@ -146,11 +146,11 @@ done < $(search_terms)
 This will open 60 browser windows, each one with a different search
 phrase. That was fun!
 
-<h2 id="blogging">Blogging</h2>
+## Blogging
 
 It's been a while since I've edited this blog, so I had to relearn some
-Jekyll basics. In particular, <code>jekyll build</code> and <code>jekyll
-serve</code> don't work the way I expected them to. <code>jekyll build</code>
+Jekyll basics. In particular, `jekyll build` and `jekyll
+serve` don't work the way I expected them to. `jekyll build`
 spits out a version error, in fact.
 
 After some frustration and googling, I relearned that I needed to
@@ -177,4 +177,3 @@ some custom Jekyll plugins that GitHub Pages doesn't support. In order
 to use them, I'll need to turn off server-side Jekyll, build my site
 locally, and push the built site up to GitHub Pages. That's a project
 for another day (read: *another month*).
-

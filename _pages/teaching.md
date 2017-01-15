@@ -8,7 +8,7 @@ topnav: true
 
 I was a Lecturer of Mathematics at [Cal State Bakersfield](http://csub.edu) during the 2015-2016 academic year. Here you'll find links to my [course pages](#courses) and [resources](#resources) that students might find helpful.
 
-<h2 id="courses">Courses</h2>
+## Courses
 
 _Here's an algorithmically-generated course list, but there's no content
 yet. I'm using Blackboard (though [wish I were
@@ -24,7 +24,7 @@ the course content is there._
 * [Full List](about:blank), including courses taught at [Auburn University](http://auburn.edu)
 -->
 
-<h2 id="resources">Resources</h2>
+## Resources
 
 * [Math | Khan Academy](http://www.khanacademy.org/math) - _Watch videos
   and practice your skills for almost any math subject._

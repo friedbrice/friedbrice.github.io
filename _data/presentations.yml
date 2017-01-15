@@ -13,11 +13,6 @@
   date: 2014-11-09
   description: "AMS Fall 2014 Southeastern Sectional Meeting, University of North Carolina at Greensboro."
 
-- file: brice2015linear.pdf
-  title: "Linear Lie Algebras, Block Matrices, and Ladder Matrices"
-  date: 2015-11-14
-  description: "MAA Golden Section/So-Cal-Nevada Section Joint Meeting, California Polytechnic State University."
-
 - file: brice2015parabolic.pdf
   title: "Parabolic Lie Algebras are Zero Product Determined"
   date: 2015-03-27
@@ -27,9 +22,22 @@
   title: "Upper Triangular Ladder Matrix Algebras, A Preliminary Report"
   date: 2015-10-24
   description: "AMS Fall 2015 Western Sectional Meeting, California State University, Fullerton."
-  description:
+
+- file: brice2015linear.pdf
+  title: "Linear Lie Algebras, Block Matrices, and Ladder Matrices"
+  date: 2015-11-14
+  description: "MAA Golden Section/So-Cal-Nevada Section Joint Meeting, California Polytechnic State University."
 
 - file: brice2016linear.pdf
   title: "Linear Algebra and Data Analysis"
   date: 2016-02-01
+  description: "Mathematics and Physics Seminar, California State University, Channel Islands."
+
+- url: https://www.meetup.com/santa-monica-haskell/events/231209938/
+  title: "Automatic Differentiation in Haskell"
+  date: 2016-08-23
+  description: "Santa Monica Haskell Users Group"
+
+- title: "Applications of Thompson Sampling to Machine Learning"
+  date: 2017-02-06
   description: "Mathematics and Physics Seminar, California State University, Channel Islands."
