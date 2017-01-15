@@ -60,7 +60,7 @@ Instructions for updating and demoing the project.
 
 *OR*
 
-2.  **Run local development server**
+1.  **Run local development server**
 
     ```
     bundle exec jekyll serve
@@ -74,7 +74,7 @@ Instructions for updating and demoing the project.
 
     Server runs on `http://localhost:4000`
 
-3.  **Publish Site**
+2.  **Publish Site**
 
     Simply `git push` the source code. GitHub will build the site from source on their build servers and deploy the build artifacts to their GitHub Pages hosts.
 
