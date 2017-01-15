@@ -24,7 +24,7 @@ Instructions for setting up development environment.
     bundle install
     ```
 
-    The file `Gemfile` is a human-readable list of the packages required for your project. The file Gemfile.lock` is a machine-readable file used by `bundle`. Don't mess with it, but track it as part of the project with `git`.
+    The file `Gemfile` is a human-readable list of the packages required for your project. The file `Gemfile.lock` is a machine-readable file used by `bundle`. Don't mess with it, but track it as part of the project with `git`.
 
 Now you're all set up.
 
