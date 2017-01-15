@@ -153,7 +153,7 @@ But information fidelity should not be the goal of such a method, especially whe
 The goal of the `_.toOption` method should be to return a value that behaves the way the user *expects* `Option` values to behave, and that means no null `Some(v)` values.
 
 If we want to be able to reuse our code, we need to be able to count on the semantics of types like `Try`, for exception passing, and `Option`, for null guarding.
-The solution to the problem presented by `Try`'s `_.toOption` method is to either avoid its use or to map over the unsafe `Option` with the default constructor, both illustrated below:
+The solution to the problem presented by `Try`'s `_.toOption` method is to either avoid its use or to flatMap over the unsafe `Option` value with the default constructor, both illustrated below:
 
 {% highlight scala %}
 
@@ -167,8 +167,7 @@ val option1: Option[T] = tryMe match {
 
 // Option 2: Map the default constructor
 val option2: Option[T] =
-  tryMe.toOption.map(Option.apply)
-
+  tryMe.toOption.flatMap(Option.apply)
 {% endhighlight %}
 
 Either of those approaches will produce an `Option` value that conforms to our expectations.
