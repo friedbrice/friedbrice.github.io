@@ -6,11 +6,11 @@ permalink: /blog/11/
 comments: true
 tags:
 - code
+- convex hull
+- geometry
+- graham scan
 - haskell
 - math
-- geometry
-- convex hull
-- graham scan
 - real world haskell
 ---
 

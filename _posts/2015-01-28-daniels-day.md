@@ -5,10 +5,10 @@ permalink: /blog/03/
 comments: true
 date: 2015-01-28
 tags:
-- code
-- jekyll
-- haskell
 - bash
+- code
+- haskell
+- jekyll
 ---
 
 It's been a while since I've posted. Busy winter break, and just now

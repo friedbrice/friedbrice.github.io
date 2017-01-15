@@ -5,11 +5,11 @@ date: 2015-01-30
 permalink: /blog/05/
 comments: true
 tags:
-- code
 - c
+- code
 - python
-- javascript
 - haskell
+- javascript
 ---
 
 My dad got me [If Hemingway Wrote Javascript][1] by Angus Croll for

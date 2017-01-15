@@ -5,8 +5,8 @@ date: 2015-12-14
 permalink: /blog/12/
 comments: true
 tags:
-- code
 - bash
+- code
 - linux
 ---
 

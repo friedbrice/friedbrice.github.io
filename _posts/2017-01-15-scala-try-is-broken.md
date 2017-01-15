@@ -5,6 +5,7 @@ date: 2017-01-15
 permalink: /blog/2017-01-15/
 comments: true
 tags:
+- code
 - scala
 - style
 - types

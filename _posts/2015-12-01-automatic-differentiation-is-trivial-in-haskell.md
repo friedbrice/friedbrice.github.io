@@ -5,11 +5,11 @@ date: 2015-12-01
 permalink: /blog/10/
 comments: true
 tags:
+- automatic differentiation
+- calculus
 - code
 - haskell
 - math
-- calculus
-- automatic differentiation
 ---
 
 My first quarter at Bakersfield just ended, and so I found myself with

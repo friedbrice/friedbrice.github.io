@@ -5,9 +5,9 @@ date: 2016-02-27
 permalink: /blog/14/
 comments: true
 tags:
-- math
 - calculus
 - integration
+- math
 - trigonometry
 ---
 
