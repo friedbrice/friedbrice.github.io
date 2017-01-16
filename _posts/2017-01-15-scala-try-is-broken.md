@@ -114,8 +114,13 @@ What we're interested in at the moment is the constructor for `Option`, found in
 
 {% highlight scala %}
 object Option {
+
+  ...
+
   def apply[T](x: T): Option[T] =
     if (x == null) None else Some(x)
+
+  ...
 }
 {% endhighlight %}
 
