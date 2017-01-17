@@ -1,9 +1,10 @@
 ---
 layout: post
 title: Daniel&#8217;s Day
-permalink: /blog/03/
-comments: true
 date: 2015-01-28
+permalink: /blog/2015-01-28/
+redirect_from: [ /blog/03/ ]
+comments: true
 tags:
 - bash
 - code
@@ -11,38 +12,31 @@ tags:
 - jekyll
 ---
 
-It's been a while since I've posted. Busy winter break, and just now
-getting to a place where where I'm on top of things in the new semester.
+It's been a while since I've posted.
+Busy winter break, and just now getting to a place where where I'm on top of things in the new semester.
 Yesterday, I wanted to get two things done (aside from real work):
 
-1. Find some professional Math [mailing lists](#mailing-lists)
-   to join.
-2. Get [posting on my blog](#blogging) again, and maybe
-   even work on some of the design elements.
+1. Find some professional Math [mailing lists](#mailing-lists) to join.
+2. Get [posting on my blog](#blogging) again, and maybe even work on some of the design elements.
 
 <!--break-->
 
 ## Mailing Lists
 
-So, I'm trying to learn to code. Aside from one semester of qBASIC in
-high school and one semester of Javascript in undergrad, I have no
-formal experience with programming, but I know I can learn and I want to
-demonstrate it. The languages I want to start out with are Haskell and C
-(I know, I'm a glutton for punishment).
+So, I'm trying to learn to code.
+Aside from one semester of qBASIC in high school and one semester of Javascript in undergrad, I have no formal experience with programming, but I know I can learn and I want to demonstrate it.
+The languages I want to start out with are Haskell and C (I know, I'm a glutton for punishment).
 
-So... any simple task, such as googling Math mailing lists, becomes a
-beginning programming homework exercise.
+So... any simple task, such as googling Math mailing lists, becomes a beginning programming homework exercise.
 
-I found that I wanted to try about 60 different search phrases, and I
-found that they all had the same basic form:
+I found that I wanted to try about 60 different search phrases, and I found that they all had the same basic form:
 
 {% highlight haskell %}
 { place } + " " + { subject } + " mailing list"
 {% endhighlight %}
 
-I could make a double-nested loop in C... But this is the perfect time
-to use Haskell list comprehension! So, I made my *first ever* Haskell
-program:
+I could make a double-nested loop in C... But this is the perfect time to use Haskell list comprehension!
+So, I made my *first ever* Haskell program:
 
 {% highlight haskell %}
 -- search_terms.hs
@@ -72,13 +66,11 @@ main = mapM_ print searches
 {% endhighlight %}
 
 Compiling gives an executable called `search_terms`.
-`search_terms` returns one search phrase per line (wrapped
-in quotes for some reason) which I could output to a plain text file and
-then copy and paste each line into Google. But why would I go to *all
-that work* if I could automate it in Bash!
+`search_terms` returns one search phrase per line (wrapped in quotes for some reason) which I could output to a plain text file and then copy and paste each line into Google.
+But why would I go to *all that work* if I could automate it in Bash!
 
-A while ago, I made a crappy little Bash script that lets me google
-things from the command line. Here's an abridged version:
+A while ago, I made a crappy little Bash script that lets me google things from the command line.
+Here's an abridged version:
 
 {% highlight bash %}
 #!/bin/bash
@@ -128,52 +120,50 @@ echo "Didn't trigger any of the cases. Defaulting to google_search"
 google_search $*
 {% endhighlight %}
 
-Example: `web_search.sh -w "hello world"` will search
-Wikipedia with the search term "hello world". It's a little buggy: I'd
-like to be able to not wrap the search term in quotes, but that breaks
-it. However, `search_terms` returns strings pre-wrapped in
-quotes. Prefect!
+Example: `web_search.sh -w "hello world"` will search Wikipedia with the search term "hello world".
+It's a little buggy: I'd like to be able to not wrap the search term in quotes, but that breaks it.
+However, `search_terms` returns strings pre-wrapped in quotes.
+Prefect!
 
-Now, I just have to loop over the lines of `search_terms`'s
-output.
+Now, I just have to loop over the lines of `search_terms`'s output.
 
 {% highlight bash %}
 while read x; do
-	web_search.sh $x
+  web_search.sh $x
 done < $(search_terms)
 {% endhighlight %}
 
-This will open 60 browser windows, each one with a different search
-phrase. That was fun!
+This will open 60 browser windows, each one with a different search phrase.\
+That was fun!
 
 ## Blogging
 
-It's been a while since I've edited this blog, so I had to relearn some
-Jekyll basics. In particular, `jekyll build` and `jekyll
-serve` don't work the way I expected them to. `jekyll build`
-spits out a version error, in fact.
+It's been a while since I've edited this blog, so I had to relearn some Jekyll basics.
+In particular, `jekyll build` and `jekyll serve` don't work the way I expected them to.
+`jekyll build` spits out a version error, in fact.
 
-After some frustration and googling, I relearned that I needed to
-use [Bundler](http://bundler.io/) to instance my Ruby environment. This
-will keep the versions of Ruby and Jekyll I'm using to build my site
-synchronized with the versions that GitHub Pages is using to build my
-site. A few of the common commands are recorded below, mostly so I can
-come back here two months from now when I've forgotten everything again:
+After some frustration and googling, I relearned that I needed to use [Bundler](http://bundler.io/) to instance my Ruby environment.
+This will keep the versions of Ruby and Jekyll I'm using to build my site synchronized with the versions that GitHub Pages is using to build my site.
+A few of the common commands are recorded below, mostly so I can come back here two months from now when I've forgotten everything again:
 
 1. Keep Bundler, Jekyll, and Ruby up to date.
 
-	<pre><code>bundle update</code></pre>
+{% highlight nosyntax %}
+bundle update
+{% endhighlight %}
 
 2. Build site.
 
-	<pre><code>bundle exec jekyll build</code></pre>
+{% highlight nosyntax %}
+bundle exec jekyll build
+{% endhighlight %}
 
 3. Run local development server.
 
-	<pre><code>bundle exec jekyll serve</code></pre>
+{% highlight nosyntax %}
+bundle exec jekyll serve
+{% endhighlight %}
 
-Okay, now that that's recorded for posterity, my next project involves
-some custom Jekyll plugins that GitHub Pages doesn't support. In order
-to use them, I'll need to turn off server-side Jekyll, build my site
-locally, and push the built site up to GitHub Pages. That's a project
-for another day (read: *another month*).
+Okay, now that that's recorded for posterity, my next project involves some custom Jekyll plugins that GitHub Pages doesn't support.
+In order to use them, I'll need to turn off server-side Jekyll, build my site locally, and push the built site up to GitHub Pages.
+That's a project for another day (read: *another month*).

@@ -2,7 +2,8 @@
 layout: post
 title: "Why does trig-sub even exist?"
 date: 2016-02-27
-permalink: /blog/14/
+permalink: /blog/2016-02-27/
+redirect_from: [ /blog/14/ ]
 comments: true
 tags:
 - calculus
@@ -11,19 +12,15 @@ tags:
 - trigonometry
 ---
 
-I was writing an exam for my students, and I wanted to give them a trig
-sub integral that wasn't too difficult (there's this infinitesimal sweet
-spot between ridiculously too difficult and utterly trivial). I noticed
-something about virtually every single trig sub integral that I imagined
-or ran into -- almost all of them could be solved without any trig.
+I was writing an exam for my students, and I wanted to give them a trig sub integral that wasn't too difficult (there's this infinitesimal sweet spot between ridiculously too difficult and utterly trivial).
+I noticed something about virtually every single trig sub integral that I imagined or ran into -- almost all of them could be solved without any trig.
 
 Case in point: consider \\( \int \frac{x^3}{\sqrt{x^2 + 1}} \, dx \\)
 
 <!--break-->
 
-Standard trig sub methods have us use \\( x = \tan(t) \\) since
-\\( x^2 + 1 \\) appears in our integral. Making said substitution, we
-solve the integral as follows:
+Standard trig sub methods have us use \\( x = \tan(t) \\) since \\( x^2 + 1 \\) appears in our integral.
+Making said substitution, we solve the integral as follows:
 
 $$
 \begin{align*}
@@ -44,21 +41,18 @@ $$
 \end{align*}
 $$
 
-To simplify further, we need to draw a right triangle that satisfies
-\\( x = \tan(t) \\), and from that triangle deduce that
-\\( \sec(t) = (x^2 + 1)^{1/2} \\), giving us
+To simplify further, we need to draw a right triangle that satisfies \\( x = \tan(t) \\), and from that triangle deduce that \\( \sec(t) = (x^2 + 1)^{1/2} \\), giving us
 
 $$
   \int \frac{x^3}{\sqrt{x^2 + 1}} \, dx
   = \frac{1}{3} (x^2 + 1)^{3/2} - (x^2 + 1)^{1/2} + C
 $$
 
-Sometimes, you just gotta do what you gotta do, and so this is all well
-and good in the name of science. But what if I told you there was a way
-to solve this integral that involved no trig whatsoever?
+Sometimes, you just gotta do what you gotta do, and so this is all well and good in the name of science.
+But what if I told you there was a way to solve this integral that involved no trig whatsoever?
 
-The approach we can use is back substitution. Instead of setting
-\\( x = \tan(t) \\), we'll let \\( u = x^2 + 1 \\).
+The approach we can use is back substitution.
+Instead of setting \\( x = \tan(t) \\), we'll let \\( u = x^2 + 1 \\).
 
 $$
 \begin{align*}
@@ -84,12 +78,9 @@ $$
 \end{align*}
 $$
 
-At first I thought that this must simply be a fluke coincidence, but as
-I looked at more problems, this method kept working.
+At first I thought that this must simply be a fluke coincidence, but as I looked at more problems, this method kept working.
 
-It seems as thought we can get every integral that is traditionally
-taught using trig substitution by back substitution instead, so long as
-we just remember a few basic templates:
+It seems as thought we can get every integral that is traditionally taught using trig substitution by back substitution instead, so long as we just remember a few basic templates:
 
 $$
 \begin{align*}
@@ -104,38 +95,24 @@ $$
 \end{align*}
 $$
 
-Frankly, we don't even have to remember the templates, since we can get
-them with the \\( u \\)-substitution \\( u = Bx \\) and a little bit of
-algebra.
+Frankly, we don't even have to remember the templates, since we can get them with the \\( u \\)-substitution \\( u = Bx \\) and a little bit of algebra.
 
-Now, trig is hard for students to grasp. It takes a lot of time away
-from what could otherwise be used to teach quantitative reasoning,
-logic, statistics, etc. On top of that, Calculators and Computer Algebra
-Systems do all of your trig for you. This simply motivates the question:
+Now, trig is hard for students to grasp.
+It takes a lot of time away from what could otherwise be used to teach quantitative reasoning, logic, statistics, etc.
+On top of that, calculators and computer algebra systems do all of your trig for you.
+This simply motivates the question:
 
-> Why do we keep putting so much effort into teaching trig when a
-> calculator can do it better than a person and the time could be used
-> on something more relevant?
+> Why do we keep putting so much effort into teaching trig when a calculator can do it better than a person and the time could be used on something more relevant?
 
-For a long time, I thought the answer was obvious. We need to teach
-trigonometry because once you get into Calc II, you'll have some
-integrals that you'll _need_ trig to solve, and by then it'd be too late
-to start teaching trig. But seeing how trig-substitution is basically
-unnecessary as an integration technique, I have to wonder -- why do we
-even teach trig-sub? And if we don't need trigonometry for trig-sub,
-then why do we even still teach trigonometry at all?
+For a long time, I thought the answer was obvious.
+We need to teach trigonometry because once you get into Calc II, you'll have some integrals that you'll _need_ trig to solve, and by then it'd be too late to start teaching trig.
+But seeing how trig-substitution is basically unnecessary as an integration technique, I have to wonder – why do we
+even teach trig-sub?
+And if we don't need trigonometry for trig-sub, then why do we even still teach trigonometry at all?
 
-We could realign the entire Mathematics curriculum. Teach just the
-basics of how to evaluate trig functions using a calculator or a table,
-and make advanced trig a special topics course for the few people who do
-actually still need to understand it really well. We could free up
-hundreds of hours for more relevant material in the process.
+We could realign the entire Mathematics curriculum.
+Teach just the basics of how to evaluate trig functions using a calculator or a table, and make advanced trig a special topics course for the few people who do actually still need to understand it really well.
+We could free up hundreds of hours for more relevant material in the process.
 
-Now, I'm not really quite that radical, so I'm interested to hear in the
-comments why trigonometry (beyond a basic understanding of how to
-evaluate trig functions and what they tell us) should stay part of the
-core Calculus curriculum (maybe those of you who teach/do Physics know
-why). Or if you can think of an integral that actually does _require_
-trig-sub to solve (aside from the trivial integration technique of
-guessing the solution and checking by differentiating) I'd be interested
-in seeing it.
+Now, I'm not really quite that radical, so I'm interested to hear in the comments why trigonometry (beyond a basic understanding of how to evaluate trig functions and what they tell us) should stay part of the core Calculus curriculum (maybe those of you who teach/do Physics know why).
+Or if you can think of an integral that actually does _require_ trig-sub to solve (aside from the trivial integration technique of guessing the solution and checking by differentiating) I'd be interested in seeing it.

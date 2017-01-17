@@ -8,23 +8,36 @@ Copyright 2014-2017 Daniel Brice [CC BY 4.0][1]
 
 Instructions for setting up development environment.
 
-`gem` is the Ruby package manager. An individual package is aptly called a "gem." `bundle` is the Ruby sandbox manager. The Ruby world is active, packages are improved, APIs change, and projects break. `bundle` ensures you get the correct version of `ruby` and of each required `gem` on a per-project basis, helping you keep a consistent environment.
+`gem` is the Ruby package manager.
+An individual package is aptly called a "gem."
+`bundle` is the Ruby sandbox manager.
+The Ruby world is active, packages are improved, APIs change, and projects break.
+`bundle` ensures you get the correct version of `ruby` and of each required `gem` on a per-project basis, helping you keep a consistent environment.
 
 1.  **Make sure that `ruby`, `gem`, and `bundle` are installed**
 
-    Ubuntu should come preloaded with `ruby` and `gem`. If not, just install them via `apt-get`. Once they're installed, you can install `bundle` through `gem`, but I prefer to install it through `apt-get`.
+    Ubuntu should come preloaded with `ruby` and `gem`. If not, just install them via `apt-get`.
+    Once they're installed, you can install `bundle` through `gem`, but I prefer to install it through `apt-get`.
 
-    OS X comes preloaded with `ruby` and `gem`. Note that as of August 2016, there is no Homebrew formula for `bundle`: You must install `bundle` through `gem`, unfortunately.
+    macOS comes preloaded with `ruby` and `gem`.
+    Note that as of August 2016, there is no Homebrew formula for `bundle`: You must install `bundle` through `gem`, unfortunately.
 
-    I should mention that you need Ruby version 2 or higher. To learn more, see the [Bundler project page][2] or the [GitHub Pages help page][3].
+    I should mention that you need Ruby version 2 or higher.
+    To learn more, see the [Bundler project page][2] or the [GitHub Pages help page][3].
 
 2.  **Pull in the required Ruby gems**
+
+    From the project directory, install the project dependencies.
 
     ```
     bundle install
     ```
 
-    The file `Gemfile` is a human-readable list of the packages required for your project. The file `Gemfile.lock` is a machine-readable file used by `bundle`. Don't mess with it, but track it as part of the project with `git`.
+    The file `Gemfile` is a human-readable list of the packages required for your project.
+    The file `Gemfile.lock` is a machine-readable file used by `bundle`.
+    Don't mess with it, but track it as part of the project with `git`.
+
+    **Note:** If you run into an issue running `bundle install`, you might try `brew unlink xz && bundle install && brew link xz`, as per [this Stack Overflow question](http://stackoverflow.com/questions/39937394/).
 
 Now you're all set up.
 
@@ -34,7 +47,8 @@ Instructions for keeping the development environment up to date.
 
 1.  **Keep `bundle` up to date**
 
-    Update `bundle` using whatever package manager you installed it with. I guess that would be `apt-get` on Ubuntu and `gem` on OS X.
+    Update `bundle` using whatever package manager you installed it with.
+    I guess that would be `apt-get` on Ubuntu and `gem` on macOS.
 
 2.  **Keep `jekyll` and external libraries up to date**
 
@@ -43,6 +57,8 @@ Instructions for keeping the development environment up to date.
     ```
     bundle update
     ```
+
+    **Note:** If you run into an issue running `bundle update`, you might try `brew unlink xz && bundle update && brew link xz`, as per [this Stack Overflow question](http://stackoverflow.com/questions/39937394/).
 
 That's all there is to that.
 
@@ -76,7 +92,8 @@ Instructions for updating and demoing the project.
 
 2.  **Publish Site**
 
-    Simply `git push` the source code. GitHub will build the site from source on their build servers and deploy the build artifacts to their GitHub Pages hosts.
+    Simply `git push` the source code.
+    GitHub will build the site from source on their build servers and deploy the build artifacts to their GitHub Pages hosts.
 
   [1]: http://creativecommons.org/licenses/by/4.0/
   [2]: http://http://bundler.io/

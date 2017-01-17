@@ -2,7 +2,8 @@
 layout: post
 title: "Automatic Differentiation Revisited"
 date: 2016-08-24
-permalink: /blog/15/
+permalink: /blog/2016-08-24/
+redirect_from: [ /blog/15/ ]
 comments: true
 tags:
 - automatic differentiation
@@ -13,7 +14,8 @@ tags:
 - symbolic differentiation
 ---
 
-[Branium][2] and the [Santa Monica Haskell Users Group][1] were kind enough to give me a chance to present about automatic differentiation for an evening, a topic we've [visited before][3]. This gave me a chance to improve my existing implementation and even add symbolic differentiation capabilities.
+[Branium][2] and the [Santa Monica Haskell Users Group][1] were kind enough to give me a chance to present about automatic differentiation for an evening, a topic we've [visited before][3].
+This gave me a chance to improve my existing implementation and even add symbolic differentiation capabilities.
 
 <!--break-->
 
@@ -29,7 +31,8 @@ evalDual (Dual x _) = x
 diffDual (Dual _ x') = x'
 {% endhighlight %}
 
-`Dual` is now a type constructor, rather than a concrete type. This lets us accomplish a neat trick, which I will point out below.
+`Dual` is now a type constructor, rather than a concrete type.
+This lets us accomplish a neat trick, which I will point out below.
 
 {% highlight haskell %}
 instance (Eq a, Floating a) => Floating (Dual a) where
@@ -43,7 +46,9 @@ instance (Eq a, Floating a) => Floating (Dual a) where
   ...
 {% endhighlight %}
 
-Implementation of `(**)` is split into three cases in order to fix the bug mentioned in my earlier post. The three cases correspond to the power rule (variable raised to a constant), the exponential function rule (constant raised to a variable), and a third unnamed rule for finding the derivative of a variable raised to a variable. We can derive this rule using logarithmic differentiation:
+Implementation of `(**)` is split into three cases in order to fix the bug mentioned in my earlier post.
+The three cases correspond to the power rule (variable raised to a constant), the exponential function rule (constant raised to a variable), and a third unnamed rule for finding the derivative of a variable raised to a variable.
+We can derive this rule using logarithmic differentiation:
 
 $$
 \begin{align*}
@@ -64,9 +69,15 @@ instance Ord a => Ord (Dual a) where
   (Dual x _) <= (Dual y _) = x <= y
 {% endhighlight %}
 
-Now for the neat trick. Normally, if we have a function \\(f\\) in hand, then you can think of differentiation as two different processes. In the first process, you can choose a specific input \\(c\\) and ask for \\(f'(c)\\), presumably some kind of concrete type. We carry out this process when we ask Haskell to evaluate `f $ Dual 5 1`, for example.
+Now for the neat trick.
+Normally, if we have a function \\(f\\) in hand, then you can think of differentiation as two different processes.
+In the first process, you can choose a specific input \\(c\\) and ask for \\(f'(c)\\), presumably some kind of concrete type.
+We carry out this process when we ask Haskell to evaluate `f $ Dual 5 1`, for example.
 
-A more general process would be to _pretend_ we chose a specific number (using, say, \\(x\\) as a placeholder) and use the formalism to arrive at a formula for \\(f'\\) (in terms of \\(x\\)). In Haskell, we pretend that we chose a number like this: `\x -> f $ Dual x 1`. This lambda is the derivative \\(f'\\) of the original function \\(f\\). Let's write down this lambda expression so that we don't forget it.
+A more general process would be to _pretend_ we chose a specific number (using, say, \\(x\\) as a placeholder) and use the formalism to arrive at a formula for \\(f'\\) (in terms of \\(x\\)).
+In Haskell, we pretend that we chose a number like this: `\x -> f $ Dual x 1`.
+This lambda is the derivative \\(f'\\) of the original function \\(f\\).
+Let's write down this lambda expression so that we don't forget it.
 
 {% highlight haskell %}
 d :: Num a => (Dual a -> Dual c) -> a -> c
@@ -79,7 +90,8 @@ And now we see why `Dual` was made a type constructor this time around: `f` and 
 
 There are some [illustrative examples][5] in the repo that you might want to check out, but those aside, it's time for symbolic differentiation.
 
-For symbolic differentiation, I literally copied portions of code from Benjamin Kovach's "Abstract Nonsense" blog post, [Symbolic Calculus in Haskell][6]. Kovach defines a type `Expr a` for algebraic expressions that accept and produce values of type `a` ("accept" and "produce" in paper-pencil-land, not in Haskell).
+For symbolic differentiation, I literally copied portions of code from Benjamin Kovach's "Abstract Nonsense" blog post, [Symbolic Calculus in Haskell][6].
+Kovach defines a type `Expr a` for algebraic expressions that accept and produce values of type `a` ("accept" and "produce" in paper-pencil-land, not in Haskell).
 
 {% highlight haskell %}
 infixl 4 :+:
@@ -107,14 +119,20 @@ instance Num a => Num (Expr a) where
   signum u      = undefined
 {% endhighlight %}
 
-Automatic differentiation doesn't do anything to `Expr a`s. It requires a _Haskell_ function--something like `Num a => a -> a`. So, the last ingredient we need is a way to think of an `Expr a` as a Haskell function. We get this by writing a function that evaluates an `Expr a` at a given `a`. Kovach implements a nice one. I'm going to just take one on credit for now:
+Automatic differentiation doesn't do anything to `Expr a`s.
+It requires a _Haskell_ function--something like `Num a => a -> a`.
+So, the last ingredient we need is a way to think of an `Expr a` as a Haskell function.
+We get this by writing a function that evaluates an `Expr a` at a given `a`.
+Kovach implements a nice one.
+I'm going to just take one on credit for now:
 
 {% highlight haskell %}
 applyExpr :: Expr a -> a -> a
 applyExpr expr x = undefined -- exercise left to the reader ;-)
 {% endhighlight %}
 
-And that's it, we now have symbolic differentiation! For example, consider the following `Expr a`s.
+And that's it, we now have symbolic differentiation!
+For example, consider the following `Expr a`s.
 
 {% highlight haskell %}
 f = 3 * Var 'x' + 4 -- represents `\x -> 3 * x + 4`

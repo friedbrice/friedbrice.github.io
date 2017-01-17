@@ -2,28 +2,23 @@
 layout: post
 title: "Self-returning Function"
 date: 2015-05-25
-permalink: /blog/09/
+permalink: /blog/2015-05-25/
+redirect_from: [ /blog/09/ ]
 comments: true
 tags:
 - code
 - python
 ---
 
-[Yesterday](/blog/08) I gave a solution to the problem of creating a
-chainable function by implementing a class with a method that returned
-the instance. Today I implemented the solution using a function that
-returns itself, more in line with the intent of Croll's exercise.
+[Yesterday](/blog/08) I gave a solution to the problem of creating a chainable function by implementing a class with a method that returned the instance.
+Today I implemented the solution using a function that returns itself, more in line with the intent of Croll's exercise.
 
 <!--break-->
 
-Working in Python, I defined a prototype function called `sayIt` that
-was not chainable, and then defined a class that used a similar method
-to make it chainable. I decided to change my prototype so that it would
-invoke itself in its return statement, as suggested by the solutions
-Croll provides.
+Working in Python, I defined a prototype function called `sayIt` that was not chainable, and then defined a class that used a similar method to make it chainable.
+I decided to change my prototype so that it would invoke itself in its return statement, as suggested by the solutions Croll provides.
 
-Here are the implementations, both as a function with global and as a
-class:
+Here are the implementations, both as a function with global and as a class:
 
 {% highlight python %}
 # sayIt.py

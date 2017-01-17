@@ -2,7 +2,8 @@
 layout: post
 title: "Order Matters"
 date: 2015-02-14
-permalink: /blog/07/
+permalink: /blog/2015-02-14/
+redirect_from: [ /blog/07/ ]
 comments: true
 tags:
 - code
@@ -102,8 +103,7 @@ In that case, use `filter odd . takeWhile (<10000)`, because the set of lists fo
 
 ### Acknowledgement
 
-Thanks to Miran Lipovača for not only writing a wonderful, succinct, smoothly conversative textbook for learning Haskell, but also for making it freely available on the internet.
+Thanks to Miran Lipovača for not only writing a wonderful, succinct, smoothly conversational textbook for learning Haskell, but also for making it freely available on the internet.
 
   [lyah]: http://learnyouahaskell.com
   [hof]: http://learnyouahaskell.com/higher-order-functions
-

@@ -2,7 +2,8 @@
 layout: post
 title: "6-by-6 Sudoku Solver"
 date: 2015-02-07
-permalink: /blog/06/
+permalink: /blog/2015-02-07/
+redirect_from: [ /blog/06/ ]
 comments: true
 tags:
 - code
@@ -10,31 +11,24 @@ tags:
 - puzzles
 ---
 
-Last weekend, I needed to quickly find all the solutions to a 6-by-6
-sudoku in 2-row-by-3-column blocks
+Last weekend, I needed to quickly find all the solutions to a 6-by-6 sudoku in 2-row-by-3-column blocks
 ([eg](http://www.google.com/search?q=6+by+6+sudoku)).
 There's an abundance of sudoku solvers online, for 9-by-9 sudokus.
-I decided it'd be an instructive use of my time to modify an existing
-solver to operate on the 6-by-6 variety, using, of course, Haskell.
+I decided it'd be an instructive use of my time to modify an existing solver to operate on the 6-by-6 variety, using, of course, Haskell.
 
 <!--break-->
 
-The solver I chose to modify is the almost-ten-year-old
-[Haskell sudoku solver in 707 bytes][1]. I chose this solver
-mostly because of its small size: there'd be fewer moving parts to
-understand. This first thing I tried, in order to turn a 9-by-9 sudoku
-solver into a 6-by-6 sudoku solver, was a naive <code>s/9/6/g</code>.
+The solver I chose to modify is the almost-ten-year-old [Haskell sudoku solver in 707 bytes][1].
+I chose this solver mostly because of its small size: there'd be fewer moving parts to understand.
+This first thing I tried, in order to turn a 9-by-9 sudoku solver into a 6-by-6 sudoku solver, was a naive <code>s/9/6/g</code>.
 It compiled, but it didn't work.
 
   [1]: http://web.math.unifi.it/~maggesi/haskell_sudoku_solver.html
 
-Of course, it didn't work because it wasn't checking 2-by-3 blocks
-corrently!
+Of course, it didn't work because it wasn't checking 2-by-3 blocks correctly!
 
-The original source is devoid of comments, so the second thing I did
-was annotate the code heavily. You can find my fully-annotated version
-on [GitHub][2], but here's the original with only a few annotations
-added, for brevity:
+The original source is devoid of comments, so the second thing I did was annotate the code heavily.
+You can find my fully-annotated version on [GitHub][2], but here's the original with only a few annotations added, for brevity:
 
   [2]: http://github.com/friedbrice/Haskell/blob/master/sudoku.hs
 
@@ -82,12 +76,12 @@ idx :: [(Int,Int)]
 idx = [(i,j) | i <- [1..9], j <- [1..9]]
 {% endhighlight %}
 
-The crux of the block issue is on lines 24 and 26. I pulled those out
-of the definition of mark and made them a separate function, named
-sameBlock. Then I modified it to check for 2-by-3 blocks instead of
-3-by-3 blocks. Below is my version, modified to solve 6-by-6 sudokus
-with 2-by-3 blocks. Notice line 18 in the definition of
-<code>sameBlock</code>.
+The crux of the block issue is on lines 24 and 26.
+I pulled those out of the definition of mark and made them a separate function, named
+`sameBlock`.
+Then I modified it to check for 2-by-3 blocks instead of 3-by-3 blocks.
+Below is my version, modified to solve 6-by-6 sudokus with 2-by-3 blocks.
+Notice line 18 in the definition of `sameBlock`.
 
 {% highlight haskell linenos %}
 -- sudoku-6-by-6.hs --
@@ -130,8 +124,6 @@ main = do
   putStr . unlines . map disp . solve $ [input s]
 {% endhighlight %}
 
-This version behaves as expected. The next step is to use this sudoku
-solver to analyze a puzzle my friends and I designed for the Puzzle
-Potluck Iron Puzzler competition. We'll look at that puzzle in the
-next post.
-
+This version behaves as expected.
+The next step is to use this sudoku solver to analyze a puzzle my friends and I designed for the Puzzle Potluck Iron Puzzler competition.
+We'll look at that puzzle in the next post.
