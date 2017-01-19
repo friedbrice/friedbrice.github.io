@@ -27,7 +27,7 @@ Take, for example, integer division, which throws when attempting to divide by z
 
 {% highlight scala %}
 def safeDivide: (Int     , Int    ) => Try[Int]
-              = (dividend, divisor) => Try(numerator / denominator)
+              = (dividend, divisor) => Try(dividend / divisor)
 {% endhighlight %}
 
 Here, since `/` might throw, we have wrapped the division inside the constructor for `Try`.
