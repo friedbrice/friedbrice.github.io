@@ -114,12 +114,9 @@ What we're interested in at the moment is the constructor for `Option`, found in
 
 {% highlight scala %}
 object Option {
-
   ...
-
   def apply[T](x: T): Option[T] =
     if (x == null) None else Some(x)
-
   ...
 }
 {% endhighlight %}
@@ -132,14 +129,11 @@ Because of this, there should be an obvious conversion from `Try[T]` to `Option[
 
 {% highlight scala %}
 sealed abstract class Try[T] {
-
   ...
-
   def toOption: Option[T] = this match {
     case Success(v) => Some(v)
     case Failure(e) => None
   }
-
   ...
 }
 {% endhighlight %}
