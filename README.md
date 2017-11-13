@@ -37,7 +37,7 @@ The Ruby world is active, packages are improved, APIs change, and projects break
     The file `Gemfile.lock` is a machine-readable file used by `bundle`.
     Don't mess with it, but track it as part of the project with `git`.
 
-    **Note:** If you run into an issue running `bundle install`, you might try `brew unlink xz && bundle install && brew link xz`, as per [this Stack Overflow question](http://stackoverflow.com/questions/39937394/).
+    **Note:** If you run into an issue running `bundle install`on macOS, you might try `brew unlink xz && bundle install && brew link xz`, as per [this Stack Overflow question](http://stackoverflow.com/questions/39937394/).
 
 Now you're all set up.
 
