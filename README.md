@@ -21,6 +21,7 @@ The Ruby world is active, packages are improved, APIs change, and projects break
 
     macOS comes preloaded with `ruby` and `gem`.
     Note that as of August 2016, there is no Homebrew formula for `bundle`: You must install `bundle` through `gem`, unfortunately.
+    If it asks for elevated privilages, use `gem install bundler --user-install` and add `~/.gem/ruby/<VERSION>/bin` to your path.
 
     I should mention that you need Ruby version 2 or higher.
     To learn more, see the [Bundler project page][2] or the [GitHub Pages help page][3].
@@ -30,7 +31,7 @@ The Ruby world is active, packages are improved, APIs change, and projects break
     From the project directory, install the project dependencies.
 
     ```
-    bundle install
+    bundle install || bundle install --path ~/.gem
     ```
 
     The file `Gemfile` is a human-readable list of the packages required for your project.
