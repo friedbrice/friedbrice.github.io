@@ -26,6 +26,8 @@ The terms _error_, _failure_, and (lower-case) _exception_ will be used intercha
 
 The code examples are in Scala, but the patterns should translate to most other languages that have first-order functions and generic type parameters. If your favorite language does not support Java-style exception handling---with a dedicated `Exception` class and specialized keywords like `throw` and `catch`---we'll see how to implement exception handling as user-defined types and functions in a type-safe way.
 
+You can find the summary [refactor template](https://gist.github.com/friedbrice/066c81db89a29826219321efd522febd) and working [code examples](https://gist.github.com/friedbrice/b08d5e5660a824e3f912d4570cdf7f8c) accompanying this post on Gist. Test.scala can be run in an IDE or in the Scala REPL.
+
 ## An Example Problem
 
 We are to implement an API over HTTP which, for simplicity's sake, only accepts POST requests. Users specify a resource in the path of their request, provide an auth token in their header, and the body of their request gets posted to the resource (which probably involves writing to a database, but we'll leave the precise meaning undefined).
@@ -590,5 +592,3 @@ Between the two, I find that either-passing style is a bit easier to fit into la
 That said, `Either` abstracts a single aspect of control flow: short-circuit control flow. For some perspective, consider that `Future` abstracts asynchronous control flow, `List` can be used to abstract non-deterministic control flow, and `Stream` can be used to abstract parallel control flow. Continuation-passing style, on the other hand, abstracts control flow. Period. It can be employed to great effect to create first-class representations of control-flow features that might otherwise require specialized keywords and language semantics. In effect, you can add almost arbitrary functionality to your language using continuation-passing style thoughtfully.
 
 In the end, the choice between either-passing style and continuation-passing style is largely a matter of taste. What is more readable to one person may be less readable to another person for instance. The key take-away is that both idioms allow us to avoid writing methods that throw, making it easier to reuse our code and write correct code.
-
-You can find the [refactor template](https://gist.github.com/friedbrice/066c81db89a29826219321efd522febd) and working [code examples](https://gist.github.com/friedbrice/b08d5e5660a824e3f912d4570cdf7f8c) accompanying this post on Gist. Test.scala can be run in an IDE or in the Scala REPL.
