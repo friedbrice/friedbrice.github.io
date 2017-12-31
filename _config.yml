@@ -14,6 +14,6 @@ stackex_username: '2387766'
 # Build settings
 markdown: 'kramdown'
 exclude: [ 'README.md', 'Gemfile', 'Gemfile.lock' ]
-gems: [ 'jekyll-redirect-from' ]
+plugins: [ 'jekyll-redirect-from' ]
 whitelist: [ 'jekyll-redirect-from' ]
 # debug: 'true' # comment this out before production
