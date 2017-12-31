@@ -2,9 +2,10 @@
 layout: post
 title: "Three Models of Exception Handling"
 date: 2017-12-31
-permalink: /blog/three-models-of-exception-handling
+permalink: /blog/2017-12-31
 comments: true
 tags:
+- code
 - scala
 - exception handling
 - continuation
@@ -47,7 +48,7 @@ def execute(content: String, user: User, resource: Resource): Unit = ???
 
 Of course, we still need to return an appropriate HTTP response even when we cannot complete all of those tasks. The current prototype returns a response only when all the right conditions are met, and halts otherwise.
 
-Here is the project spec, complete with nine canned responses that cover the various things that might go wrong. Take a moment to read over the canned responses to get an idea of the kinds of failures we have to handle:
+Here's the project spec, complete with nine canned responses that cover the various things that might go wrong. Take a moment to read over the canned responses to get an idea of the kinds of failures we have to handle:
 
 {% highlight scala %}
 object Spec {
@@ -126,7 +127,7 @@ object Prototype {
 }
 {% endhighlight %}
 
-(Above and in what follows, identifiers surrounded by `` ` `` denote code blocks that we could implement in principle, but will leave undefined for the purpose of this post.)
+(Above and in what follows, identifiers surrounded by `` ` `` denote code blocks that we could implement in principle, but will leave undefined for the purposes of this post.)
 
 ## What Exactly Counts as "Exceptional"
 
@@ -255,7 +256,7 @@ object Exceptions {
 
 ## Analysis of Using Exceptions
 
-Where the prototype incorrectly handled failures, this new refactor is correct, but our code exploded: it's over twice the size of the prototype. This might not sound like a huge problem, but bear in mind that in a production environment, every line of code is an ongoing maintenance burden, so it really pays in the long run to keep your code clean.
+Where the prototype incorrectly handled failures, this new refactor is correct, but our code exploded: It's over twice the size of the prototype. This might not sound like a huge problem, but bear in mind that in a production environment, every line of code is an ongoing maintenance burden, so it really pays in the long run to keep your code clean.
 
 In addition to being verbose, the helper methods are somewhat unusable except in this context, because in order to reuse them, one must anticipate that they will throw and catch appropriately. For example, while we've been extra careful and made sure that our call site, `handlePost`, catches everything that might get thrown, we might anticipate a team member extending this API to handle GET and DELETE requests. They'd probably want to reuse some our helper methods, but they'll have to anticipate these throws, and they'll get no help from the compiler when they do.
 
@@ -271,13 +272,13 @@ Second, the code explosion is mostly due to repeating ourselves. Each individual
 4.  Once when we catch the `Exception`, and
 5.  Once when we map the exception to the appropriate canned response.
 
-What we really want with this program is to ensure that an appropriate `Response` is created and returned. If we can find a way to, at the point of failure, cancel the remainder of the computation and exit early with the appropriate response, then we can cut out the middle-step that involves throwing and catching.
+Our end goal with this program is to ensure that an appropriate `Response` is created and returned. If we can find a way to cancel the remainder of the computation and exit early with the appropriate response at the point of failure, then we can cut out the middle step that involves throwing and catching.
 
 ## Using Continuations
 
-Remember above, we said we use `throw` to skip the remainder of the computation and `catch` to jump to some failure-handling code. If we pass the remainder of the computation into each method as an argument, then we can skip it (by not calling it) if we need to using simple conditional logic.
+We `throw` in order to skip the remainder of the computation and jump to the `catch` block, were we create an appropriate `Response`. If we pass the remainder of the computation into each method as an argument, then we can skip it simply by not calling it.
 
-Actually doing this is a lot more straightforward than it sounds. Imagine we have a computational pipeline where the end result is a value of some type `C`. Suppose we have some method that is part of our pipeline that takes a value of some type `A` and returns a value of some type `B`. Here's a template for how to refactor that method:
+Doing this is a lot more straightforward than it sounds. Imagine we have a computational pipeline where the end result is a value of some type `C`. Suppose we have some method that is part of our pipeline that takes a value of type `A` and returns a value of type `B`. Here's a template for how to refactor that method:
 
 {% highlight scala %}
 // some method
@@ -297,7 +298,7 @@ Instead of returning a `B`, we accept a function that eats a `B` and continues t
 
 If you've done any Node.js programming, you've likely used and even written functions that have this shape. If not and you'd like to get a feel for using and writing functions in this style, I recommend you take a few hours one afternoon and complete the exercises in [Learn You The Node.js](https://github.com/workshopper/learnyounode).
 
-Now, the template we have doesn't show how to deal with failures. Here's a slightly fuller template:
+The template we have doesn't show how to deal with failures. Here's a slightly fuller template:
 
 {% highlight scala %}
 // exception-passing style:
@@ -344,7 +345,7 @@ def pipeline(a: A): C = {
 
 While it might look somewhat roundabout, the advantages of using continuation-passing style here are that the methods are now compile-time safe (making it easier to reuse without mistake) and shorter (creating less of a maintenance burden) with fewer top-level abstractions (resulting in less cognitive overhead).
 
-The key to interpreting code like this is to think of `subroutine` as providing a `B`. In `pipeline`, we call `subroutine`, which produces a `B` that we then name and go on to process. Try to think of the call to `subroutine` as an assignment where the name is on the right instead of the left. Something like "`b` gets `subroutine(a)`, and then ..."
+The key to interpreting code like this is to think of `subroutine` as providing a hypothetical `B`. In `pipeline`, we call `subroutine`, which produces a `B` that we then name and go on to process. Try to think of the call to `subroutine` as an assignment where the name is on the right instead of the left. Something like "`b` gets `subroutine(a)`, and then ..."
 
 To get an idea of how to use continuation-passing style, let's refactor `getResource`:
 
@@ -410,39 +411,39 @@ object Continuations {
 }
 {% endhighlight %}
 
-We see the code is much shorter, mostly because we're not repeating ourselves so much, and we have the additional benefit of stronger compile-time guarantees that our code is not broken, making it easier (in at least the "Correctness" dimension) to reuse our helper methods when we inevitably extend this API six months from now. Also, we handle failures at the point of failure, instead of some far-off place in our code, which in this case I feel is a benefit but does admittedly lead to tighter coupling. (We could regain flexibility by refactoring our methods so that the caller supplies `Response` values to use for the various failure cases. E.g., give `getResource` an additional argument to use in case of failure.)
+We see the code is much shorter, mostly because we're not repeating ourselves so much, and we have the additional benefit of stronger compile-time guarantees that our code is not broken, making it easier (in at least the _Correctness_ dimension) to reuse our helper methods when we inevitably extend this API six months from now. Also, we handle failures at the point of failure, instead of some far-off place in our code, which in this case I feel is a benefit but does admittedly lead to tighter coupling. (We could regain flexibility by refactoring our methods so that the caller supplies `Response` values to use for the various failure cases. E.g., pass `noResource(path)` in as an argument to `getResource`.)
 
 ## Using Eithers
 
-Writing in continuation-passing style makes it easier to reuse our helper methods in the following sense: We have rigged their signatures so that there's no way for us to forget to handle failures. However, passing around continuations can be a bit awkward, putting an extra burden on us at the call site. In that sense, these helper methods are a little bit harder to reuse. Continuation-passing style happens to be one of the strongest, most-versatile tools in a programmer's toolbox. Using them merely for error handling is kind of like swatting a fly with a wrecking ball.
+Writing in continuation-passing style makes it easier to reuse our helper methods in the following sense: We have rigged their signatures so that there's no way for us to forget to handle failures. However, passing around continuations can be a bit awkward, putting an extra burden on us at the call site. In that sense, these helper methods are a little bit harder to reuse. Continuation-passing style happens to be one of the most-versatile tools in a programmer's toolbox. Using them merely for error handling is kind of like swatting a fly with a wrecking ball.
 
 The `Either` class provides an abstraction that is a little more focused in its scope, making it easier to use. The `Either` class provides short-circuit, pass-through semantics much like `throw`/`catch` does, but `Either` has the advantage of being a concrete data structure, representing the control flow as a first-class value.
 
-That was a bit long-winded, so let's take a first-hand look at how `Either` achieves short-circuit, pass-through logic (simplified for the purposes of this post).
+That was a bit long-winded, so let's take a look at how `Either` achieves short-circuit, pass-through logic. (The implementation is simplified for the purposes of this post.)
 
 {% highlight scala %}
 sealed trait Either[E,A] {
-  def map[B](f: A=>B): Either[E,B] = mapEither(this, f)
-  def flatMap[B](f: A=>Either[E,B]): Either[E,B] = bindEither(this, f)
+  def map[B](f: A => B): Either[E,B] = mapEither(this,f)
+  def flatMap[B](f: A => Either[E,B]): Either[E,B] = bindEither(this,f)
 }
 
 final case class Left[E,A](leftValue: E) extends Either[E,A]
 final case class Right[E,A](rightValue: A) extends Either[E,A]
 
-def mapEither[E,A,B](ea: Either[E,A], f: A=>B): Either[E,B] =
+def mapEither[E,A,B](ea: Either[E,A], f: A => B): Either[E,B] =
   ea match {
     case Left(e) => Left(e) // if left, ignore f and pass through
     case Right(a) => Right(f(a)) // if right, apply f and wrap result
   }
 
-def bindEither[E,A,B](ea: Either[E,A], f: A=>Either[E,B]): Either[E,B] =
+def bindEither[E,A,B](ea: Either[E,A], f: A => Either[E,B]): Either[E,B] =
   ea match {
     case Left(e) => Left(e) // if left, ignore f and pass through
     case Right(a) => f(a) // if right, apply f and return result
   }
 {% endhighlight %}
 
-We see the pass-through logic in `mapEither` and `bindEither`. Instead of throwing an Exception, we can create a `Left` value, and applying subsequent `Either#map` and `Either#flatMap` operations will safely ignore the supplied functions, preserving the `Left` value along the way. Here's `subroutine` and `pipeline` from the example above refactored to either-passing style:
+We see the pass-through logic in `mapEither` and `bindEither`. If an `Either` value is a `Left` value, applying `Either#map` and `Either#flatMap` will safely ignore the supplied functions, preserving the `Left` value along the way. Here's `subroutine` and `pipeline` from the example above refactored to either-passing style:
 
 {% highlight scala %}
 // either-passing style:
@@ -489,7 +490,7 @@ def pipeline(a: A): C = ( for {
 } yield `process a B into a C` ).fold(c => c)(c => c)
 {% endhighlight %}
 
-As we refactor our program to use either-passing style, we will want the type of the end-result of our pipeline to be the left generic parameter for `Either`. In other words, we'll want to work with `Either[Response, _]` values. Let's take a look at `getUser` written in either-passing style:
+As we refactor our program to use either-passing style, we will use the type of the end-result of our pipeline for the left generic parameter of `Either`. In other words, we'll want to work with `Either[Response, _]` values. Let's take a look at `getUser` written in either-passing style:
 
 {% highlight scala %}
 def getUser(req: Request): Either[Response, User] = {
@@ -515,7 +516,7 @@ def failIf[E](p: Boolean, e: => E): Either[E, Unit] =
   if (p) Left(e) else Right(())
 {% endhighlight %}
 
-Now we have a generic method that we can in `for`/`yield` blocks at any place where we'd like to return early. Let's see it in action:
+Now we have a generic method that we can call in `for`/`yield` blocks at any place where we'd like to return early. Let's see it in action:
 
 {% highlight scala %}
 def getUser(req: Request): Either[Response, User] = {
@@ -528,9 +529,9 @@ def getUser(req: Request): Either[Response, User] = {
 }
 {% endhighlight %}
 
-The `_` denotes an assignment that we don't intend to use. Since `failIf` returns an `Either[Response, Unit]`, the assignment would trivially be the unit value `()`; we're calling `failIf` for its effect (its interaction with `Either`'s `flatMap` and `map`), not its value.
+Since the result of `failIf` is the unit value `()`, we're safe to throw it away---thus the `_` assignments. We're calling `failIf` for its effect, not for its result.
 
-This is still pretty clunky, and partly because of that first assignment for `token`. `req.header.get("Authorization")` returns an `Option[String]`. If we can turn that `Option[String]` into an `Either[Response, String]`, then we can write the whole method in `for`/`yield` notation and make it much less clunky. In order to turn an `Option[String]` into an `Either[Response, String]`, we'll need to supply a `Response` to use as a left value in case the option is empty. The method that does this is `Option#toRight`:
+This is still pretty clunky, and partly because of that first assignment for `token`. `req.header.get("Authorization")` returns an `Option[String]`. If we can turn that `Option[String]` into an `Either[Response, String]`, then we can write the whole method in `for`/`yield` notation and make it much less clunky. In order to turn an `Option[String]` into an `Either[Response, String]`, we'll need to supply a `Response` to create a `Left` value in case the option is empty. The method that does this is `Option#toRight`:
 
 {% highlight scala %}
 def getUser(req: Request): Either[Response, User] = for {
@@ -548,8 +549,8 @@ import Undefined._
 
 object Eithers {
 
-  def failIf[A](p: Boolean, a: => A): Either[A, Unit] =
-    if (p) Left(a) else Right(())
+  def failIf[E](p: Boolean, e: => E): Either[E, Unit] =
+    if (p) Left(e) else Right(())
 
   def getUser(req: Request): Either[Response, User] = for {
     token <- req.header.get("Authorization").toRight(noToken)
@@ -566,7 +567,7 @@ object Eithers {
   Either[Response, Unit] = for {
     _ <- failIf(! `is permitted?`, notPermitted(src.path))
     _ <- failIf(! `is executed?`, badConnection)
-  } yield {}
+  } yield ()
 
   def handlePost(req: Request): Response = {
     for {
@@ -582,10 +583,12 @@ object Eithers {
 
 ## Analysis of Continuations and Eithers
 
-I avoid throwing exceptions in my own code. I prefer patterns that preserve compile-time safety, as it makes the code easier to test and easier to reuse. (You may have heard functional programmers say things like "easier to reason about." This is exactly what they're talking about when they do.) Both continuation-passing style and either-passing style preserve compile-time safety, making it harder to write code that is broken by design.
+I avoid throwing exceptions in my own code. I prefer patterns that preserve compile-time safety, as it makes the code easier to test and easier to reuse (this is what's usually meant by "easier to reason about"). Both continuation-passing style and either-passing style preserve compile-time safety, making it harder to write code that is broken by design.
 
-Between the two, I find that either-passing style is a bit easier to fit into larger designs: The methods are easier to invoke, since you don't need to provide a continuation, and their use is more obvious, since they return a concrete data structure that can be assigned or passed around. To use continuation-passing style effectively you might need to exercise a lot of forethought.
+Between the two, I find that either-passing style is a bit easier to fit into larger designs: The methods are easier to invoke, since you don't need to provide a continuation, and their use is more obvious, since they return a concrete data structure that can be assigned or passed around. To use continuation-passing style effectively you may need to exercise a lot of forethought.
 
-That said, `Either` abstracts a single aspect of control flow: short-circuit control flow. For some perspective, consider that `Future` abstracts asynchronous control flow, `List` can be used to abstract non-deterministic control flow, and `Stream` can be used to abstract parallel control flow. Continuation-passing style, on the other hand, abstracts control flow, in general. It can be employed to great effect to create first-class representations of control-flow features that might otherwise require specialized keywords and language semantics. In effect, you can add arbitrary functionality to your language using continuation-passing style thoughtfully.
+That said, `Either` abstracts a single aspect of control flow: short-circuit control flow. For some perspective, consider that `Future` abstracts asynchronous control flow, `List` can be used to abstract non-deterministic control flow, and `Stream` can be used to abstract parallel control flow. Continuation-passing style, on the other hand, abstracts control flow. Period. It can be employed to great effect to create first-class representations of control-flow features that might otherwise require specialized keywords and language semantics. In effect, you can add almost arbitrary functionality to your language using continuation-passing style thoughtfully.
 
-In the end, the choice between either-passing style and continuation-passing style is largely a matter of taste. What is more readable to one person may be less readable to another person for instance. The key take-away is that both idioms allow us to avoid writing methods that throw, making it easier to both write correct code and reuse our code.
+In the end, the choice between either-passing style and continuation-passing style is largely a matter of taste. What is more readable to one person may be less readable to another person for instance. The key take-away is that both idioms allow us to avoid writing methods that throw, making it easier to reuse our code and write correct code.
+
+You can find the [refactor template](https://gist.github.com/friedbrice/066c81db89a29826219321efd522febd) and working [code examples](https://gist.github.com/friedbrice/b08d5e5660a824e3f912d4570cdf7f8c) accompanying this post on Gist. Test.scala can be run in an IDE or in the Scala REPL.
