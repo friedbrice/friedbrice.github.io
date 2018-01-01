@@ -3,12 +3,14 @@ layout: post
 title: "Opening `.url` Files Like a Pro"
 date: 2015-12-14
 permalink: /blog/2015-12-14/
-redirect_from: [ /blog/12/ ]
+redirect_from: 
+  - /blog/12/
+  - /opening-url-file-like-a-pro/
 comments: true
 tags:
-- bash
-- code
-- linux
+  - bash
+  - code
+  - linux
 ---
 
 I go back and forth between Linux, Windows, and OS X, and I end up getting a lot of proprietary files in my Dropbox.

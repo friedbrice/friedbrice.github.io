@@ -3,15 +3,17 @@ layout: post
 title: "Automatic Differentiation Revisited"
 date: 2016-08-24
 permalink: /blog/2016-08-24/
-redirect_from: [ /blog/15/ ]
+redirect_from: 
+  - /blog/15/
+  - /blog/automatic-differentiation-revisited/
 comments: true
 tags:
-- automatic differentiation
-- calculus
-- code
-- haskell
-- math
-- symbolic differentiation
+  - automatic differentiation
+  - calculus
+  - code
+  - haskell
+  - math
+  - symbolic differentiation
 ---
 
 [Branium][2] and the [Santa Monica Haskell Users Group][1] were kind enough to give me a chance to present about automatic differentiation for an evening, a topic we've [visited before][3].

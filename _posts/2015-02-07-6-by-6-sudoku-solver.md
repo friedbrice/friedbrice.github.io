@@ -3,12 +3,14 @@ layout: post
 title: "6-by-6 Sudoku Solver"
 date: 2015-02-07
 permalink: /blog/2015-02-07/
-redirect_from: [ /blog/06/ ]
+redirect_from: 
+  - /blog/06/
+  - /blog/6-by-6-sudoku-solver/
 comments: true
 tags:
-- code
-- haskell
-- puzzles
+  - code
+  - haskell
+  - puzzles
 ---
 
 Last weekend, I needed to quickly find all the solutions to a 6-by-6 sudoku in 2-row-by-3-column blocks

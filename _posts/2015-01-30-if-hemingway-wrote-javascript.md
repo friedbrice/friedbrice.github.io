@@ -3,14 +3,16 @@ layout: post
 title: "If Hemingway Wrote Javascript"
 date: 2015-01-30
 permalink: /blog/2015-01-30/
-redirect_from: [ /blog/05/ ]
+redirect_from: 
+  - /blog/05/
+  - /blog/if-hemingway-wrote-javascript/
 comments: true
 tags:
-- c
-- code
-- python
-- haskell
-- javascript
+  - c
+  - code
+  - python
+  - haskell
+  - javascript
 ---
 
 My dad got me [If Hemingway Wrote Javascript][1] by Angus Croll for Christmas.

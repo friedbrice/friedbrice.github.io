@@ -3,11 +3,13 @@ layout: post
 title: "Self-returning Function"
 date: 2015-05-25
 permalink: /blog/2015-05-25/
-redirect_from: [ /blog/09/ ]
+redirect_from: 
+  - /blog/09/
+  - /blog/self-returning-function/
 comments: true
 tags:
-- code
-- python
+  - code
+  - python
 ---
 
 [Yesterday](/blog/08) I gave a solution to the problem of creating a chainable function by implementing a class with a method that returned the instance.

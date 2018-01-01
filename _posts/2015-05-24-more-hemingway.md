@@ -3,12 +3,14 @@ layout: post
 title: "More Hemingway"
 date: 2015-05-24
 permalink: /blog/2015-05-24/
-redirect_from: [ /blog/08/ ]
+redirect_from: 
+  - /blog/08/
+  - /blog/more-hemingway/
 comments: true
 tags:
-- code
-- haskell
-- python
+  - code
+  - haskell
+  - python
 ---
 
 In a [prior post](/blog/05/) I mentioned that I was working my way through the exercises in [If Hemingway Wrote Javascript][1].

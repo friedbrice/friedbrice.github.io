@@ -3,10 +3,12 @@ layout: post
 title: "Drinking Clue"
 date: 2015-01-29
 permalink: /blog/2015-01-29/
-redirect_from: [ /blog/04/ ]
+redirect_from: 
+  - /blog/04/
+  - /blog/drinking-clue/
 comments: true
 tags:
-- games
+  - games
 ---
 
 My good friends, Steven and Alex, a few others, and I one night came up with some house rules for the board game [Clue](http://en.wikipedia.org/wiki/Cluedo).

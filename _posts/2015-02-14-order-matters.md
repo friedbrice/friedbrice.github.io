@@ -3,11 +3,13 @@ layout: post
 title: "Order Matters"
 date: 2015-02-14
 permalink: /blog/2015-02-14/
-redirect_from: [ /blog/07/ ]
+redirect_from: 
+  - /blog/07/
+  - /blog/order-matters/
 comments: true
 tags:
-- code
-- haskell
+  - code
+  - haskell
 ---
 
 I'm [learning me a Haskell][lyah], very slowly, and I just wanted to share a little anecdote about function order and infinite lists that I thought was funny.

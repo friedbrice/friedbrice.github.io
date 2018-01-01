@@ -3,12 +3,15 @@ layout: post
 title: "Scala Try is Broken"
 date: 2017-01-15
 permalink: /blog/2017-01-15/
+redirect_from: 
+  - /blog/16/
+  - /blog/scala-try-is-broken/
 comments: true
 tags:
-- code
-- scala
-- style
-- types
+  - code
+  - scala
+  - style
+  - types
 ---
 
 Scala's `Try` class is broken.

@@ -3,13 +3,21 @@ layout: post
 title: "Three Models of Exception Handling"
 date: 2017-12-31
 permalink: /blog/2017-12-31
+redirect_from: 
+  - /blog/17/
+  - /blog/three-models-of-exception-handling/
 comments: true
 tags:
-- code
-- scala
-- exception handling
-- continuation
-- monad
+  - code
+  - scala
+  - exception handling
+  - error handling
+  - failure handling
+  - effects
+  - continuation
+  - monad
+  - types
+  - style
 ---
 
 A hotshot teammate just pulled a miracle. Over the weekend, they built the API our customers have been promised for the past year, averting an existential crisis for the company. One problem: Only the happy path returns a response; all exceptional circumstances simply crash the computer. So, it's up to us to productionalize the prototype by adding appropriate error handling, and we won't sacrifice compile-time safety and re-usability along the way.

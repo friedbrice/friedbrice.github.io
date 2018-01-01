@@ -3,13 +3,15 @@ layout: post
 title: "Why does trig-sub even exist?"
 date: 2016-02-27
 permalink: /blog/2016-02-27/
-redirect_from: [ /blog/14/ ]
+redirect_from: 
+  - /blog/14/
+  - /blog/why-does-trig-sub-even-exist/
 comments: true
 tags:
-- calculus
-- integration
-- math
-- trigonometry
+  - calculus
+  - integration
+  - math
+  - trigonometry
 ---
 
 I was writing an exam for my students, and I wanted to give them a trig sub integral that wasn't too difficult (there's this infinitesimal sweet spot between ridiculously too difficult and utterly trivial).

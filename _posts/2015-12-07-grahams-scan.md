@@ -3,16 +3,18 @@ layout: post
 title: "Graham&#8217;s Scan Convex Hull Algorithm"
 date: 2015-12-07
 permalink: /blog/2015-12-07/
-redirect_from: [ /blog/11/ ]
+redirect_from: 
+  - /blog/11/
+  - /blog/grahams-scan/
 comments: true
 tags:
-- code
-- convex hull
-- geometry
-- graham scan
-- haskell
-- math
-- real world haskell
+  - code
+  - convex hull
+  - geometry
+  - graham scan
+  - haskell
+  - math
+  - real world haskell
 ---
 
 Was spending my free time working through [Real World Haskell][1] by O'Sullivan, Stewart, and Goerzen.

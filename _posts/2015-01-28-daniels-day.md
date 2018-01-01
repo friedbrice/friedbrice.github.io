@@ -3,13 +3,15 @@ layout: post
 title: Daniel&#8217;s Day
 date: 2015-01-28
 permalink: /blog/2015-01-28/
-redirect_from: [ /blog/03/ ]
+redirect_from: 
+  - /blog/03/
+  - /blog/daniels-day/
 comments: true
 tags:
-- bash
-- code
-- haskell
-- jekyll
+  - bash
+  - code
+  - haskell
+  - jekyll
 ---
 
 It's been a while since I've posted.

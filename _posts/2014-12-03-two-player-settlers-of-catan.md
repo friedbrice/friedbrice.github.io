@@ -3,10 +3,12 @@ layout: post
 title: Two-player Settlers of Catan
 date: 2014-12-03
 permalink: /blog/2014-12-03_2/
-redirect_from: [ /blog/02/ ]
+redirect_from:
+  - /blog/02/
+  - /blog/two-player-settlers-of-catan/
 comments: true
 tags:
-- games
+  - games
 ---
 
 Posting this before I forget.

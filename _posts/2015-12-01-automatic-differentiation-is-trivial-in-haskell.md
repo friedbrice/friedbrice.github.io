@@ -3,14 +3,16 @@ layout: post
 title: "Automatic Differentiation is Trivial in Haskell"
 date: 2015-12-01
 permalink: /blog/2015-12-01/
-redirect_from: [ /blog/10/ ]
+redirect_from: 
+  - /blog/10/
+  - /blog/automatic-differentiation-is-trivial-in-haskell/
 comments: true
 tags:
-- automatic differentiation
-- calculus
-- code
-- haskell
-- math
+  - automatic differentiation
+  - calculus
+  - code
+  - haskell
+  - math
 ---
 
 My first quarter at Bakersfield just ended, and so I found myself with some time with which I could get back into coding.

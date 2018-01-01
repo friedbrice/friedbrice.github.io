@@ -3,14 +3,16 @@ layout: post
 title: "Local Hoogle Daemon"
 date: 2016-02-20
 permalink: /blog/2016-02-20/
-redirect_from: [ /blog/13/ ]
+redirect_from: 
+  - /blog/13/
+  - /blog/local-hoogle-daemon/
 comments: true
 tags:
-- code
-- haskell
-- linux
-- systemd
-- xdg
+  - code
+  - haskell
+  - linux
+  - systemd
+  - xdg
 ---
 
 Has it really been two months?!
