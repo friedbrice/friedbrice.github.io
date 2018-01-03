@@ -1,14 +1,14 @@
 ---
 layout: post
 title: "More on Scala Try"
-date: 2017-01-17
-permalink: /blog/2017-01-17/
+date: 1999-12-31
+permalink: /blog/more-on-scala-try/
 comments: true
 tags:
-- code
-- scala
-- style
-- types
+  - code
+  - scala
+  - style
+  - types
 ---
 
 Turns out, Scala's `Try` class gets even worse.
@@ -16,7 +16,7 @@ Here are a few examples of how its `map` and `flatMap` methods violate our expec
 
 <!--break-->
 
-## _Try_'s _map_ method
+# _Try_'s _map_ method
 
 When we map over a data structures, we expect the outer structure to be left invariant while the internal data is operated on.
 For example, when we map over a `List[String]` with a `String => Int`, we expect that the structure of the list, _e.g._ its length and the relative order of its entries, remains intact, and that the only thing that happens is that our function acts on the entries of the list.
@@ -92,5 +92,5 @@ We expect a certain kind of neutral, information-preserving action to occur when
 In other words, it's fine that `Try` offers this functionality, but it shouldn't be called `map`.
 Scala's `Try` class manages to defy our expectation, making it harder for us to reuse code with confidence.
 
-## _Try_'s _flatMap_ Method
+# _Try_'s _flatMap_ Method
 

@@ -23,7 +23,7 @@ Yesterday, I wanted to get two things done (aside from real work):
 
 <!--break-->
 
-## Mailing Lists
+# Mailing Lists
 
 So, I'm trying to learn to code.
 Aside from one semester of qBASIC in high school and one semester of Javascript in undergrad, I have no formal experience with programming, but I know I can learn and I want to demonstrate it.
@@ -138,7 +138,7 @@ done < $(search_terms)
 This will open 60 browser windows, each one with a different search phrase.\
 That was fun!
 
-## Blogging
+# Blogging
 
 It's been a while since I've edited this blog, so I had to relearn some Jekyll basics.
 In particular, `jekyll build` and `jekyll serve` don't work the way I expected them to.

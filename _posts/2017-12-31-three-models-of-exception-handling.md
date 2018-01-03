@@ -2,7 +2,7 @@
 layout: post
 title: "Three Models of Exception Handling"
 date: 2017-12-31
-permalink: /blog/2017-12-31
+permalink: /blog/2017-12-31/
 redirect_from: 
   - /blog/17/
   - /blog/three-models-of-exception-handling/
@@ -36,7 +36,7 @@ The code examples are in Scala, but the patterns should translate to most other 
 
 You can find the summary [refactor template](https://gist.github.com/friedbrice/066c81db89a29826219321efd522febd) and working [code examples](https://gist.github.com/friedbrice/b08d5e5660a824e3f912d4570cdf7f8c) accompanying this post on Gist. Test.scala can be run in an IDE or in the Scala REPL.
 
-## An Example Problem
+# An Example Problem
 
 We are to implement an API over HTTP which, for simplicity's sake, only accepts POST requests. Users specify a resource in the path of their request, provide an auth token in their header, and the body of their request gets posted to the resource (which probably involves writing to a database, but we'll leave the precise meaning undefined).
 
@@ -139,7 +139,7 @@ object Prototype {
 
 (Above and in what follows, identifiers surrounded by `` ` `` denote code blocks that we could implement in principle, but will leave undefined for the purposes of this post.)
 
-## What Exactly Counts as "Exceptional"
+# What Exactly Counts as "Exceptional"
 
 Examining the prototype's `handlePost` method, we see the outline of a simple data-processing pipeline:
 
@@ -154,7 +154,7 @@ We use the word "pipeline" intentionally, because subsequent steps rely on the s
 
 This is a common problem in control flow, and the idiomatic Java way to solve this problem is by `throw`ing `Exception`s and `catch`ing them later. The `Exception` class and the keywords `try`, `throw`, and `catch` do exactly the kind of short circuiting and redirecting we need.
 
-## Using Exceptions
+# Using Exceptions
 
 Let's refactor the prototype's `getUser` method to throw an `Exception` instead of crashing the computer:
 
@@ -264,7 +264,7 @@ object Exceptions {
 }
 {% endhighlight %}
 
-## Analysis of Using Exceptions
+# Analysis of Using Exceptions
 
 Where the prototype incorrectly handled failures, this new refactor is correct, but our code exploded: It's over twice the size of the prototype. This might not sound like a huge problem, but bear in mind that in a production environment, every line of code is an ongoing maintenance burden, so it really pays in the long run to keep your code clean.
 
@@ -284,7 +284,7 @@ Second, the code explosion is mostly due to repeating ourselves. Each individual
 
 Our end goal with this program is to ensure that an appropriate `Response` is created and returned. If we can find a way to cancel the remainder of the computation and exit early with the appropriate response at the point of failure, then we can cut out the middle step that involves throwing and catching.
 
-## Using Continuations
+# Using Continuations
 
 We `throw` in order to skip the remainder of the computation and jump to the `catch` block, were we create an appropriate `Response`. If we pass the remainder of the computation into each method as an argument, then we can skip it simply by not calling it.
 
@@ -423,7 +423,7 @@ object Continuations {
 
 We see the code is much shorter, mostly because we're not repeating ourselves so much, and we have the additional benefit of stronger compile-time guarantees that our code is not broken, making it easier (in at least the _Correctness_ dimension) to reuse our helper methods when we inevitably extend this API six months from now. Also, we handle failures at the point of failure, instead of some far-off place in our code, which in this case I feel is a benefit but does admittedly lead to tighter coupling. (We could regain flexibility by refactoring our methods so that the caller supplies `Response` values to use for the various failure cases. E.g., pass `noResource(path)` in as an argument to `getResource`.)
 
-## Using Eithers
+# Using Eithers
 
 Writing in continuation-passing style makes it easier to reuse our helper methods in the following sense: We have rigged their signatures so that there's no way for us to forget to handle failures. However, passing around continuations can be a bit awkward, putting an extra burden on us at the call site. In that sense, these helper methods are a little bit harder to reuse. Continuation-passing style happens to be one of the most-versatile tools in a programmer's toolbox. Using them merely for error handling is kind of like swatting a fly with a wrecking ball.
 
@@ -591,7 +591,7 @@ object Eithers {
 }
 {% endhighlight %}
 
-## Analysis of Continuations and Eithers
+# Analysis of Continuations and Eithers
 
 I avoid throwing exceptions in my own code. I prefer patterns that preserve compile-time safety, as it makes the code easier to test and easier to reuse (this is what's usually meant by "easier to reason about"). Both continuation-passing style and either-passing style preserve compile-time safety, making it harder to write code that is broken by design.
 
@@ -601,6 +601,6 @@ That said, `Either` abstracts a single aspect of control flow: short-circuit con
 
 In the end, the choice between either-passing style and continuation-passing style is largely a matter of taste. What is more readable to one person may be less readable to another person for instance. The key take-away is that both idioms allow us to avoid writing methods that throw, making it easier to reuse our code and write correct code.
 
-## Acknowledgements
+# Acknowledgements
 
 Thanks to [@anthony__brice](https://twitter.com/anthony__brice) for helpful corrections and suggestions.

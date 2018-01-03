@@ -2,15 +2,15 @@
 layout: post
 title: "A Flaw in AutoDiff"
 date: 1999-12-31
-permalink: /blog/1999-12-31-a-flaw-in-autodiff/
+permalink: /blog/a-flaw-in-autodiff/
 comments: true
 tags:
-- math
-- calculus
-- automatic
-- symbolic
-- differentiation
-- haskell
+  - math
+  - calculus
+  - automatic
+  - symbolic
+  - differentiation
+  - haskell
 ---
 
 _So, it turns out that the example that we thought broke the thing doesn't actually break the thing. I am still trying to make the counterexample work, though, because I still think the claim is not true._
@@ -21,13 +21,13 @@ The intent of this section is to give a dependency-free overview of everything i
 
 <!--break-->
 
-## My Implicit Assumption
+# My Implicit Assumption
 
 some expository remarks, getting new readers up to speed.
 
 The intent of this section is to introduce AutoDiff and summarize from the previous posts only that which is necessary for an understanding of this post. In particular, I want to talk about `fib`, how/why `d fib` is wrong, and how/why this is not a particularly bad problem (Hint, I wasn't worried about `fib` because I tacitly assumed the below claim).
 
-## Definitions of Terms
+# Definitions of Terms
 
 We will not define what it means for a real number \\( a \in \mathbb{R} \\) to be representable as a floating-point number `a :: Double`. If you are comfortable knowing that \\( 5 \\), \\( \frac{3}{16} + \frac{3}{2} \\), and \\( 10^{16} \\) are representable as floating-point numbers whereas \\( 2^{-2000} \\), \\( \frac{2}{3} \\), \\( 1 - 1.23 \\), and \\( 10^{16} + 1 \\) are not representable, then you should be fine.
 
@@ -35,7 +35,7 @@ We will not define what it means for a real number \\( a \in \mathbb{R} \\) to b
 
 *Definition:* Let \\( U \subseteq \mathbb{R} \\) and let \\( f : U \to \mathbb{R} \\). Let `f :: Double -> Double`. The statement "`f` is a representation-preserving implementation of \\( f \\) on \\( U \\)" means that for each \\( x \in U \\), if \\( x \\) is representable as `x :: Double`, then \\( f(x) \\) is representable as `f x`.
 
-## Claim and Counterexample
+# Claim and Counterexample
 
 **Claim:** _Let \\( a \in \mathbb{R} \\) be representable as `a :: Double`. Let \\( U \\) be a floating neighborhood of \\( a \\). Let \\( f : U \to \mathbb{R} \\) with representation-preserving implementation `f :: Double -> Double`. If \\( f \\) is differentiable on \\( U \\), then `d f` is a representation-preserving implementation of \\( f' \\) on \\( U \\)._
 

@@ -2,12 +2,12 @@
 layout: post
 title: "Getting Used to Jekyll"
 date: 1999-12-31
-permalink: /blog/1999-12-31-getting-used-to-jekyll/
+permalink: /blog/getting-used-to-jekyll/
 tags:
-- code
-- jekyll
-- yaml
-- liquid
+  - code
+  - jekyll
+  - yaml
+  - liquid
 ---
 
 Hokay, I'm starting to make my site more robust.

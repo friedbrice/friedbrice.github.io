@@ -21,7 +21,7 @@ It does that just fine.
 
 <!--break-->
 
-## Purpose of _Try_
+# Purpose of _Try_
 
 If you are already familiar with Scala's `Try` class, you might [skip ahead](#how-try-is-broken-and-how-to-use-it-safely).
 
@@ -96,7 +96,7 @@ Then we consume the `x` and `y` in `x / y`, which can also fail and throw, so we
 Here's the important part: If anything inside a `Try` constructor throws, then instead of the program halting, the `Try` will resolve to `Failure(e)` where `e` is the thrown exception as a value of the class `Throwable`.
 Thus, any thrown exceptions get passed up to the caller, as was desired.
 
-## How _Try_ is Broken and How To Use It Safely
+# How _Try_ is Broken and How To Use It Safely
 
 Where `Try` exists to create a type-level abstraction for the results of operations that might throw, `Option` exists to create a type-level abstraction for values that might be `null`.
 

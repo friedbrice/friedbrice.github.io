@@ -1,14 +1,14 @@
 ---
 layout: post
 title: "Sangria Design Notes"
-date: 2017-11-12
-permalink: /blog/2017-11-17/
+date: 1999-12-31
+permalink: /blog/sangria-design-notes/
 comments: true
 tags:
-- code
-- scala
-- style
-- types
+  - code
+  - scala
+  - style
+  - types
 ---
 
 We're adopting [GraphQL][1] for our team's next project, and since our backend will be in Scala, we have the pleasure of using the incredible GraphQL library [Sangria][2]. There's a bit of a learning curve with any stack adoption, and this post serves as a crash course based on my two-week-long experience using Sangria to build a working prototype of our new GraphQL service.
@@ -23,7 +23,7 @@ Second, this post assumes you've read the GraphQL [sales pitches][3] and that yo
 
 Third, we're building a read-only service with a single entry point, using GraphQL to aggregate multiple legacy and internal APIs. If you're building a different flavor of service, or if you're using Sangria on the front end, your mileage may vary.
 
-## Overview
+# Overview
 
 We split our application into four components:
 
@@ -49,35 +49,35 @@ We make ten recommendations, grouped by the relevant stack:
       - Use `ExceptionHandler` to handle errors in resolvers
       - Use `Future.recover` for syntax and schema errors
 
-## The Data Model
+# The Data Model
 
-### Use Descriptive Type Aliases and Keyword Arguments
+**Use Descriptive Type Aliases and Keyword Arguments**
 
 HTTP APIs are stringly typed. A call involves splicing several strings together to for a request and then splitting strings out of the response.
 
-### Make Case Classes Reflect Physical Data Sources
+**Make Case Classes Reflect Physical Data Sources**
 
-## Data Retrieval
+# Data Retrieval
 
-### Make the DAO Reflect Physical Data Sources
+**Make the DAO Reflect Physical Data Sources**
 
-### Propogate Needed Arguments Through Case Classes
+**Propogate Needed Arguments Through Case Classes**
 
-### Use Futures for External API Calls
+**Use Futures for External API Calls**
 
-### Use TrieMaps for Caching
+**Use TrieMaps for Caching**
 
-## Schema Definition
+# Schema Definition
 
-### Use Fetcher and DeferredValue to Batch and Cache
+**Use Fetcher and DeferredValue to Batch and Cache**
 
-### Compare Implemented Schema to Project Spec Schema
+**Compare Implemented Schema to Project Spec Schema**
 
-## Application Layer
+# Application Layer
 
-### Use ExceptionHandler to Handle Errors In Resolvers
+**Use ExceptionHandler to Handle Errors In Resolvers**
 
-### Recover on Syntax and Schema Errors
+**Recover on Syntax and Schema Errors**
 
   [1]: https://code.facebook.com/posts/1691455094417024/graphql-a-data-query-language/
   [2]: http://sangria-graphql.org/

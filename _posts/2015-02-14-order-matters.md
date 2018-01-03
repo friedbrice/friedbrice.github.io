@@ -80,7 +80,7 @@ ghci> funnySum [2,4..]
 We still answer the original questions correctly, and we're able to evaluate the sum of all the odd members of an infinite list of even numbers.
 Success!
 
-### Afterward
+# Afterward
 
 I originally thought that `filter odd . takeWhile (<10000)` and `takeWhile (<10000) . filter odd` would always return the same results whenever both of them returned a finite list.
 However, this is simply not the case, because `filter odd` might remove a list element that would otherwise trigger `takewhile (<10000)`.
@@ -103,7 +103,7 @@ Use the one that produces what you want for your particular piece of code.
 The most general setting where `filter odd . takeWhile (<10000)` and `takeWhile (<10000) . filter odd` agree whenever each returns a finite list is when you know that the input list will be monotonically increasing.
 In that case, use `filter odd . takeWhile (<10000)`, because the set of lists for which it terminates properly includes the set of lists for which `takeWhile (<10000) . filter odd` terminates.
 
-### Acknowledgement
+# Acknowledgement
 
 Thanks to Miran Lipovača for not only writing a wonderful, succinct, smoothly conversational textbook for learning Haskell, but also for making it freely available on the internet.
 
