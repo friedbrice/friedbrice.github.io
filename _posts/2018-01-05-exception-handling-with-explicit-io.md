@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Exception Handling with Explicit IO"
-date: 2018-01-03
-permalink: /blog/2018-01-03/
+date: 2018-01-05
+permalink: /blog/2018-01-05/
 redirect_from: 
   - /blog/18/
   - /blog/exception-handling-with-explicit-io/
