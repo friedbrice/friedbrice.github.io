@@ -14,7 +14,6 @@ tags:
   - error handling
   - failure handling
   - effects
-  - continuation
   - monad
   - types
 ---
