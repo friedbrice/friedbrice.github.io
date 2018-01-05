@@ -19,7 +19,7 @@ tags:
   - types
 ---
 
-In a [previous post](/blog/three-models-of-exception-handling), we added exception handling to a hypothetical API server written in Scala. Since Scala implicitly allows arbitrary I/O anywhere, modeling exception handling by adding a layer of indirection using `Either` values was trivial. I wanted to try implementing the same logic in Haskell, which would force us to deal with intermingling exception handling with explicit I/O, creating two layers of abstraction that we'll have to juggle.
+In a [previous post](/blog/three-models-of-exception-handling), we added exception handling to a hypothetical API server written in Scala. Since Scala implicitly allows arbitrary I/O anywhere, modeling exception handling by adding a layer of indirection using `Either` values was essentially free. I wanted to try implementing the same logic in Haskell, which would force us to deal with intermingling exception handling intermingled with explicit I/O, creating two layers of abstraction that we'll have to juggle.
 
 <!--break-->
 
@@ -279,7 +279,7 @@ We begin by checking and collecting our preconditions. `chkMth` has type `Either
 
 # Parting Thoughts
 
-This is hard work. Fortunately, we have some help. The heavy lifters are `fmap` (via `<$>`), the applicative `<*>`, `>>` and `>>=`, and `traverse`. In general, I find that when I'm stuck in a quagmire of types, `traverse` (and it's cousins, `for` and `sequenceA`) are exactly what I need to dig my way out. Always keep them in mind.
+This is hard work. I've heard the saying "monads give you one free abstraction," and the meaning of that saying really hit home while I was doing this exercise. Once we had two monads in play, the code became significantly more complicated. Fortunately, we have some help. The heavy lifters are `fmap` (via `<$>`), the applicative `<*>`, `>>` and `>>=`, and `traverse`. In general, I find that when I'm stuck in a quagmire of types, `traverse` (and it's cousins, `for` and `sequenceA`) are exactly what I need to dig my way out. Always keep them in mind.
 
 I made extensive use of standard Haskell tools, such as [Hoogle](https://www.haskell.org/hoogle/) and the REPL. I found that it helps to pay close attention to compiler errors.
 
