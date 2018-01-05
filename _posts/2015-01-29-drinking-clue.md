@@ -2,10 +2,10 @@
 layout: post
 title: "Drinking Clue"
 date: 2015-01-29
-permalink: /blog/2015-01-29/
+permalink: /blog/drinking-clue/
 redirect_from: 
   - /blog/04/
-  - /blog/drinking-clue/
+  - /blog/2015-01-29/
 comments: true
 tags:
   - games

@@ -2,10 +2,10 @@
 layout: post
 title: "Self-returning Function"
 date: 2015-05-25
-permalink: /blog/2015-05-25/
+permalink: /blog/self-returning-function/
 redirect_from: 
   - /blog/09/
-  - /blog/self-returning-function/
+  - /blog/2015-05-25/
 comments: true
 tags:
   - code

@@ -2,10 +2,10 @@
 layout: post
 title: "Why does trig-sub even exist?"
 date: 2016-02-27
-permalink: /blog/2016-02-27/
+permalink: /blog/why-does-trig-sub-even-exist/
 redirect_from: 
   - /blog/14/
-  - /blog/why-does-trig-sub-even-exist/
+  - /blog/2016-02-27/
 comments: true
 tags:
   - calculus

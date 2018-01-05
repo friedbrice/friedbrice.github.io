@@ -2,10 +2,10 @@
 layout: post
 title: "If Hemingway Wrote Javascript"
 date: 2015-01-30
-permalink: /blog/2015-01-30/
+permalink: /blog/if-hemingway-wrote-javascript/
 redirect_from: 
   - /blog/05/
-  - /blog/if-hemingway-wrote-javascript/
+  - /blog/2015-01-30/
 comments: true
 tags:
   - c

@@ -2,10 +2,10 @@
 layout: post
 title: "6-by-6 Sudoku Solver"
 date: 2015-02-07
-permalink: /blog/2015-02-07/
+permalink: /blog/6-by-6-sudoku-solver/
 redirect_from: 
   - /blog/06/
-  - /blog/6-by-6-sudoku-solver/
+  - /blog/2015-02-07/
 comments: true
 tags:
   - code

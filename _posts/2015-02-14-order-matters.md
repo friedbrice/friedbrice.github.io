@@ -2,10 +2,10 @@
 layout: post
 title: "Order Matters"
 date: 2015-02-14
-permalink: /blog/2015-02-14/
+permalink: /blog/order-matters/
 redirect_from: 
   - /blog/07/
-  - /blog/order-matters/
+  - /blog/2015-02-14/
 comments: true
 tags:
   - code

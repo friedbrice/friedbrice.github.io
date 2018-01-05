@@ -2,10 +2,10 @@
 layout: post
 title: "Automatic Differentiation Revisited"
 date: 2016-08-24
-permalink: /blog/2016-08-24/
+permalink: /blog/automatic-differentiation-revisited/
 redirect_from: 
   - /blog/15/
-  - /blog/automatic-differentiation-revisited/
+  - /blog/2016-08-24/
 comments: true
 tags:
   - automatic differentiation

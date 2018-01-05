@@ -2,10 +2,10 @@
 layout: post
 title: "Graham&#8217;s Scan Convex Hull Algorithm"
 date: 2015-12-07
-permalink: /blog/2015-12-07/
+permalink: /blog/grahams-scan-convex-hull-algorithm/
 redirect_from: 
   - /blog/11/
-  - /blog/grahams-scan/
+  - /blog/2015-12-07/
 comments: true
 tags:
   - code

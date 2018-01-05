@@ -2,7 +2,7 @@
 layout: post
 title: "Why Generality Matters"
 date: 1999-12-31
-permalink: /blog/math-and-generality/
+permalink: /blog/why-generality-matters/
 tags:
   - code
   - haskell

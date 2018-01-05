@@ -2,10 +2,10 @@
 layout: post
 title: Daniel&#8217;s Day
 date: 2015-01-28
-permalink: /blog/2015-01-28/
+permalink: /blog/daniels-day/
 redirect_from: 
   - /blog/03/
-  - /blog/daniels-day/
+  - /blog/2015-01-28/
 comments: true
 tags:
   - bash

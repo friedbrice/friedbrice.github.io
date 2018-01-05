@@ -2,10 +2,10 @@
 layout: post
 title: First Post
 date: 2014-12-03
-permalink: /blog/2014-12-03/
+permalink: /blog/first-post/
 redirect_from: 
   - /blog/01/
-  - /blog/first-post/
+  - /blog/2014-12-03/
 comments: true
 ---
 

@@ -2,10 +2,10 @@
 layout: post
 title: "Scala Try is Broken"
 date: 2017-01-15
-permalink: /blog/2017-01-15/
+permalink: /blog/scala-try-is-broken/
 redirect_from: 
   - /blog/16/
-  - /blog/scala-try-is-broken/
+  - /blog/2017-01-15/
 comments: true
 tags:
   - code

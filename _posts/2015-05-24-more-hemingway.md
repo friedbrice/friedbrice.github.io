@@ -2,10 +2,10 @@
 layout: post
 title: "More Hemingway"
 date: 2015-05-24
-permalink: /blog/2015-05-24/
+permalink: /blog/more-hemingway/
 redirect_from: 
   - /blog/08/
-  - /blog/more-hemingway/
+  - /blog/2015-05-24/
 comments: true
 tags:
   - code

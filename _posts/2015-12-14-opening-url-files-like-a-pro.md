@@ -2,10 +2,10 @@
 layout: post
 title: "Opening `.url` Files Like a Pro"
 date: 2015-12-14
-permalink: /blog/2015-12-14/
+permalink: /blog/opening-url-file-like-a-pro/
 redirect_from: 
   - /blog/12/
-  - /opening-url-file-like-a-pro/
+  - /blog/2015-12-14/
 comments: true
 tags:
   - bash
