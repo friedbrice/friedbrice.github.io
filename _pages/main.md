@@ -3,7 +3,7 @@ layout: default
 permalink: /
 ---
 
-The personal website of Daniel Brice.
+The personal website of Daniel Brice, PhD.
 
 Made with [Jekyll](http://jekyllrb.com/) and hosted on
 [GitHub Pages](https://pages.github.com/).

@@ -1,8 +1,8 @@
 # DanielBrice.net
 
-The personal website of Daniel Brice.
+The personal website of Daniel Brice, PhD.
 
-Copyright © 2014-2017 Daniel Brice [CC BY 4.0][1]
+Copyright © 2014-2018 Daniel Brice [CC BY 4.0][1]
 
 ## Setup Development Environment
 
@@ -38,7 +38,7 @@ The Ruby world is active, packages are improved, APIs change, and projects break
     The file `Gemfile.lock` is a machine-readable file used by `bundle`.
     Don't mess with it, but track it as part of the project with `git`.
 
-    **Note:** If you run into an issue running `bundle install`on macOS, you might try `brew unlink xz && bundle install && brew link xz`, as per [this Stack Overflow question](http://stackoverflow.com/questions/39937394/).
+    **Note:** If you run into an issue running `bundle install`on macOS, you might try `brew unlink xz && bundle install && brew link xz`, as per [this][4] Stack Overflow question.
 
 Now you're all set up.
 
@@ -59,7 +59,7 @@ Instructions for keeping the development environment up to date.
     bundle update
     ```
 
-    **Note:** If you run into an issue running `bundle update`, you might try `brew unlink xz && bundle update && brew link xz`, as per [this Stack Overflow question](http://stackoverflow.com/questions/39937394/).
+    **Note:** If you run into an issue running `bundle update`, you might try `brew unlink xz && bundle update && brew link xz`, as per [this][4] Stack Overflow question.
 
 That's all there is to that.
 
@@ -99,3 +99,4 @@ Instructions for updating and demoing the project.
   [1]: http://creativecommons.org/licenses/by/4.0/
   [2]: http://http://bundler.io/
   [3]: http://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/
+  [4]: http://stackoverflow.com/questions/39937394/

@@ -284,7 +284,7 @@ I made extensive use of standard Haskell tools, such as [Hoogle](https://www.has
 
 Another crutch I lean heavily on is scratch paper and pencil (not pen). For every function here except for `getUser`, I had to break out the old-fashioned notepad and write some type signatures out. Here I am trying to figure out the implementation of `execute`.
 
-![Me, trying to figure out `execute`]({{ "/assets/img/exception-handling-with-explicit-io-1.jpg" | relative_url }})
+![Me, trying to figure out `execute`]({{ "/assets/img/exception-handling-with-explicit-io-1.jpg" | relative_url }}){: .center-image }
 
 Notice I write out what I _have_ and what I _want_. If you are a Haskell nomad, I highly recommend you develop your own paper/pencil crutch. Don't underestimate the insight you can gain from changing your vantage point this way. Specifically, paper and pencil helps me with equational reasoning (a kind of value-level reasoning) and type unification (a kind of type-level reasoning). I should probably write posts about those one of these days.
 
