@@ -1,0 +1,27 @@
+% DESCRIPTION:
+% KEYWORDS:
+\documentclass[border=0.5in]{standalone}
+
+\usepackage[all]{xy}
+
+\newcommand{\C}{\texttt}
+\newcommand{\sC}{\scriptsize\texttt}
+
+\begin{document}
+$$
+\xymatrix{
+    \C{ExceptT e IO e}
+      \ar[rrr]^{\sC{runExceptT}}
+      \ar[ddrrr]|-{\sC{(either id id <\$>) . runExceptT}}
+    & & & \C{IO (Either e e)}
+      \ar[dd]^{\sC{(either id id <\$>)}}
+    & & & \C{Either e e}
+      \ar[dd]^{\sC{either id id}}
+      \ar@{.>}[lll]^{\sC{IO}}
+    \\ & & & & & & \\
+    & & & \texttt{IO e}
+    & & & \texttt{e}
+      \ar@{.>}[lll]^{\sC{IO}}
+}
+$$
+\end{document}
