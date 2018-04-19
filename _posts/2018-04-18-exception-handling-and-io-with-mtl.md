@@ -578,6 +578,7 @@ Yet, the code now compiles (try `make test`), so what gives?
 Consider the following.
 The type annotation gives us a concrete object from a _particular_ abstraction (namely, from `handlePost1 req`).
 `handlePost2` claimed to be able to get a concrete object from _any_ abstraction we fed it.
+
 Here's another way of thinking about it.
 The type annotation is how we specify the implementation the compiled code should use.
 A working `handlePost2` would mean that a terrible person---our rival, say---picks the implementation of `m`, and then we'd be obligated to find some way to get an `ExceptT Response IO` out of it, no matter how nasty of an `m` they pick.
