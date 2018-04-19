@@ -618,7 +618,7 @@ All tests pass?
 
 The ease with which we can write `handlePost1` is why we were chasing after monad transformers all along.
 `handlePost1` in _Transformers.hs_ ends up being much more straight-forward then `handlePost` from _Eithers.hs_.
-In the end, we got to write a simple, idiomatic Haskell `do` block over a monad that combines the semantics of multiple simpler monads.
+At the end of the day, we get to write a simple, idiomatic Haskell `do` block over a monad that combines the semantics of multiple simpler monads.
 
 Before we close shop, let's refactor things a bit.
 We'll rename `handlePost1` to `handlePost'` and we'll merge `handlePost3` into `handlePost`.
@@ -642,7 +642,7 @@ handlePost = (either id id <$>) . runExceptT . handlePost'
 
 The party-line mantra I kept repeating throughout this post was that we needed a monad that combined the exit-early semantics of `Either e` with the procedural semantics of `IO`.
 What does it really mean for a monad to have "the exit-early semantics of `Either e`"?
-It means we can use `... <- ... ; ...` instead of `if ... then ... else ...`.
+It means we can use `do ... <- ... ; ...` instead of `if ... then ... else ...`.
 That's it.
 We're going through all this trouble just to avoid `if` expressions.
 
