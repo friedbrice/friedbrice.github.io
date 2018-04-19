@@ -164,6 +164,9 @@ Everything should work out-of-the-box if you have _GHC_ installed.
 
 To begin, `git checkout mtl-demo` and `make test`.
 
+**Edit:** If `make test` fails, you may need to `cabal install mtl`.
+If it still doesn't work, please let me know in an [email](mailto:danielbrice@gmail.com).
+
 The project implements the same program, a simple HTTP POST handler, three different ways, and you should see that the tests are passing for _Continuations_ and for _Eithers_ but are failing for _Transformers_.
 
 Here's what I see:
@@ -677,7 +680,7 @@ I've also showed you that working with encapsulated I/O is not as painful as it 
 Finally, I've tried to demonstrate how to cope with MTL and monad transformers, why you would want to, and why you might not want to.
 I hope this has been mildly entertaining and mostly instructional.
 
-If you're in Southern California and you'd like me to adapt this post into a presentation for your Haskell or Scala meetup, or if you'd like me to adapt it into a workshop for your business, please contact me at [danielbrice@gmail.com](mailto:danielbrice@gmail.com) or send me a DM on Twitter ([@fried_brice](http://twitter.com/fried_brice)).
+If you're in Southern California and you'd like me to adapt this post into a presentation for your Haskell or Scala meetup, or if you'd like me to adapt it into a workshop for your business, please email me ([danielbrice@gmail.com][me]) or send me a DM on Twitter ([@fried_brice](http://twitter.com/fried_brice)).
 
   [1]: /blog/three-models-of-exception-handling/
   [2]: /blog/exception-handling-with-explicit-io/
