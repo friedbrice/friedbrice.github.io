@@ -673,7 +673,7 @@ Maybe it's the right assumption for all of your use cases, or maybe you're just 
 It's a problem that deserves some thought when we choose our designs.
 
 Thank you for your attention throughout this series of posts, wherein I have tried to convince you not to throw exceptions [[Part 1][1]].
-I've also showed you that working with encapsulated I/O is not as painful as it might sound, and that Haskell has lots of nice tools that help you wrangle your types (e.g. `traverse`, `sequence` and friends) [[Part 2][2]].
+I've also showed you that working with encapsulated I/O is not as painful as it might sound, and that Haskell has lots of nice tools that help you wrangle your types (e.g. `traverse`, `sequence`, and friends) [[Part 2][2]].
 Finally, I've tried to demonstrate how to cope with MTL and monad transformers, why you would want to, and why you might not want to.
 I hope this has been mildly entertaining and mostly instructional.
 
