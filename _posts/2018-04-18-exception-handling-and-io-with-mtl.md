@@ -668,7 +668,7 @@ But ultimately, the ability to reuse code comes from making _fewer assumptions_ 
 This is exactly why we don't throw exceptions.
 Throwing an exception is a tacit assumption that the caller wants to handle errors by killing the program right then and there.
 Maybe it's a valid assumption, maybe it's not, but the assumption itself limits the places where our code can be reused.
-In the same way, choosing MTL-style or continuation-passing-style for your functions signatures is an assumption about how the caller wants to consumer your code.
+In the same way, choosing MTL-style or continuation-passing-style for your functions' signatures is an assumption about how the caller wants to consumer your code.
 Maybe it's the right assumption for all of your use cases, or maybe you're just introducing unnecessary constraints.
 It's a problem that deserves some thought when we choose our designs.
 
