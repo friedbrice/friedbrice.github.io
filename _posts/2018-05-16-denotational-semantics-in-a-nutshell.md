@@ -37,10 +37,10 @@ programs are _operationally equivalent_ when they produce the same
 result for all possible inputs, whether or not they have
 logically-equivalent source code.
 
-**Edit:** My descriptions of both operational semantics and logical
-semantics need a _lot_ of work! I'll fix them after I've done adequate
-reading, but in the mean time, see the discussion on Twitter
-[[4][4]].
+> **Edit:** My descriptions of both operational semantics and logical
+> semantics need a _lot_ of work! I'll fix them after I've done adequate
+> reading, but in the mean time, see the discussion on Twitter
+> [[4][4]].
 
 ## Denotational Semantics
 
@@ -216,23 +216,28 @@ reasonable model of a programming language.
 
 ## References
 
-  1. E. Moggi, Notions of computation and monads.
-  _Information and Computation_, July 1991.
-  [http://www.sciencedirect.com/science/article/pii/0890540191900524][1].
+  1.
+    E. Moggi, Notions of computation and monads.
+    _Information and Computation_, July 1991.
+    [http://www.sciencedirect.com/science/article/pii/0890540191900524][1].
 
   [1]: http://www.sciencedirect.com/science/article/pii/0890540191900524
 
-  2. S. Peyton Jones, P. Wadler, Imperative functional programming.
-  _ACM Symposium on Principles Of Programming Languages (POPL)_, Jan 1993.
-  [http://www.microsoft.com/en-us/research/wp-content/uploads/1993/01/imperative.pdf][2].
+  2.
+    S. Peyton Jones, P. Wadler, Imperative functional programming.
+    _ACM Symposium on Principles Of Programming Languages (POPL)_, Jan 1993.
+    [http://www.microsoft.com/en-us/research/wp-content/uploads/1993/01/imperative.pdf][2].
 
   [2]: http://www.microsoft.com/en-us/research/wp-content/uploads/1993/01/imperative.pdf
 
-  3. _[Haskell-cafe] A backhanded compliment and a dilemma_.
-  [http://mail.haskell.org/pipermail/haskell-cafe/2016-October/125281.html][3]
+  3.
+    _[Haskell-cafe] A backhanded compliment and a dilemma_.
+    [http://mail.haskell.org/pipermail/haskell-cafe/2016-October/125281.html][3]
 
   [3]: http://mail.haskell.org/pipermail/haskell-cafe/2016-October/125281.html
 
-  4. Twitter correspondence regarding this post. [https://twitter.com/porglezomp/status/997008486985814016][4]
+  4.
+    Twitter correspondence regarding this post.
+    [https://twitter.com/porglezomp/status/997008486985814016][4]
 
   [4]: https://twitter.com/porglezomp/status/997008486985814016
