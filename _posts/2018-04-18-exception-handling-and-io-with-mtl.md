@@ -621,7 +621,7 @@ What, no compiler errors?
 All tests pass?
 
 The ease with which we can write `handlePost1` is why we were chasing after monad transformers all along.
-`handlePost1` in _Transformers.hs_ ends up being much more straight-forward then `handlePost` from _Eithers.hs_.
+`handlePost1` in _Transformers.hs_ ends up being much more straight-forward than `handlePost` from _Eithers.hs_.
 At the end of the day, we get to write a simple, idiomatic Haskell `do` block over a monad that combines the semantics of multiple simpler monads.
 
 Before we close shop, let's refactor things a bit.

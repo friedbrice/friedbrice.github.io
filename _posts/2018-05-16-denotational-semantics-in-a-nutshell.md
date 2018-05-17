@@ -97,7 +97,7 @@ store time
 output
 {% endhighlight %}
 
-`input` get the first eight bytes of stdin and reads them as a 64-bit
+`input` gets the first eight bytes of stdin and reads them as a 64-bit
 unsigned int, ignoring any extra bytes. It is read at program start and
 is immutable thereafter. If at program start there are fewer than eight
 bytes in stdin, then the missing bytes are treated as 00000000.
