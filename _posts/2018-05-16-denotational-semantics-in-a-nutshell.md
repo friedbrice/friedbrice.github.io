@@ -163,22 +163,22 @@ data ProgramState = ProgramState {
   }
 
 store :: Word -> ProgramState -> ProgramState
-store n w = w { _store = _store w + n }
+store word state = state { _store = _store state + word }
 
 sleep :: Word -> ProgramState -> ProgramState
-sleep n w = w { _clock = _clock w + n }
+sleep word state = state { _clock = _clock state + word }
 
 input :: ProgramState -> Word
-input w = _input w
+input state = _input state
 
 time :: ProgramState -> Word
-time w = _clock w
+time state = _clock state
 
 output :: ProgramState -> ProgramState
-output w = w { _output = _output w ++ [_store w] }
+output state = state { _output = _output state ++ [_store state] }
 
 rmrf :: ProgramState -> ProgramState
-rmrf w = w { _burnIt = True }
+rmrf state = state { _burnIt = True }
 
 data Init = Init { _stdin :: ByteString, _millis :: Word }
 
