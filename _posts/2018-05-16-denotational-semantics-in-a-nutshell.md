@@ -105,11 +105,14 @@ bytes in stdin, then the missing bytes are treated as 00000000.
 `time` gets the current system time, in millis since epoch, each time it
 is used.
 
-`store n` mutates an eight-bit stored value by reading its value as a
+`store n` mutates an eight-byte stored value by reading its value as a
 64-bit unsigned int and then adding `n` to it (overflows are allowed and
-silent, no data consistency requirements here).
+silent, no data consistency requirements here). This is the language's
+only abstraction for memory: a single eight-byte chunk. At the start of
+any program, the store is initialized with zeros.
 
-`sleep n` causes the program to wait for `n` millis before continuing.
+`sleep n` causes the program to wait for `n` milliseconds before
+continuing.
 
 `output` prints the currently-stored eight bytes of stdout.
 
