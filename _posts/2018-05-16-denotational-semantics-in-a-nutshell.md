@@ -180,7 +180,7 @@ output state = state { _output = _output state ++ [_store state] }
 rmrf :: ProgramState -> ProgramState
 rmrf state = state { _burnIt = True }
 
-data Init = Init { _stdin :: ByteString, _millis :: Word }
+data Init = Init { _stdin :: ByteString, _start_time :: Word }
 
 type Program = Init -> ProgramState
 {% endhighlight %}
