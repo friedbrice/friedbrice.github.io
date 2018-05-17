@@ -37,6 +37,11 @@ programs are _operationally equivalent_ when they produce the same
 result for all possible inputs, whether or not they have
 logically-equivalent source code.
 
+**Edit:** My descriptions of both operational semantics and logical
+semantics need a _lot_ of work! I'll fix them after I've done adequate
+reading, but in the mean time, see the discussion on Twitter
+[[4][4]].
+
 ## Denotational Semantics
 
 Operational semantics ignores side effects, looking only at the inputs
@@ -227,3 +232,7 @@ reasonable model of a programming language.
   [http://mail.haskell.org/pipermail/haskell-cafe/2016-October/125281.html][3]
 
   [3]: http://mail.haskell.org/pipermail/haskell-cafe/2016-October/125281.html
+
+  4. Twitter correspondence regarding this post. [https://twitter.com/porglezomp/status/997008486985814016][4]
+
+  [4]: https://twitter.com/porglezomp/status/997008486985814016
