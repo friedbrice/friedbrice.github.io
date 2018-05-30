@@ -10,11 +10,14 @@ My research interests include [Lie algebras][] and [representation
 theory][], [linear algebra][] and [matrix][] theory, and related topics.
 Specifically, I've done work in derivations of Lie algebras and zero
 product determined algebras.
+This page gives a high-level overview of these topics.
+Please see my [curriculum vitae][] for details.
 
   [Lie algebras]: http://en.wikipedia.org/wiki/Lie_algebra
   [representation theory]: http://en.wikipedia.org/wiki/Representation_theory
   [linear algebra]: http://en.wikipedia.org/wiki/Linear_algebra
   [matrix]: http://en.wikipedia.org/wiki/Matrix_(mathematics)
+  [curriculum vitae]: /assets/downloads/brice-curriculum_vitae.pdf
 
 * [Derivations of Parabolic Lie Algebras](#derivations-of-parabolic-lie-algebras)
 * [Zero Product Determined Algebras](#zero-product-determined-algebras)
