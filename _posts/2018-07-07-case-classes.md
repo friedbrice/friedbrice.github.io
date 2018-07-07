@@ -9,7 +9,7 @@ redirect-from:
 comments: true
 tags:
   - scala
-  - type safety
+  - types
 ---
 
 This will be a small post where I share some techniques we found for
