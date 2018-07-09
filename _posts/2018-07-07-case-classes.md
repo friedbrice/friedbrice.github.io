@@ -128,9 +128,9 @@ object NonNegative {
 
 This is, as far as I know, the last leak in our abstraction (if you can
 think of another leak, please comment below). Using this light-weight
-pattern, we're able to push all of our error-handling to the edges of
+pattern, we're able to push all of our input validation to the edges of
 our app, allowing our business logic to concentrate on managing and
-operating on pre-validated data.
+operating on validated data.
 
 ## Selecting from Multiple Typeclass Instances
 
