@@ -198,7 +198,7 @@ The class casts in `Views` are safe because all creation is funneled
 through `Content.apply`, which secretly imbues the returned `Content`
 with both `FreeView` and `PremiumView` mix-ins. When we want to pass a
 `Content` value to a `Renderable` method, we first take the appropriate
-view, either `View#freeView` or `View#premiumView`.
+view, either `Views#freeView` or `Views#premiumView`.
 
 {% highlight scala %}
 def makeResponse[T: Renderable](body: T): HTTPResponse = ...
