@@ -220,7 +220,7 @@ straightforward functions, `renderFreeView(x: Content): HTML` and
 `renderPremiumView(x: Content): HTML`, and by simply calling them
 explicitly instead of relying on typeclasses and implicit resolution;
 however, a library we were using required us to provide these
-typeclasses instances as its entry point, creating our need to write
+typeclass instances, creating our need to write
 multiple instances for the same underlying case class. While typeclasses
 can be convenient and can reduce repetition, it's usually also
 worthwhile for library authors to expose non-overloaded versions of
