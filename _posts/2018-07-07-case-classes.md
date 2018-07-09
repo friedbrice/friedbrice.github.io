@@ -172,7 +172,7 @@ sealed case class Content private( freeField: String,
     )
 }
 
-object AllTheContent {
+object Content {
 
   sealed trait FreeView extends Content { this: Content => }
   sealed trait PremiumView extends Content { this: Content => }
