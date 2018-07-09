@@ -137,7 +137,7 @@ operating on validated data.
 A similar problem we had was supporting multiple typeclass instances for
 a single case class. Imagine a case class with hundreds of fields which
 represents two distinct domain objects, but is implemented as a single
-case class in order to avoid code duplication and accidental xdrift.
+case class in order to avoid code duplication and accidental drift.
 
 For simplicity, we'll consider a case class with just two fields, but
 imagine hundreds.
