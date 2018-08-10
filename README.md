@@ -31,7 +31,7 @@ The Ruby world is active, packages are improved, APIs change, and projects break
     From the project directory, install the project dependencies.
 
     ```
-    bundle install || bundle install --path ~/.gem
+    bundle install --path .gems
     ```
 
     The file `Gemfile` is a human-readable list of the packages required for your project.
