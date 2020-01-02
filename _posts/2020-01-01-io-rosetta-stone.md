@@ -67,7 +67,7 @@ So, what are the constructors, combinators, and eliminators of the `IO` type?
 data IO a
 {% endhighlight %}
 
-Like `Set`, `IO` is opaque. To find `IO`'s constructors, we need to remember that it's an instance of `Monad`. This gives us:
+Like `Set`, `IO` is opaque. To find `IO`'s constructors, we notice that `IO` is an instance of the `Monad` type class, which provides the `return` function:
 
 {% highlight haskell %}
 return :: a -> IO a
@@ -83,7 +83,7 @@ getLine  ::           IO String
 
 At first glance, these don't feel like constructors, but trust me for now.
 
-What about combinators? We get those from `Monad`, `Functor` and friends:
+We get combinators from the `Monad` and `Functor` type classes:
 
 {% highlight haskell %}
 fmap  :: (a -> b) ->        IO a -> IO b
