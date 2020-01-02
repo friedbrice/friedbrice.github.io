@@ -97,6 +97,6 @@ Instructions for updating and demoing the project.
     GitHub will build the site from source on their build servers and deploy the build artifacts to their GitHub Pages hosts.
 
   [1]: http://creativecommons.org/licenses/by/4.0/
-  [2]: http://http://bundler.io/
+  [2]: http://bundler.io/
   [3]: http://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/
   [4]: http://stackoverflow.com/questions/39937394/
