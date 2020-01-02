@@ -181,17 +181,17 @@ Combinators are instance methods.
 {% highlight java %}
   /** Combinators */
 
-  <B> IO<B> map(Function<A, B> f) {
+  public <B> IO<B> map(Function<A, B> f) {
     return new IO<B>( () ->
       f.apply(this.unsafeRunIO()) );
   }
 
-  <B> IO<B> bind(Function<A, IO<B>> f) {
+  public <B> IO<B> bind(Function<A, IO<B>> f) {
     return new IO<B>( () ->
       f.apply(this.unsafeRunIO()).unsafeRunIO() );
   }
 
-  <B> IO<B> and(IO<B> other) {
+  public <B> IO<B> and(IO<B> other) {
     return new IO<B>( () -> {
       this.unsafeRunIO();
       return other.unsafeRunIO();
@@ -204,7 +204,7 @@ A single eliminator, with an ominous name, rounds out the API.
 {% highlight java %}
   /** Eliminators */
 
-  A unsafeRunIO() {
+  public A unsafeRunIO() {
     return run.get();
   }
 }
