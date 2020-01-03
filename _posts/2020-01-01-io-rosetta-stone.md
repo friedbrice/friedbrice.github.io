@@ -111,6 +111,7 @@ This is why it's reasonable to call `putStrLn` and `getLine`  _constructors_: th
 I wrote this simple program in order to have something to port over to the other languages. It uses the `IO` constructors, combinators, and eliminator we've listed above (though `(>>=)` and `(>>)` are used implicitly in `do` notation), so we'll have to port those to the other languages as well.
 
 {% highlight haskell %}
+-- App.hs
 appLogic :: String -> String -> String
 appLogic x y = "Result: " <> show (read x + read y)
 
@@ -145,6 +146,7 @@ In each language, I port the `IO` type and its API in one module and I port the 
 First, the `IO` library.
 
 {% highlight java %}
+// IO.java
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -154,11 +156,14 @@ public final class IO<A> {
   private IO(Supplier<A> run) {
     this.run = run;
   }
+// ...
 {% endhighlight %}
 
 Like in Haskell, Java's `IO` is an opaque type. We accomplish this by making the class constructor and sole instance field private. We provide a few static factory methods as part of the public API.
 
 {% highlight java %}
+// ...
+
   /** Constructors */
 
   public static IO<String> getLine = new IO<String>( () ->
@@ -174,11 +179,14 @@ Like in Haskell, Java's `IO` is an opaque type. We accomplish this by making the
   public static <A> IO<A> _return(A x) {
     return new IO<A>( () -> x );
   }
+// ...
 {% endhighlight %}
 
 Combinators are instance methods.
 
 {% highlight java %}
+// ...
+
   /** Combinators */
 
   public <B> IO<B> map(Function<A, B> f) {
@@ -197,11 +205,14 @@ Combinators are instance methods.
       return other.unsafeRunIO();
     });
   }
+// ...
 {% endhighlight %}
 
 A single eliminator, with an ominous name, rounds out the API.
 
 {% highlight java %}
+// ...
+
   /** Eliminators */
 
   public A unsafeRunIO() {
@@ -213,27 +224,32 @@ A single eliminator, with an ominous name, rounds out the API.
 Now, the app. Unlike the library, the app is not very pretty, but it does demonstrate a few key points.
 
 {% highlight java %}
+// App.java
 import java.util.function.Function;
 import java.util.Optional;
 
 public final class App {
 
+// ...
 {% endhighlight %}
 
 We're able to maintain a clean separation between core logic and the tedium of talking to the outside.
 
 {% highlight java %}
+// ...
 
   private static String appLogic(String x, String y) {
     return "Result: " + Integer.toString(
       Integer.parseInt(x) + Integer.parseInt(y));
   }
-
+// ...
 {% endhighlight %}
 
 The `IO` type is extensible, in the sense that we may define our own custom `IO` operations. We're not limited to those found in the `IO` library.
 
 {% highlight java %}
+// ...
+
   private static IO<Void> printMaybe(Optional<String> x) {
     return x.map(IO::putStrLn).orElse(IO._return(null));
   }
@@ -245,12 +261,14 @@ The `IO` type is extensible, in the sense that we may define our own custom `IO`
         printMaybe(confirm.apply(l))
           .and(IO._return(l)));
   }
-
+// ...
 {% endhighlight %}
 
 We maintain referential transparency by waiting until `main` to use `unsafeRunIO`. The result is that `app` is a first-class value. We are free to reuse it anywhere, or inline it, or otherwise refactor as we see fit.
 
 {% highlight java %}
+// ...
+
   public static IO<Void> app =
     prompt( Optional.of("Please input two numbers."),
             l -> Optional.of("Got first input: " + l) ).bind( x ->
@@ -269,6 +287,7 @@ We maintain referential transparency by waiting until `main` to use `unsafeRunIO
 The `IO` library in Javascript is delightfully small.
 
 {% highlight javascript %}
+// IO.js
 const IO = (function() {
   'use strict';
 
@@ -305,6 +324,7 @@ The outer `IO` refers to the name of the module. The inner `IO` refers to the na
 We need an HTML file to run our Javascript app in the browser. It's in this file that we call `unsafeRunIO`.
 
 {% highlight html %}
+<!-- App.html -->
 <html>
   <head>
     <script type="text/javascript" src="./IO.js"></script>
@@ -321,6 +341,7 @@ We need an HTML file to run our Javascript app in the browser. It's in this file
 Finally, our Javascript port of our app.
 
 {% highlight javascript %}
+// App.js
 const App = (function() {
   'use strict';
 
@@ -352,6 +373,7 @@ const App = (function() {
 Python is a delightful language that seems to revel in side effects (mostly in the form of assignment statements). Let's see if we can encapsulate `IO` here.
 
 {% highlight python %}
+# IO.py
 class IO:
 
   def __init__(self, run):
@@ -386,6 +408,7 @@ Hopefully, the `IO` library looks second-nature by now. Remember, the object of 
 The only tricky part in Python is that lambdas can't span multiple lines. It's easy enough to get around this by defining and using a named function, though.
 
 {% highlight python %}
+# App.py
 import IO
 
 def appLogic(x, y):
@@ -414,6 +437,7 @@ if __name__ == "__main__":
 The Scala `IO` library is even shorter than the Javascript one. We make the `IO` type opaque by marking it as sealed and by making the companion `apply` method private.
 
 {% highlight scala %}
+// IO.scala
 sealed trait IO[A] {
 
   def unsafeRunIO: A
@@ -447,6 +471,7 @@ Since Scala supports call-by-name arguments, we have a very convenient syntax `I
 In Scala we benefit from having `for` comprehensions, so our port follows the original Haskell much more closely (thought the port is not quite as pretty as the original).
 
 {% highlight scala %}
+// App.scala
 object App {
 
   def appLogic(x: String, y: String): String =
