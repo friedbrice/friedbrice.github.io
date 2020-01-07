@@ -108,7 +108,7 @@ This is why it's reasonable to call `putStrLn` and `getLine`  _constructors_: th
 
 ## A Simple Program
 
-I wrote this simple program in order to have something to port over to the other languages. It uses the `IO` constructors, combinators, and eliminator we've listed above (though `(>>=)` and `(>>)` are used implicitly in `do` notation), so we'll have to port those to the other languages as well.
+I wrote this simple program in order to have something to port over to the other languages. It uses the `IO` constructors, combinators, and eliminator we've listed above (`(>>=)` and `(>>)` are used implicitly in `do` notation), so we'll have to port those to the other languages as well.
 
 {% highlight haskell %}
 -- App.hs
@@ -468,7 +468,7 @@ object IO {
 
 Since Scala supports call-by-name arguments, we have a very convenient syntax `IO(...)` for "promoting" side-effectful code blocks into first-class actions.
 
-In Scala we benefit from having `for` comprehensions, so our port follows the original Haskell much more closely (thought the port is not quite as pretty as the original).
+In Scala we benefit from having `for` comprehensions, so our port follows the original Haskell much more closely (though the port is not quite as pretty as the original).
 
 {% highlight scala %}
 // App.scala
