@@ -6,7 +6,7 @@ date: 2020-01-01
 topnav: true
 ---
 
-I'm a software engineer and mathematician. Formerly, I wrote Haskell and Purescript at [Lumi][1], a supply-chain-as-a-service company based in Los Angeles, CA. Before that, I used Scala for machine learning and GraphQL API servers at [CJ Affiliate][cj], an online marketing company based in Santa Barbara, CA. I'm also a part-time Mathematics Lecturer at [Cal State Channel Islands][ci], where I teach _Business Calculus_ and _Strategies and Game Design_.
+I'm a software engineer and mathematician. Formerly, I wrote Haskell and Purescript at [Lumi][1], a supply-chain-as-a-service company based in Los Angeles, CA. Before that, I used Scala for machine learning and GraphQL API servers at [CJ Affiliate][cj], an online marketing company based in Santa Barbara, CA. I'm also a part-time Mathematics Lecturer at [Cal State Channel Islands][ci], where I teach _Business Calculus_ and _Strategies and Game Design_. You can read all about this on my [curriculum vitae][cv].
 
 I finished my PhD in Mathematics (specifically, [Algebra][2] and [Lie Theory][3]) at [Auburn University][4] under Huajun Huang in June 2014. I still find time to do [research][rp] on occasion.
 
@@ -26,3 +26,4 @@ My hobbies include tabletop and video games, Linux, coding, urban design and tra
   [rp]: {{site.baseurl }}/research/
   [cj]: https://engineering.cj.com/
   [ci]: https://math.csuci.edu/
+  [cv]: /assets/downloads/brice-curriculum_vitae.pdf
