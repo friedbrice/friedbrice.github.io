@@ -19,9 +19,7 @@ The Ruby world is active, packages are improved, APIs change, and projects break
     Ubuntu should come preloaded with `ruby` and `gem`. If not, just install them via `apt-get`.
     Once they're installed, you can install `bundle` through `gem`, but I prefer to install it through `apt-get`.
 
-    macOS comes preloaded with `ruby` and `gem`.
-    Note that as of August 2016, there is no Homebrew formula for `bundle`: You must install `bundle` through `gem`, unfortunately.
-    If it asks for elevated privilages, use `gem install bundler --user-install` and add `~/.gem/ruby/<VERSION>/bin` to your path.
+    macOS comes preloaded with `ruby` and `gem`, but you'd rather use the up-to-date one available through Homebrew. The Homebrew formula _ruby_ will include `ruby`, `gem`, and `bundle`, but make sure you add _/usr/local/opt/ruby/bin_ to your path, as instructed.
 
     I should mention that you need Ruby version 2 or higher.
     To learn more, see the [Bundler project page][2] or the [GitHub Pages help page][3].
@@ -31,12 +29,14 @@ The Ruby world is active, packages are improved, APIs change, and projects break
     From the project directory, install the project dependencies.
 
     ```
-    bundle install --path .gems
+    bundle config set path '.gems'
+    bundle install
     ```
 
     The file `Gemfile` is a human-readable list of the packages required for your project.
     The file `Gemfile.lock` is a machine-readable file used by `bundle`.
     Don't mess with it, but track it as part of the project with `git`.
+    (I don't track it. In fact, I list it in my excludes file.)
 
     **Note:** If you run into an issue running `bundle install`on macOS, you might try `brew unlink xz && bundle install && brew link xz`, as per [this][4] Stack Overflow question.
 
