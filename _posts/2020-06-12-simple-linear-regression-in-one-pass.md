@@ -314,7 +314,7 @@ simpleLinearRegression points =
 
 ## Analysis
 
-Using the ideas above, I wrote three implementations of simple linear regression and compared their performance on a sample data set. I compiled each implementation to a standalone Unix binary using GHC 8.8.3 and the `-O2` optimization flag.
+Using the ideas above, I wrote three implementations of simple linear regression and compared their performance on a sample data set. I compiled each implementation to a standalone Macos binary using GHC 8.8.3 and the `-O2` optimization flag.
 
 The data set (provided by [Kaggle](https://www.kaggle.com/sohier/calcofi)) features ocean temperatures vs. salinity and consists of 864,862 data points, which I then quadrupled to 3,459,448 data points using Unix `cat`. I ran each implementation four times, using Unix `time` to record how long each run took.
 
