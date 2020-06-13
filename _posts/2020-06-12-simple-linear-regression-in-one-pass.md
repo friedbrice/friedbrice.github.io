@@ -566,3 +566,71 @@ sys 0m0.147s
 I was caught off-guard by the test results. I thought it'd go without saying that the one-pass version would trounce the naive version. Instead, the opposite was true. The naive version did better than the polymorphic one-pass version, and I found myself having to really reach to beat the naive implementation in the one-pass unboxed version. It'd be interesting to compare the Core GHC produces for these three implementations to see how many list passes the naive version really ends up doing.
 
 I think this blog post is less a story about how awesome monoids are (They are.) and more a story about how awesome GHC is (It is.). To me, it's amazing that GHC can take the straightforward (and, frankly, kinda sloppy) naive implementation and compile it down to efficient code. To me, this reinforces a general theme in Haskell: do the obvious, simple thing first.
+
+## Appendix
+
+In trying to find out why the six-pass naive version did so well compared to the first one-pass version, I went ahead and implemented the six-pass naive version in python.
+
+{% highlight python %}
+import sys
+
+def main():
+    print(simpleLinearRegression(read(sys.stdin)))
+
+def read(input):
+    points = []
+    for line in input:
+        try:
+            [x, y] = line.split(",")
+            points.append( (float(x), float(y)) )
+        except:
+            pass
+    return points
+
+def simpleLinearRegression(points):
+    avg_x = sum([x for (x, _) in points]) / len(points)
+    avg_y = sum([y for (_, y) in points]) / len(points)
+
+    xys = sum([(x - avg_x) * (y - avg_y) for (x, y) in points])
+    xxs = sum([(x - avg_x) * (x - avg_x) for (x, _) in points])
+
+    slope = xys / xxs
+    intercept = avg_y - slope * avg_x
+
+    print(len(points))
+
+    return (slope, intercept)
+
+if __name__ == "__main__":
+    main()
+{% endhighlight %}
+
+The six-pass python version runs in about 3 seconds.
+
+{% highlight console %}
+$ time python naive.py < 2190_3685_bundle_archive/quad.csv
+(-0.05520773058533541, 34.4409093436518)
+real    0m3.384s
+user    0m3.156s
+sys 0m0.224s
+
+$ time python naive.py < 2190_3685_bundle_archive/quad.csv
+(-0.05520773058533541, 34.4409093436518)
+real    0m3.375s
+user    0m3.159s
+sys 0m0.211s
+
+$ time python naive.py < 2190_3685_bundle_archive/quad.csv
+(-0.05520773058533541, 34.4409093436518)
+real    0m3.395s
+user    0m3.166s
+sys 0m0.222s
+
+$ time python naive.py < 2190_3685_bundle_archive/quad.csv
+(-0.05520773058533541, 34.4409093436518)
+real    0m3.352s
+user    0m3.134s
+sys 0m0.209s
+{% endhighlight %}
+
+So my new question is, why the hell is my Haskell so slow? What am I doing wrong here. Will update when I find out.
