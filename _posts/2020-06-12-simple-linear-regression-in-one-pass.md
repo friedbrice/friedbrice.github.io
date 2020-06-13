@@ -567,6 +567,7 @@ I was caught off-guard by the test results. I thought it'd go without saying tha
 
 I think this blog post is less a story about how awesome monoids are (They are.) and more a story about how awesome GHC is (It is.). To me, it's amazing that GHC can take the straightforward (and, frankly, kinda sloppy) naive implementation and compile it down to efficient code. To me, this reinforces a general theme in Haskell: do the obvious, simple thing first.
 
+
 ## Appendix
 
 In trying to find out why the six-pass naive version did so well compared to the first one-pass version, I went ahead and implemented the six-pass naive version in python.
@@ -634,3 +635,12 @@ sys 0m0.209s
 {% endhighlight %}
 
 So my new question is, why the hell is my Haskell so slow? What am I doing wrong here. Will update when I find out.
+
+
+## Appendix B
+
+Profiling immediately pointed to `readM` as the culprit, taking 78% of the time. After a quick search for "Haskell is read slow?", I found [this SO question](https://stackoverflow.com/questions/29186541/why-is-this-haskell-program-so-much-slower-than-an-equivalent-python-one). The answer suggested refactoring to use _bytestring_ instead, and that cut a big chunk of time out.
+
+Refactored to use _bytestring_, the naive implementation takes just over 4 seconds, the polymorphic one-pass version takes just over 7 seconds, and the strict unboxed one-pass version takes just under 4 seconds, still slower than the naive Python implementation, which takes just under 3.5 seconds.
+
+I think the data set I'm using (about 3.5 million list elements, about 42 megabytes) is just too small to make multiple passes a problem; however, on a significantly larger dataset, such as one that could not fit in memory, a one-pass implementation would OOM building up the closure needed to compute `xys` and `xxs`, so I'm not sure what to do in that situation. If you have an idea leave a comment, or reply on [Twitter](https://twitter.com/fried_brice/status/1271482515031638016?s=20).
