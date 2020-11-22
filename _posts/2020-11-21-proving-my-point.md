@@ -17,7 +17,7 @@ A coworker of mine has been kind enough to spend his scant spare time guiding a 
 
 <!--break-->
 
-[^1]: I know I owe you a retro on the [linear regression post](/blog/simple-linear-regression-in-one-pass/), including a clever observations made by a user on [Twitter.com]() and a constant-space solution. (My solution uses memory proportional to the size of the input---yuck!) I haven't forgotten.
+[^1]: I know I owe you a retro on the [linear regression post](/blog/simple-linear-regression-in-one-pass/), including a clever observations made by a user on Twitter.com and a constant-space solution. (My solution uses memory proportional to the size of the input---yuck!) I haven't forgotten.
 
 
 ## Executing Programs on Paper
