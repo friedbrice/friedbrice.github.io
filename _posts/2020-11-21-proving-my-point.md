@@ -108,7 +108,7 @@ If we have some type `list` in mind and we want to know its sum, all we have to 
 
 The implementation `sum _ = Proxy` works because the compiler doesn't need to inspect the argument (it has no data anyway) as it already knows the type of the argument, and from that it can infer the type of the result `Proxy` value.
 
-Moving on, we still have to create instances of class `Sum`. To see this viscerally, let's try to get the compiler to infer the type of `sum (Proxy :: Cons 1 (Cons 2 (Cons 3 Nil)))`.
+Moving on, we still have to create instances of class `Sum`. To see this viscerally, let's try to get the compiler to infer the type of `sum (Proxy :: Proxy (Cons 1 (Cons 2 (Cons 3 Nil))))`.
 
 {% highlight haskell %}
 {-# LANGUAGE PolyKinds #-} -- gives us, among other things, type-level numbers
