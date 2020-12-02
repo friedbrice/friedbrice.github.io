@@ -94,13 +94,13 @@ fmap  :: (a -> b) ->        IO a -> IO b
 
 These functions take one or more `IO`s in their input and produce an `IO` in their output, so they're perfectly reasonable combinators.
 
-One thing you might notice, though, is a curious lack of eliminators. In fact, Haskell has a designated way of eliminating `IO`: naming your function `main`.
+One thing you might notice, though, is a curious lack of eliminators. In fact, Haskell has a single designated way of eliminating an `IO` value: naming it `main`.
 
 {% highlight haskell %}
 main :: IO ()
 {% endhighlight %}
 
-Naming your function `main` and running your program is how you eliminate the `IO` type and get access to the useful information inside.
+Naming your `IO` value `main` and running your program is how you eliminate the `IO` type and get access to the useful information inside.
 
 The crucial thing about Haskell's `IO` type is that it's _referentially transparent_, which means that a value of type `IO a` doesn't perform any action, it only describes an action. `putStrLn "Hello!"` doesn't print to the screen: it describes printing to the screen. `getLine` doesn't get a line of input, it describes the action of getting a line of input. You could call this the _Command Pattern_ if that helps (but don't dwell on it if it doesn't).
 
