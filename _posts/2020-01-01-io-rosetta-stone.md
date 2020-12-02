@@ -104,7 +104,7 @@ Naming your `IO` value `main` and running your program is how you eliminate the 
 
 The crucial thing about Haskell's `IO` type is that it's _referentially transparent_, which means that a value of type `IO a` doesn't perform any action, it only describes an action. `putStrLn "Hello!"` doesn't print to the screen: it describes printing to the screen. `getLine` doesn't get a line of input, it describes the action of getting a line of input. You could call this the _Command Pattern_ if that helps (but don't dwell on it if it doesn't).
 
-This is why it's reasonable to call `putStrLn` and `getLine`  _constructors_: they allow you to construct `IO` values that describe some actions, and then you can further modify those action using the combinators `fmap` and bind (`(>>=)`). As you write your program, you are describing the actions that should take place, and the only action that does take place is the one you named `main`.
+This is why it's reasonable to call `putStrLn` and `getLine`  _constructors_: they allow you to construct `IO` values that describe some actions, and then you can further modify those action using the combinators `fmap` and bind (`(>>=)`). As you write your program, you are describing the actions that should take place, and the only action that ultimately does take place is the one you named `main`.
 
 ## A Simple Program
 
