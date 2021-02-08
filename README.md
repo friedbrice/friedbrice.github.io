@@ -2,7 +2,7 @@
 
 The personal website of Daniel Brice, PhD.
 
-Copyright © 2014-2020 Daniel Brice [CC BY 4.0][1]
+Copyright © 2014-2021 Daniel Brice [CC BY 4.0][1]
 
 ## Setup Development Environment
 
@@ -29,7 +29,7 @@ The Ruby world is active, packages are improved, APIs change, and projects break
     From the project directory, install the project dependencies.
 
     ```
-    bundle config set path '.gems'
+    bundle config set --local path '.gems'
     bundle install
     ```
 
