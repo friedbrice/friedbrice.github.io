@@ -72,7 +72,7 @@ But I was bored. And I wanted to be extra, super-duper sure of the veracity of t
 To this very end, I wrote a little program in Haskell. And as we know about Haskell, _if it compiles, it works._
 
 {% highlight haskell %}
-module Chapter 1 where
+module Chapter1 where
 
 import Prelude hiding (sum)
 
