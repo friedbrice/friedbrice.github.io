@@ -36,9 +36,9 @@ satisfying
 for all \\( x, y \in L \\).
 
 I proved that the derivations of a parabolic Lie algebra (a Lie
-algebra that is realized as parabolic subalgebras of some reductive
+algebra that is realized as a parabolic subalgebras of some reductive
 Lie algebra) are the sums of inner derivations and linear maps into
-the center that kill the derived algebras.
+the center that kill the derived algebra.
 
 Explicitly, given a parabolic Lie algebra \\( L \\), the derivations
 algebra \\( \mathrm{Der} (L) \\) decomposes as the direct sum of ideals
@@ -53,7 +53,7 @@ where
   \mathcal L = \left\\{ f: L \to L ; f(L) \subseteq Z(L), f([L,L]) = 0 \right\\}.
 \\]
 
-These results will appear in the _Journal of Lie Theory_ in 2017
+These results appeared in the _Journal of Lie Theory_ in 2017
 ([article](#brice2017derivations.pdf)).
 
 ## Zero Product Determined Algebras
