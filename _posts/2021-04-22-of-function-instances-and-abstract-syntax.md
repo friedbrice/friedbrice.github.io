@@ -320,7 +320,7 @@ My claim is that the ring `Polynomial x` is indistinguishable (from the
 point of view or ring theory) from the ring `PExpr x`. To convince you
 of this, I need to define a function from `Polynomial x` to `PExpr x`
 that (1) is invertible and that (2) distributes over the ring
-operations. These two facts together would mean that any ring- theoretic
+operations. These two facts together would mean that any ring-theoretic
 statement of fact you could make about `PExpr x` would have a
 corresponding statement of fact about `Polynomial x`, and vice versa.
 
