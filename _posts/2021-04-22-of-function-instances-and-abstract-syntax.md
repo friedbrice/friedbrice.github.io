@@ -134,7 +134,7 @@ n_1 x_{1,1} x_{1,2} ... x_{1,k_1}
   + n_m x_{m,1} x_{m,2} ... x_{m,k_m}
 $$
 
-where the \\(n_i\\) are integers, the \\(k_i\\) and \\(m\\) are positive integers,
+where the \\(n_i\\) are integers, the \\(k_i\\) and \\(m\\) are non-negative integers,
 and the \\(x_{i,j}\\) are elements of \\(X\\).
 
 <aside>
