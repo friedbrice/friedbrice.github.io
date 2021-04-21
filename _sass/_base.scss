@@ -1,6 +1,7 @@
 /**
  * Reset some basic elements
  */
+aside,
 body, h1, h2, h3, h4, h5, h6,
 p, blockquote, pre, hr,
 dl, dd, ol, ul, figure {
@@ -28,6 +29,7 @@ body {
 /**
  * Set `margin-bottom` to maintain vertical rhythm
  */
+aside,
 h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl, figure,
@@ -114,6 +116,20 @@ blockquote {
     font-size: 18px;
     letter-spacing: -1px;
     font-style: italic;
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+/**
+ * Asides
+ */
+aside {
+    color: #667;
+    border-left: 4px solid #dde;
+    background-color: #eef;
+    padding-left: $spacing-unit / 2;
 
     > :last-child {
         margin-bottom: 0;
