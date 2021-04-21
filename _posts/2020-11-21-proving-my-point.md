@@ -72,7 +72,7 @@ But I was bored. And I wanted to be extra, super-duper sure of the veracity of t
 To this very end, I wrote a little program in Haskell. And as we know about Haskell, _if it compiles, it works._
 
 {% highlight haskell %}
-module Chapter 1 where
+module Chapter1 where
 
 import Prelude hiding (sum)
 
@@ -80,7 +80,7 @@ data Nil
 data Cons x xs
 {% endhighlight %}
 
-We're going to prove Problem 1, but for type-level lists, using classes as predicates on types. Our type-level list is implemented using `Cons` "cells" terminating with a `Nil`. For example, the type level list consisting of `Int`, `Double`, and `String` (in that order) is quite simply `Cons Int (Cons Double (Cons String Nill))`. This type has no inhabitants, but that's fine---we won't be needing any.
+We're going to prove Problem 1, but for type-level lists, using classes as predicates on types. Our type-level list is implemented using `Cons` "cells" terminating with a `Nil`. For example, the type level list consisting of `Int`, `Double`, and `String` (in that order) is quite simply `Cons Int (Cons Double (Cons String Nil))`. This type has no inhabitants, but that's fine---we won't be needing any.
 
 {% highlight haskell %}
 {-# LANGUAGE FunctionalDependencies #-}
