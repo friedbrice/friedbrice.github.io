@@ -17,7 +17,7 @@ tags:
 Some Haskell classes `class Myclass a` admit an instance for functions
 `instance Myclass a => Myclass (x -> a)` based on the instance for `a`.
 All of these instances have a few things in common: (1) they implement
-the method in a straightforward way as `mymethod f = \x -> mymethod (f x)`,
+the class methods in a straightforward way as `mymethod f = \x -> mymethod (f x)`,
 and (2) they are polarizing among Haskell practitioners. The sequel is a
 case study of why I find such instances compelling and useful.
 
