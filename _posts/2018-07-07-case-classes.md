@@ -126,7 +126,7 @@ object NonNegative {
 }
 {% endhighlight %}
 
-This is, as far as I know, the last leak in our abstraction (if you can
+This is, as far as I know, the last leak in our encapsulation (if you can
 think of another leak, please comment below). Using this light-weight
 pattern, we're able to push all of our input validation to the edges of
 our app, allowing our business logic to concentrate on managing and
