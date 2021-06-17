@@ -32,7 +32,7 @@ This post illustrates three different models of error handling:
 
 The terms _error_, _failure_, and (lower-case) _exception_ will be used interchangeably throughout this post. (While a distinction can be useful, we will not need one here.) Capital _Exception_ will refer properly to language-specific notions, such as Java's dedicated `Exception` class, where needed.
 
-The code examples are in Scala, but the patterns should translate to most other languages that have first-order functions and generic type parameters. If your favorite language does not support Java-style exception handling---with a dedicated `Exception` class and specialized keywords like `throw` and `catch`---we'll see how to implement exception handling as user-defined types and functions in a type-safe way.
+The code examples are in Scala, but the patterns should translate to most other languages that have first-class functions and generic type parameters. If your favorite language does not support Java-style exception handling---with a dedicated `Exception` class and specialized keywords like `throw` and `catch`---we'll see how to implement exception handling as user-defined types and functions in a type-safe way.
 
 You can find the summary [refactor template](https://gist.github.com/friedbrice/066c81db89a29826219321efd522febd) and working [code examples](https://gist.github.com/friedbrice/b08d5e5660a824e3f912d4570cdf7f8c) accompanying this post on Gist. Test.scala can be run in an IDE or in the Scala REPL.
 
