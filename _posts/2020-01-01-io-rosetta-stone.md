@@ -27,7 +27,7 @@ My favorite way of understanding a type is by looking at its constructors, combi
 data Set a
 {% endhighlight %}
 
-We call `Set` an _opaque_ type because its authors chose to hide its data constructors. Instead of letting us muck around with the internals, they give us some functions that we can use to create sets.
+We call `Set` an _opaque_ type because its authors chose to hide its implementation. Instead of letting us muck around with the internals, they give us some functions that we can use to create sets.
 
 {% highlight haskell %}
 empty     ::                 Set a
