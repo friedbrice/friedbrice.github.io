@@ -10,7 +10,7 @@ I'm a software engineer and mathematician. I work at [Mercury Bank][mb] in San F
 
 I finished my PhD in Mathematics (specifically, [Algebra][2] and [Lie Theory][3]) at [Auburn University][4] under Huajun Huang in June 2014. I still dream about finding time to do [research][rp], on occasion.
 
-I grew up in [Rialto, California][5] and did my undergrad at [Cal State Channel Islands][ci] in [Camarillo][7]. I currently split my time between the breathtakingly-beautiful city of [San Buenaventura][8] and the incomperably-exhilarating city of San Francisco.
+I grew up in [Rialto, California][5] and did my undergrad at [Cal State Channel Islands][ci] in [Camarillo][7]. I currently split my time between the breathtakingly-beautiful city of [San Buenaventura][8] and the incomparably-exhilarating city of San Francisco.
 
 I spend a lot of my free time Swing dancing ([Lindy Hop][lindy], specifically). When I'm in So Cal, I'm a regular at Ventura's _Juke Joint_ and at Pasadena's _LindyGroove_ and _PBDA Swing Out Saturday_ dances. In the Bay, you'll find me dancing at _Lindy in the Park_ and _Lindy by the Lake,_ as well as at Club Deluxe, Decodance, and Local Edition. When I'm able, I'll also try to make it to Monday's dance at the Madonna Inn in San Luis Obispo and to Tuesday's and Friday's dances at Irvine's Atomic Ballroom.
 
