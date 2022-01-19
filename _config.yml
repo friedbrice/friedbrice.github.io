@@ -16,4 +16,3 @@ markdown: 'kramdown'
 exclude: [ 'README.md', 'Gemfile', 'Gemfile.lock' ]
 plugins: [ 'jekyll-redirect-from' ]
 whitelist: [ 'jekyll-redirect-from' ]
-# debug: 'true' # comment this out before production

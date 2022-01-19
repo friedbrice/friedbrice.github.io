@@ -95,11 +95,11 @@ a {
     text-decoration: none;
 
     &:visited {
-        color: darken($brand-color, 15%);
+        color: darken($brand-color, 10%);
     }
 
     &:hover {
-        color: $text-color;
+        color: $brand-color;
         text-decoration: underline;
     }
 }
@@ -127,8 +127,8 @@ blockquote {
  */
 aside {
     color: #667;
-    border-left: 4px solid #dde;
-    background-color: #eef;
+    border-left: 4px solid $grey-color;
+    background-color: $grey-color-light;
     padding-left: $spacing-unit / 2;
 
     > :last-child {
@@ -144,9 +144,9 @@ aside {
 pre,
 code {
     font-size: 15px;
-    border: 1px solid $grey-color-light;
+    border: 1px solid $grey-color;
     border-radius: 3px;
-    background-color: #eef;
+    background-color: $grey-color-light;
 }
 
 code {

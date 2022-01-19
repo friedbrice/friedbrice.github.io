@@ -3,11 +3,29 @@
  */
 .site-header {
     border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
+    border-bottom: 1px solid $grey-color-dark;
     min-height: 56px;
 
     // Positioning context for the mobile navigation icon
-    position: relative;
+    position: fixed;
+    width: 100%;
+}
+
+.site-header-background {
+  background-image: url("/assets/img/letter-2.png");
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.33;
+}
+
+.site-header .wrapper {
+  position: relative;
+  color: $brand-color;
+  font-weight: 600;
 }
 
 .site-title {
@@ -19,7 +37,7 @@
 
     &,
     &:visited {
-        color: $grey-color-dark;
+        // color: $grey-color-dark;
     }
 }
 
@@ -32,7 +50,7 @@
     }
 
     .page-link {
-        color: $text-color;
+        // color: $text-color;
         line-height: $base-line-height;
 
         // Gaps between nav items, but not on the first one
@@ -163,6 +181,10 @@
  */
 .page-content {
     padding: $spacing-unit 0;
+}
+
+.page-content .wrapper {
+    margin-top: 56px;
 }
 
 .page-heading {

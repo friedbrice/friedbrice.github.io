@@ -2,7 +2,7 @@
 
 The personal website of Daniel Brice, PhD.
 
-Copyright © 2014-2021 Daniel Brice [CC BY 4.0][1]
+Copyright © 2014-2022 Daniel Brice [CC BY 4.0][1]
 
 ## Setup Development Environment
 
