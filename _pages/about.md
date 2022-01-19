@@ -6,13 +6,13 @@ date: 2020-01-01
 topnav: true
 ---
 
-I'm a software engineer and mathematician. I work at [Mercury Bank][mb] writing Haskell and Typescript. Formerly, I wrote Haskell and Purescript at [Lumi][1], a supply-chain-as-a-service company based in Los Angeles, CA. Before that, I used Scala for machine learning and GraphQL API servers at [CJ Affiliate][cj], an online marketing company based in Santa Barbara, CA. I'm also a part-time Computer Science and Mathematics Lecturer at [Cal State Channel Islands][ci], where I teach _Business Calculus_, _Strategies and Game Design_, _History of Math_, and _Introduction to Algorithms_. You can read all about this on my [curriculum vitae][cv].
+I'm a software engineer and mathematician. I work at [Mercury Bank][mb] in San Francisco writing Haskell and Typescript. Formerly, I wrote Haskell and Purescript at [Lumi][1], a supply-chain-as-a-service company based in Los Angeles. Before that, I used Scala for machine learning and GraphQL API servers at [CJ Affiliate][cj], an online marketing company in Santa Barbara. I'm also a part-time Computer Science and Mathematics Lecturer at [Cal State Channel Islands][ci], where I teach _Business Calculus_, _Strategies and Game Design_, _History of Math_, and _Introduction to Algorithms_. You can read all about this on my [curriculum vitae][cv].
 
 I finished my PhD in Mathematics (specifically, [Algebra][2] and [Lie Theory][3]) at [Auburn University][4] under Huajun Huang in June 2014. I still dream about finding time to do [research][rp], on occasion.
 
-I grew up in [Rialto, California][5] and did my undergrad at [Cal State Channel Islands][ci] in [Camarillo][7]. I currently split my time between the breathtakingly-beautiful city of [San Buenaventura][8] and the incomperably-exhilarating city of [San Francisco][sf].
+I grew up in [Rialto, California][5] and did my undergrad at [Cal State Channel Islands][ci] in [Camarillo][7]. I currently split my time between the breathtakingly-beautiful city of [San Buenaventura][8] and the incomperably-exhilarating city of San Francisco.
 
-I spend a lot of my free time Swing dancing (Lindy Hop, specifically). When I'm in So Cal, I'm a regular at Ventura's Juke Joint and at Pasadena's LindyGroove and Swing Out Saturday dances. In the Bay, you'll find me dancing at Lindy in the Park, Lindy by the Lake, Club Deluxe, Decodance, and Local Edition. When I'm able, I'll also try to make it to Monday's dance at the Madonna Inn in San Luis Obispo and to Tuesday's and Friday's dances at Irvine's Atomic Ballroom.
+I spend a lot of my free time Swing dancing ([Lindy Hop][lindy], specifically). When I'm in So Cal, I'm a regular at Ventura's _Juke Joint_ and at Pasadena's _LindyGroove_ and _PBDA Swing Out Saturday_ dances. In the Bay, you'll find me dancing at _Lindy in the Park_ and _Lindy by the Lake,_ as well as at Club Deluxe, Decodance, and Local Edition. When I'm able, I'll also try to make it to Monday's dance at the Madonna Inn in San Luis Obispo and to Tuesday's and Friday's dances at Irvine's Atomic Ballroom.
 
 My other hobbies include going on long walks, tabletop and video games, recreational coding, starting blog posts that I'll never finish writing, bookmarking other people's blog posts that I'll never finish reading, and playing guitar. In the before-times, I frequented the [Santa Monica Haskell Users Group][9] and [Papers We Love, LA][10]. I hope to someday check out the San Francisco Meetup scene, if that's ever a thing again.
 
@@ -31,3 +31,4 @@ My other hobbies include going on long walks, tabletop and video games, recreati
   [cv]: /assets/downloads/brice-curriculum_vitae.pdf
   [mb]: https://mercury.com/
   [sf]: https://en.wikipedia.org/wiki/San_Francisco
+  [lindy]: https://www.youtube.com/watch?v=Salo3ssVxAU
