@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Yes, ML Functors Really Are Functors"
-date: 1999-12-31
+date: 2022-01-22
 permalink: /blog/yes-ml-functors-really-are-functors/
 redirect-from:
-  - /blog/2099-12-31/
+  - /blog/2022-01-22/
 comments: true
 tags:
   - ml

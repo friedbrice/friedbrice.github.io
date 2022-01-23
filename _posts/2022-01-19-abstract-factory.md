@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Haskell GoF - Abstract Factory"
-date: 2022-01-16
+date: 2022-01-19
 permalink: /blog/abstract-factory/
 redirect-from:
-  - /blog/2022-01-16/
+  - /blog/2022-01-19/
 comments: true
 tags:
   - haskell
@@ -42,6 +42,10 @@ Another reason a solution might not be realizable as a library is that we might 
 Before proceeding, there's one more point of terminology on which we should agree, since it shows up so frequently in discussions of patterns: the usage of the word _abstract._ Programmers tend to attach a peculiar meaning to the word _abstract_. They often mean "complicated implementation hidden behind a simple API," but this is not a description of something abstract. On the contrary, this is a description of something very real and concrete; we have a full implementation inside there, after all. A human body is quite complex inside, but the (non-lethal) ways in and out are clearly defined and simple, so should we call human bodies abstract? On top of that, programmers already have another word for this concept of implementation hiding: _encapsulation._ Let's not use the term _abstract_ to describe a complex, concrete system with a small, tidy surface when we already have a much more evocative word to describe it. _Abstract_ and _concrete_ are at odds, anyway.
 
 Consider: what's abstract about abstract art? A central feature of abstract art is that it avoids depiction of identifiable, concrete objects. Instead, we have pure geometry of shapes, lines, brushstrokes, and color. Instead of an art piece having a definite meaning, different onlookers will be able to imagine different meanings. The piece is open to the interpretation of the onlooker, and this property cuts to the heart of what it means for something to be abstract. Indeed, _abstract_ means "open to interpretation."
+
+![Dependency structures induced by encapsulation compared to the dependency structure induced by abstraction]({{ "/assets/img/encapsulation-vs-abstraction.png" | relative_url}}){: .center-image }
+
+Abstraction helps us decouple our code in ways that encapsulation can't. On the left, we see the dependency structure we get when we encapsulate a third-party library. On the right, we abstract it. When we abstract it, fewer of our code units depend on the third-party library, decoupling our application code from our external dependencies.
 
 Now that we agree (at least for the purposes of this discussion) on what our words mean---on what design patterns are and why we might need them and on the nature of abstraction more generally---we're ready to tackle our first pattern, the _Abstract Factory._
 
@@ -98,13 +102,17 @@ interface AbstractWidgetFactory {
 
 (The symbol `...` indicates details that we've omitted for brevity.)
 
-Each of `HtmlWidget` and `LatexWidget` is a toolkit for one of our target platforms. Notice that they have very different APIs. Nevertheless, the differences in their APIs won't stop us from finding a mutual abstraction: we will still be able to make an implementation of `AbstractWidgetFactory` for both of them, despite their idiosyncrasies.
+Each of `HtmlWidget` and `LatexWidget` wraps[^wrapping] a third-party toolkit for one of our target platforms. Notice that they have very different APIs. Nevertheless, the differences in their APIs won't stop us from finding a mutual abstraction: we will still be able to make an implementation of `AbstractWidgetFactory` for both of them, despite their idiosyncrasies.
+
+[^wrapping]: We have to wrap the third-party toolkits because `Widget` is our class, so they can't extend it. Later on, we'll see how to do this wrapping using the Adapter Pattern.
 
 Before moving on, it's important to understand that `AbstractWidgetFactory` is not an (abstract widget) factory. Rather, it is an abstract (widget factory). In other words, it is not a concrete factory that produces hypothetical widgets; it hypothesizes a factory that produces real widgets. The factory itself is abstract, not the widgets. `AbstractWidgetFactory` is abstract in the sense that its methods are not implemented and must be given an interpretation by any implementing classes.[^interfaces]
 
 [^interfaces]: Indeed, this was the case for all interfaces before Java's eighth edition. Interfaces are a mechanism for abstraction. As such, the `Abstract` in `AbstractWidgetFactory` is redundant. We already know it's abstract, because it's an interface. One can only presume that the GoF authors used this redundant naming convention as a pedantic device to drive home their points. Unfortunately, the obtusely-redundant naming convention became part of the Java culture, leading to such absurdities as "Since `ConcreteWidgetFactory` implements `AbstractWidgetFactory`, a `ConcreteWidgetFactory` is an `AbstractWidgetFactory`." No wonder programmers are so confused about the meaning of the word _abstract!_
 
-Using the primitives provided by `AbstractWidgetFactory`, we can build up larger reusable components, and ultimately combine those components to build out our entire GUI. This can be accomplished without any knowledge of the various concrete subtypes of `Widget`. As such, we have a component that works with _any_ subtype of `Widget`---even ones that haven't been conceived of yet---so long as we're given a factory that will produce widgets of that type. In this way, we completely decouple the implementation of our GUI from the hardware toolkits our target platforms provide. Here's an example of one reusable component, a `table`.
+![Dependency structure of our abstract factory example]({{ "/assets/img/abstract-factory-example.png" | relative_url }}){: .center-image }
+
+Using the primitives provided by `AbstractWidgetFactory`, we can build up larger reusable components, and ultimately combine those components to build out our entire GUI. This can be accomplished without any knowledge of (e.g. without depending on) the various concrete subtypes of `Widget`. As such, we have a component that works with _any_ subtype of `Widget`---even ones that haven't been conceived of yet---so long as we're given a factory that will produce widgets of that type. In this way, we completely decouple the implementation of our GUI from the hardware toolkits our target platforms provide. Here's an example of one reusable component, a `table`.
 
 {% highlight java %}
 interface TableCol {
