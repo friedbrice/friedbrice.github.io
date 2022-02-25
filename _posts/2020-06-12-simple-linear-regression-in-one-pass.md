@@ -643,7 +643,7 @@ Profiling immediately pointed to `readM` as the culprit, taking 78% of the time.
 
 Refactored to use _bytestring_, the naive implementation takes just over 4 seconds, the polymorphic one-pass version takes just over 7 seconds, and the strict unboxed one-pass version takes just under 4 seconds, still slower than the naive Python implementation, which takes just under 3.5 seconds.
 
-I think the data set I'm using (about 3.5 million list elements, about 42 megabytes) is just too small to make multiple passes a problem; however, on a significantly larger dataset, such as one that could not fit in memory, a one-pass implementation would OOM building up the closure needed to compute `xys` and `xxs`, so I'm not sure what to do in that situation. If you have an idea leave a comment, or reply on [Twitter](https://twitter.com/fried_brice/status/1271482515031638016?s=20).
+I think the data set I'm using (about 3.5 million list elements, about 42 megabytes) is just too small to make multiple passes a problem; however, on a significantly larger dataset, such as one that could not fit in memory, a one-pass implementation would OOM building up the closure needed to compute `xys` and `xxs`, so I'm not sure what to do in that situation. If you have an idea leave a comment, or reply on [Twitter](https://twitter.com/friedbrice0/status/1271482515031638016?s=20).
 
 ## Appendix 3
 
