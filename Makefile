@@ -15,9 +15,9 @@ clean: ## Remove project build artifacts
 
 .PHONY: init
 init:
-	which ruby || (echo "'ruby' required but not found." && exit 1)
-	which gem || (echo "'gem' required by not found." && exit 1)
-	which bundle || (echo "'bundle' required by not found." && exit 1)
+	@which ruby || (echo "'ruby' required but not found." && exit 1)
+	@which gem || (echo "'gem' required by not found." && exit 1)
+	@which bundle || (echo "'bundle' required by not found." && exit 1)
 	bundle config set --local path '.gems'
 
 .PHONY: setup
