@@ -6,7 +6,7 @@ date: 2020-01-01
 topnav: true
 ---
 
-I'm a software engineer and mathematician. I work at [Mercury Bank][mercury] in San Francisco writing Haskell and Typescript. Formerly, I wrote Haskell and Purescript at [Lumi][lumi], a supply-chain-as-a-service company based in Los Angeles. Before that, I used Scala for machine learning and GraphQL API servers at [CJ Affiliate][cj], an online marketing company in Santa Barbara. I'm also a part-time Computer Science and Mathematics Lecturer at [Cal State Channel Islands][ci], where I teach _Business Calculus_, _Strategies and Game Design_, _History of Math_, and _Introduction to Algorithms_. You can read all about this on my [curriculum vitae][cv].
+I'm a software engineer and mathematician. I work at [Mercury][mercury] in San Francisco writing Haskell and Typescript. Formerly, I wrote Haskell and Purescript at [Lumi][lumi], a supply-chain-as-a-service company based in Los Angeles. Before that, I used Scala for machine learning and GraphQL API servers at [CJ Affiliate][cj], an online marketing company in Santa Barbara. I'm also a part-time Computer Science and Mathematics Lecturer at [Cal State Channel Islands][ci], where I teach _Business Calculus_, _Strategies and Game Design_, _History of Math_, and _Introduction to Algorithms_. You can read all about this on my [curriculum vitae][cv].
 
 I finished my PhD in Mathematics (specifically, [Algebra][algebra] and [Lie Theory][lie-theory]) at [Auburn University][auburn] under Huajun Huang in June 2014. I still dream about finding time to do [research][research], on occasion.
 
