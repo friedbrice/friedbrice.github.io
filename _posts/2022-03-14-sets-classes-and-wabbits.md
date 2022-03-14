@@ -13,16 +13,17 @@ tags:
 ---
 
 Set theory is a bit of a trickster.
-Some of its ideas go back to Plato (forms) and Aristotle (categorical syllogisms), but the objects of these disciplines don't quite capture the modern notion of sets.
-Rather, the objects of those disciplines fit more closely with the concept of _classes_ (as in _classifications_).
-Why split hares like this?
-Why make a distinction?
-This blog post will go into why we need the two very similar but subtly distinct notions.
+Some of its ideas go back to Plato (forms) and Aristotle (categorical syllogisms), but sets don't quite capture the objects of these disciplines.
+Rather, the objects of those disciplines are captured more closely by the concept of _classes_ (as in _classifications_).
+Sets vs. classes?
+What's the difference?
+Why split hares?
+This blog post will go into how Set Theory fails to capture our intuitive notions around classification.
 
 <!-- break -->
 
 We intuitively classify things, drawing comparisons and making distinctions.
-Questions about an ideal form are best understood as questions about the class---not necessarily the set---of all things that meets some defining criteria.
+Questions about a platonic form are best understood as questions about the class---not necessarily set---of all things that meets some defining criteria.
 Similarly, Categorical Syllogism is the logic of inferring class---not necessarily set---membership based on logical predicates.
 We'd like a mathematical theory of sets that corresponds to our intuitive notions of classification.
 That is, we'd like to be able to take an arbitrary logical predicate and then form the set of all things that satisfy said predicate.
@@ -93,8 +94,8 @@ If \\(U\\) were merely empty we'd be disappointed, but it wouldn't necessarily b
 But the situation we have here is far more subtle.
 We see that the set \\(U\\) itself can't exist, empty or otherwise, in exactly the same way that Conejito can't exist: nothing that satisfies the logical form
 \\[ \varphi(x,x) \iff \neg \varphi(x,x) \\]
-can exist no matter what the predicate \\(\varphi\\) may be (as we proved above, in fact).
+can exist no matter what the predicate \\(\varphi\\) may be (as we demonstrated above, in fact).
 
 This flies in the face of our desire to be able to form sets corresponding to arbitrary logical predicates, showing us that no coherent system of set theory will correspond exactly to our intuitive notion of classes.
-The solution---which I might write up in a blog post one of these days---is to be very careful and precise about what sets you allow yourself to form.
+The solution---which I might write up in a subsequent blog post one of these days---is to be very careful and precise about what sets you allow yourself to form.
 We end up relying on a few basic constructions and then build up our universe of sets inductively (_ie._ recursively) from there.
