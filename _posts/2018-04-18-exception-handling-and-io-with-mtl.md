@@ -681,7 +681,7 @@ I've also showed you that working with encapsulated I/O is not as painful as it 
 Finally, I've tried to demonstrate how to cope with MTL and monad transformers, why you would want to, and why you might not want to.
 I hope this has been mildly entertaining and mostly instructional.
 
-If you're in Southern California and you'd like me to adapt this post into a presentation for your Haskell or Scala meetup, or if you'd like me to adapt it into a workshop for your business, please email me ([danielbrice@gmail.com](mailto:danielbrice@gmail.com)) or send me a DM on Twitter ([@friedbrice0](http://twitter.com/friedbrice0)).
+If you're in Southern California and you'd like me to adapt this post into a presentation for your Haskell or Scala meetup, or if you'd like me to adapt it into a workshop for your business, please email me ([danielbrice@gmail.com](mailto:danielbrice@gmail.com)) or send me a DM on Twitter ([@friedbrice_](http://twitter.com/friedbrice_)).
 
   [1]: /blog/three-models-of-exception-handling/
   [2]: /blog/exception-handling-with-explicit-io/
