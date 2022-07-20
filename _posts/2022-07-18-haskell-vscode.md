@@ -13,7 +13,7 @@ tags:
 ---
 
 The sickest experience possible for Haskell development in July 2022 is undoubtedly [VS Code](https://code.visualstudio.com/) with the [Haskell plugin](https://github.com/haskell/vscode-haskell) powered by [Haskell Language Server](https://hackage.haskell.org/package/haskell-language-server) (HLS).
-When HLS works for your project.
+When HLS works for your project, that is.
 This guide will demonstrate a simpler, lower-featured alternative that hopefully is reliable enough to work with your project in those cases where HLS does not.
 
 <!-- break -->
@@ -21,9 +21,10 @@ This guide will demonstrate a simpler, lower-featured alternative that hopefully
 ## Synopsis
 
 HLS is superb and provides a rich Haskell experience that genuinely boosts productivity.
-However, there are various reasons why HLS might not work with a particular Haskell project. The project might be built using a version of GHC that HLS doesn't support.
+However, there are various reasons why HLS might not work with a particular Haskell project.
+The project might be built using a version of GHC that HLS doesn't support.
 The project might be very `TemplateHaskell`-heavy or otherwise just too damn big for HLS to function with acceptable latency.
-That said, progress continues on HLS (and on GHC) to make it faster and more stable, with the goal that we'll all be able to use it for all of our projects.
+That said, progress continues on HLS (and on GHC), making it faster and more stable, with the goal that we'll be able to use it for all of our Haskell projects.
 
 In the mean time, we still would like some of the luxuries our text editors are capable of providing when given a suitable source of information.
 Following this guide, you'll get:
@@ -35,7 +36,10 @@ Following this guide, you'll get:
 - Project-specific Hoogle search and Haddock documentation for your project and its dependencies (and transitive dependencies).
 
 - Problems reporting.
-  Compiler errors and warnings will appear in both the _Problems_ view in VS Code and as inline squiggly underlines in your source code.
+  
+  - Compiler errors and warnings will appear both in VS Code's _Problems_ pane, allowing you to easily jump to the source locatoin, and
+  
+  - Inline squiggly underlines in your source code.
 
 Finally, we'll discus tying these features together into a cohesive, convenient workflow.
 
@@ -48,12 +52,12 @@ If you do, drop a comment and link to your blog post :-D
 ### Why Stack?
 
 I rely on [Stack](https://docs.haskellstack.org/en/stable/README/) to reduce the number of dev tools I need to manage manually.
-Alternatively, the same setup should work if you install the necessary tools yourself (at the correct versions for your specific project).
-Or if you know of Cabal commands that more-or-less correspond to the Stack commands I use, then these workflows should still work just fine.
+Alternatively, the same setup should work if you install the necessary tools yourself (at the correct versions for your project).
+Or if you know of Cabal commands that more-or-less correspond to the Stack commands I use, then these workflows should work with those commands just fine.
 
 You can use Stack for these editor integrations even if you don't use Stack to build your project.
 In your project root directory (rather, the directory that has the Cabal file defining your package), use `stack init` to create a _stack.yaml_ file.
-Check [stackage.org](https://stackage.org) and find your version of GHC on the list _Latest releases per GHC version_; Click into that.
+Check [stackage.org](https://stackage.org) and find your version of GHC on the list _Latest releases per GHC version_; click into that.
 Somewhere on the page, you'll see something that looks more or less like
 
 {% highlight yaml %}
@@ -72,17 +76,17 @@ Stack will work on Apple Silicon, but it takes a bit of finagling (please read o
 
 ### Stack on Apple silicon {#stack-apple-silicon}
 
-Because of incompatibilities between GHC versions, Stack treats GHC as a project dependency: Stack will download and use the version of GHC appropriate to your project.
+Because of incompatibilities between GHC versions, Stack treats GHC as a project dependency: Stack will download and use the appropriate version of GHC for your project.
 However, the GHC binaries that Stack currently distributes are incompatible with Apple M1 (and presumably M2) chips.
 This is a known issue, and it will hopefully be fixed soon.
 
-Meanwhile, in order to get around this, you'll need to configure Stack to use the GHC binary you installed from [GHCUp](https://www.haskell.org/ghcup/).
+Meanwhile, you'll need to configure Stack to use a GHC binary installed from [GHCUp](https://www.haskell.org/ghcup/).
 
 1. Make sure GHCUp's _bin_ directory is included in your shell's `PATH` variable.
 
    For example, on my Mac OS 12.4 system, GHCUp's _bin_ directory is _/Users/daniel/.ghcup/bin_, and this directory appears near the front of my `PATH` variable.
 
-2. Use GHCUp to _install_ and _set_ the version of GHC you need for your project.
+2. Use GHCUp to _install_ and _set_ the version of GHC you want for your project.
 
 3. Add a _stack.yaml_ file to your project root if there isn't one already.
 
@@ -130,8 +134,8 @@ With these settings, you'll see the top suggestion as ghost text.
 You can apply the suggestion by hitting the _Tab_ key.
 You can see the full list of suggestions by hitting _Control_+_Space_.
 
-I have these settings in my user-level VS Code settings, so that they apply to every workspace.
-(_Workspace_ is just the word VS Code uses for what I've been calling your project).
+I have these settings in my user-level VS Code settings because I want them to apply to every workspace.
+(_Workspace_ is just the word VS Code uses for what I've been calling your project.)
 Alternatively, you might want these settings to apply only in specific workspaces.
 If so, create a _.vscode/settings.json_ in your project and put these properties there.
 
@@ -170,8 +174,8 @@ This feature depends on the [vscode-goto-documentation](https://marketplace.visu
 
 By now we should have Goto Definition working for the types, functions, classes, and modules in our project.
 Unfortunately, Goto Definition won't work for entities defined in our dependencies.
-The next best thing, though is having Hoogle search and Haddock documentation for them.
-(And Haddock includes source code, so we kinda do get Goto Definition in a roundabout way.)
+The next best thing, though, is having Hoogle search and Haddock documentation for them
+(and Haddock includes source code, so we kinda do get Goto Definition in a roundabout way).
 
 **Build initial Hoogle database (also builds docs):**
 
@@ -189,7 +193,7 @@ You'll now have Hoogle and Haddock for your project and its dependencies when yo
 
 As with our _tags_ file, we'll have to update Hoogle's database every time our source code changes.
 Fortunately, we can do this while the Hoogle server is running.
-This needs to be done every time we change a source file. (so we'll automate it, later).
+This needs to be done every time we change a source file (so we'll automate it later).
 
 **Hot-rebuild Hoogle database:**
 
@@ -205,8 +209,7 @@ When we're done working for the day, we'll want to tear down our server to free 
 pkill hoogle
 {% endhighlight %}
 
-I know what you're about to say.
-Opening our browser, navigating to _localhost:8080_, and keying in the name of a function or type is laborious.
+Now, opening our browser, navigating to _localhost:8080_, and keying in the name of a function or type is laborious.
 Fortunately, we can get all this with just a right click once we configure our plugin appropriately.
 Create a _.vscode/settings.json_ in your project if there isn't one already, and add the following property:
 
@@ -228,12 +231,13 @@ This feature depends on the [haskell-ghcid](https://marketplace.visualstudio.com
 
 Here's the real meat of our faux-IDE setup.
 
-[Ghcid](https://hackage.haskell.org/package/ghcid) is a simple, reliable file watcher that spawns a Ghci session and presses `:r` for you (the _reload_ command) whenever a Haskell source file changes.
-It's reliable precisely because it has no notion of projects, build tools or text editors.
+[Ghcid](https://hackage.haskell.org/package/ghcid) is a simple, reliable file watcher that spawns a Ghci session and presses `:r` for you (Ghci's _reload_ command) whenever a Haskell source file changes.
+It's reliable precisely because it has no notion of projects, build tools, or text editors.
 It relies simply on Ghci.
 It'll even let you choose how to start Ghci, so that all of your dependencies will be registered and all of your modules will be in scope.
 
-(I don't know why I felt the need to explain all that. It's hard to imagine anyone is writing Haskell and doesn't know about Ghcid.)
+(I don't know why I felt the need to explain all that.
+It's hard to imagine anyone is writing Haskell and doesn't know about Ghcid.)
 
 In the old days, we were forced to use Ghcid in a crude way.
 We'd have it running in a terminal, side-by-side with our editor.
@@ -245,8 +249,8 @@ It reads a file, named _ghcid.txt_.
 It assumes the file contains info on compiler errors and warnings, and it parses that info and feeds it into VS Code's problems reporting API.
 Your errors and warnings show up in VS Codes _Problems_ pane (which provides Jump-to-source-location functionality) and inlined into your source code as squiggly underlines.
 
-Your responsibility here is to bootstrap this whole process by starting Ghcid in a terminal and then forget about it.
-You'll need to use the `--outputfile` flag to tell Ghcid that it should be writing info to _ghcid.txt_.
+Your responsibility here is to bootstrap this whole process by starting Ghcid in a terminal and then forgetting about it.
+You'll need to use Ghcid's `--outputfile` option to tell Ghcid that it should be writing info to _ghcid.txt_.
 
 **Start Ghcid with file output:**
 
@@ -266,8 +270,8 @@ This Ghcid option it to write errors and warnings to _ghcid.txt_, where our VS C
 
 The second most important thing here is `-fno-code -ignore-dot-ghci -ferror-spans`.
 These options tell Ghci that it should only be type checking (for faster reloads) and that it should be reporting full source spans for errors (so your editor can make squiggles).
-`-ignore-dot-ghci` is more superstitious than anything, but it's in there because sometimes your `.ghci` file can mess up your project repl.
-(If you rely on a _.ghci_ file to load your project repl, then you probably already know enough about Ghci to know that you should overrule my suggestion and omit that option.)
+`-ignore-dot-ghci` is more superstitious than anything, but it's in there because sometimes your `.ghci` file can mess up your project REPL.
+(If you rely on a _.ghci_ file to load your project REPL, then you probably already know enough about Ghci to know that you should overrule my suggestion and omit that option.)
 
 Now, just minimize your terminal and pull your editor up.
 Chasing compiler errors has never been easier!
@@ -282,10 +286,10 @@ This Ghcid feature is controlled by the `--test` option.
 But we don't want to run a Ghci command, we want to run a couple shell commands.
 Well, Ghci has a little-known feature that allows you to run arbitrary shell commands.
 At the Ghci prompt, type `:!` and then a space and then any shell command.
-Try it with something innocuous, like `ls`
+Try it with something innocuous, like `ls -l`
 
 {% highlight plaintext %}
-ghci> :! ls
+ghci> :! ls -l
 {% endhighlight %}
 
 That's rather delightful!
@@ -300,7 +304,7 @@ stack hoogle --rebuild # build Hoogle database for our dependencies
 stack hoogle --server 2> /dev/null 1> /dev/null & # Hoogle on localhost:8080
 (stack exec ghcid -- \ # on file saves...
   --command 'stack repl --ghc-options "-fno-code -ignore-dot-ghci -ferror-spans"' \ # type-check
-  --test ':! stack exec hasktags -- --ctags . && stack hoogle -- generate --local ${your_package_name}' \ # re-index source info
+  --test ':! stack exec hasktags -- --ctags . && stack hoogle -- generate --local ${your_package_name}' \ # and re-index
   --outputfile ghcid.txt) || true # write errors and warnings to ghcid.txt
 (pkill ghcid && echo "Killed Ghcid.") || echo "No Ghcid process to kill." # superstitiously cleanup ghcid process (ctrl+c should have done it, though)
 (pkill hoogle && echo "Killed Hoogle.") || echo "No Hoogle process to kill." # really cleanup Hoogle process
@@ -313,17 +317,17 @@ Then I minimize that terminal and forget about it.
 I open my project in VS Code, and I have
 
 - basic code suggestions;
-- goto definition for my types, classes, functions, and modules;
-- goto documentation for all types, classes, functions, and modules;
-- errors and warnings in VS Code's _Problems_ pane; and
-- inline squiggles for errors and warnings.
+- goto definition for _my_ types, classes, functions, and modules;
+- goto documentation for _all_ types, classes, functions, and modules;
+- errors and warnings in VS Code's _Problems_ pane, with goto source location; and
+- inline squigglies in my source code for errors and warnings.
 
 And I have it all reliably, whether or not HLS works for my project.
 
 ## Summary
 
 Here are the steps written as tersely as possible, free of commentary, while still being totally complete.
-Some uses will be able to skip some of these steps.
+Some users will be able to skip some of these steps.
 
 **Initial Setup:**
 
