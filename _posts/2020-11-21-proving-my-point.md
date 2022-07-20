@@ -122,10 +122,10 @@ sum123 = sum (Proxy :: Proxy (Cons 1 (Cons 2 (Cons 3 Nil))))
 
 We get a compiler error:
 
-```
+{% highlight plaintext %}
 No instance for (Sum (Cons 1 (Cons 2 (Cons 3 Nil))) x0)
   arising from a use of ‘sum’
-```
+{% endhighlight %}
 
 Although we humans know the type of `sum123` should be `Proxy 6`, the compiler error is actually quite reasonable: we haven't written any instances of class `Sum` yet!
 
@@ -154,9 +154,9 @@ sum123 :: _
 sum123 = sum (Proxy :: Proxy (Cons 1 (Cons 2 (Cons 3 Nil))))
 {% endhighlight %}
 
-```
-Found type wildcard ‘_’ standing for ‘Proxy 6’
-```
+{% highlight plaintext %}
+Found type wildcard ‘\_’ standing for ‘Proxy 6’
+{% endhighlight %}
 
 Uncommenting `sum123`, we see the compiler now infers the correct type, namely `Proxy 6`. That is, the sum of the type `Cons 1 (Cons 2 (Cons 3 Nil))` is the type `6`.
 

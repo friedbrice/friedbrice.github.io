@@ -47,7 +47,7 @@ My [`fib` example][2] is not enough to invalidate the claim, since the real-valu
 
 _Below: Turns out `tricky` still isn't tricky enough to outsmart AutoDiff!_
 
-```
+{% highlight plaintext %}
 tricky x = if x == 0 then 100 * x else x
 
 d tricky 0
@@ -57,7 +57,7 @@ d tricky 0
 == diffDual $ if False then 100 * Dual 0 1 else Dual 0 1
 == diffDual $ Dual 0 1
 == 1
-```
+{% endhighlight %}
 
   [1]: http://www.meetup.com/santa-monica-haskell/events/231209938/
   [2]: http://github.com/friedbrice/AutoDiff/blob/master/src/Examples.hs
