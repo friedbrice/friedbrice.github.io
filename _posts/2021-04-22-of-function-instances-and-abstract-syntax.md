@@ -119,7 +119,7 @@ none = Set $ const False
 every :: Set a
 every = Set $ const True
 
-instance WellOrdered a => Num (Set a) where
+instance Num (Set a) where
   s1 + s2 = union s1 s2 `exclusion` intersection s1 s2
   (*) = intersection
   negate = id
@@ -562,17 +562,6 @@ x - y = x + negate y
 (^) :: Ring a => a -> Integer -> a
 x ^ 0 = 1
 x ^ n = x * (x ^ (n - 1))
-{% endhighlight %}
-
-{% highlight haskell %}
-class Eq a => WellOrdered a where
-  smallest :: (a -> Bool) -> Maybe a
-
-enumerate :: WellOrdered a => (a -> Bool) -> [a]
-enumerate s = x0 : enumerate s'
-  where
-  x0 = smallest s
-  s' x = x /= x0 && s x
 {% endhighlight %}
 
 {% highlight haskell %}
