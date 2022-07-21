@@ -101,6 +101,44 @@ usual union of sets, and \\(\setminus\\) is the usual difference of sets (i.e.,
 is a ring using \\(\mathop{\Delta}\\) as \\(+\\), \\(\cap\\) as \\(\ast\\), and the identity function as \\(-\\)
 (i.e. every set is its own \\(\Delta\\) inverse).
 
+{% highlight haskell %}
+newtype Set a = Set {includes :: a -> Bool}
+
+unite :: Set a -> Set a -> Set a
+s1 `union` s2 = Set $ \x -> s1 `includes` x || s2 `includes` x
+
+intersection :: Set a -> Set a -> Set a
+s1 `intersection` s2 = Set $ \x -> s1 `includes` x && s2 `includes` x
+
+exclusion :: Set a -> Set a -> Set a
+s1 `exclusion` s2 = Set $ \x -> s1 `includes` x && not (s2 `includes` x)
+
+none :: Set a
+none = Set $ const False
+
+every :: Set a
+every = Set $ const True
+
+instance WellOrdered a => Num (Set a) where
+  s1 + s2 = union s1 s2 `exclusion` intersection s1 s2
+  (*) = intersection
+  negate = id
+
+  -- Here is the only suitable function, since
+  --
+  --     fromInteger (2*n) = fromInteger (n + n)
+  --                       = fromInteger n + fromInteger n
+  --                       = none
+  --
+  -- and
+  --
+  --     fromInteger (2*n + 1) = fromInteger (n + n + 1)
+  --                           = fromInteger n + fromInteger n + fromInteger 1
+  --                           = none + every
+  --                           = every
+  fromInteger x = if even x then none else every
+{% endhighlight %}
+
 If \\(R_1\\) and \\(R_2\\) are rings, then \\(R_1 \times R_2\\) (the set of ordered pairs) is
 a ring using \\((x_1, x_2) + (y_1, y_2) = (x_1 + y_1, x_2 + y_2)\\) and
 \\((x_1, x_2) \cdot (y_1, y_2) = (x_1 \cdot y_1, x_2 \cdot y_2)\\). Towards our main goal, if
@@ -524,6 +562,17 @@ x - y = x + negate y
 (^) :: Ring a => a -> Integer -> a
 x ^ 0 = 1
 x ^ n = x * (x ^ (n - 1))
+{% endhighlight %}
+
+{% highlight haskell %}
+class Eq a => WellOrdered a where
+  smallest :: (a -> Bool) -> Maybe a
+
+enumerate :: WellOrdered a => (a -> Bool) -> [a]
+enumerate s = x0 : enumerate s'
+  where
+  x0 = smallest s
+  s' x = x /= x0 && s x
 {% endhighlight %}
 
 {% highlight haskell %}
