@@ -104,7 +104,7 @@ is a ring using \\(\mathop{\Delta}\\) as \\(+\\), \\(\cap\\) as \\(\ast\\), and 
 {% highlight haskell %}
 newtype Set a = Set {includes :: a -> Bool}
 
-unite :: Set a -> Set a -> Set a
+union :: Set a -> Set a -> Set a
 s1 `union` s2 = Set $ \x -> s1 `includes` x || s2 `includes` x
 
 intersection :: Set a -> Set a -> Set a
