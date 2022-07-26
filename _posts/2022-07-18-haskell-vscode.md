@@ -18,6 +18,21 @@ This guide will demonstrate a simpler, lower-featured alternative that hopefully
 
 <!-- break -->
 
+## Changelog
+
+### 2022-07-26
+
+- Add `--warnings` to our Ghcid invocations.
+  This causes tests to be run (updating ctags and hoogle) even in the presense of warnings.
+
+- On M1, the Stack distributed from _haskellstack.org_ fails on some tasks.
+  Use only the Stack distributed with GHCUp.
+
+- On M1, Hasktags might fail if you have LLVM 13 or 14.
+  To work around this, install `brew install llvm@12` and put its bindir near the front of your path.
+
+- Restart Ghcid (via `./start-ide.sh`) whenever you modify _stack.yaml_, _package.yaml_, or your _.cabal_ file.
+
 ## Synopsis
 
 HLS is superb and provides a rich Haskell experience that genuinely boosts productivity.
@@ -36,9 +51,9 @@ Following this guide, you'll get:
 - Project-specific Hoogle search and Haddock documentation for your project and its dependencies (and transitive dependencies).
 
 - Problems reporting.
-  
+
   - Compiler errors and warnings will appear both in VS Code's _Problems_ pane, allowing you to easily jump to the source locatoin, and
-  
+
   - Inline squiggly underlines in your source code.
 
 Finally, we'll discus tying these features together into a cohesive, convenient workflow.
@@ -78,19 +93,27 @@ Stack will work on Apple Silicon, but it takes a bit of finagling (please read o
 
 Because of incompatibilities between GHC versions, Stack treats GHC as a project dependency: Stack will download and use the appropriate version of GHC for your project.
 However, the GHC binaries that Stack currently distributes are incompatible with Apple M1 (and presumably M2) chips.
-This is a known issue, and it will hopefully be fixed soon.
+Moreover, I've gotten reports that the Stack binaries distributed by Homebrew and _haskellstack.org_ exhibit unexpected errors.
+These are known issues, and they will hopefully be fixed soon.
 
-Meanwhile, you'll need to configure Stack to use a GHC binary installed from [GHCUp](https://www.haskell.org/ghcup/).
+Meanwhile, you'll need to install both Stack and GHC from [GHCUp](https://www.haskell.org/ghcup/).
+You'll also need to configure Stack to use the GHC installed by GHCUp.
 
-1. Make sure GHCUp's _bin_ directory is included in your shell's `PATH` variable.
+1. Remove any extand Stack distribution that didn't come from GHCUp.
+
+   For example, if you installed Stack from Homebrew or from _haskellstack.org_, remove it.
+
+2. Install [GHCUp](https://www.haskell.org/ghcup/), and use it to install Stack and Cabal (latest versions).
+
+3. Make sure GHCUp's _bin_ directory is included in your shell's `PATH` variable.
 
    For example, on my Mac OS 12.4 system, GHCUp's _bin_ directory is _/Users/daniel/.ghcup/bin_, and this directory appears near the front of my `PATH` variable.
 
-2. Use GHCUp to _install_ and _set_ the version of GHC you want for your project.
+4. Use GHCUp to _install_ and _set_ the version of GHC you want for your project.
 
-3. Add a _stack.yaml_ file to your project root if there isn't one already.
+5. Add a _stack.yaml_ file to your project root if there isn't one already.
 
-4. In _stack.yaml_, add the following top-level properties:
+6. In _stack.yaml_, add the following top-level properties:
 
    {% highlight yaml %}
    system-ghc: true
@@ -99,6 +122,15 @@ Meanwhile, you'll need to configure Stack to use a GHC binary installed from [GH
    {% endhighlight %}
 
 Stack will now use the GHC binary provided by GHCUp.
+
+One more thing.
+I've heard reports of Haskell projects unexpectedly failing to build on M1 due to LLVM incompatibilities.
+We need to install LLVM version 12 and we need to put its bindir on our path so that it's the first LLVM found.
+
+{% highlight shell %}
+brew install llvm@12
+echo 'export PATH="/usr/local/opt/llvm/bin:$PATH"' >> ~/.profile && . ~/.profile
+{% endhighlight %}
 
 ## Basic code suggestions
 
@@ -305,6 +337,7 @@ stack hoogle --server 2> /dev/null 1> /dev/null & # Hoogle on localhost:8080
 (stack exec ghcid -- \ # on file saves...
   --command 'stack repl --ghc-options "-fno-code -ignore-dot-ghci -ferror-spans"' \ # type-check
   --test ':! stack exec hasktags -- --ctags . && stack hoogle -- generate --local ${your_package_name}' \ # and re-index
+  --warnings \ # re-index even if there were warnings, dammit!
   --outputfile ghcid.txt) || true # write errors and warnings to ghcid.txt
 (pkill ghcid && echo "Killed Ghcid.") || echo "No Ghcid process to kill." # superstitiously cleanup ghcid process (ctrl+c should have done it, though)
 (pkill hoogle && echo "Killed Hoogle.") || echo "No Hoogle process to kill." # really cleanup Hoogle process
@@ -345,32 +378,7 @@ Some users will be able to skip some of these steps.
 
 5. Install _haskell-ghcid_ VS Code plugin.
 
-6. Create _.vscode/settings.json_ in your project directory with these contents:
-
-   ```
-   {
-     "editor.acceptSuggestionOnCommitCharacter": false,
-     "editor.acceptSuggestionOnEnter": "smart",
-     "editor.quickSuggestions":
-     {
-       "comments": "inline",
-       "other": "inline",
-       "strings":  "inline"
-     },
-     "editor.quickSuggestionsDelay": 2000,
-     "editor.snippetSuggestions": "none",
-     "editor.suggest.filterGraceful": false,
-     "editor.suggest.preview": true,
-     "editor.suggest.showStatusBar": true,
-     "editor.suggest.showWords": true,
-     "editor.suggestOnTriggerCharacters": false,
-     "editor.suggestSelection": "first",
-     "editor.wordBasedSuggestionsMode": "matchingDocuments",
-     "goto-documentation.customDocs": {
-       "hs": "http://localhost:8080/?hoogle=${query}"
-     }
-   }
-   ```
+6. Create _.vscode/settings.json_ in your project directory (contents shown below):
 
 7. If your project doesn't have a _stack.yaml_ file, create one with `stack init`, and
 
@@ -378,27 +386,58 @@ Some users will be able to skip some of these steps.
 
    2. Change the `resolver` property in _stack.yaml_ to the resolver you just found.
 
-8. If on an Apple M1 or M2 system, add these lines to your _stack.yaml_:
-
-   ```
-   system-ghc: true
-   install-ghc: false
-   skip-ghc-check: true
-   ```
+8. If on an Apple M1 or M2 system, modify your _stack.yaml_ (contents show below):
 
 9. Create an executable script named _start-ide.sh_ in your project dir with contents:
 
-   ```
-   stack hoogle --rebuild # build Hoogle database for our dependencies
-   stack hoogle --server 2> /dev/null 1> /dev/null & # Hoogle on localhost:8080
-   (stack exec ghcid -- \ # on file saves...
-     --command 'stack repl --ghc-options "-fno-code -ignore-dot-ghci -ferror-spans"' \ # type-check
-     --test ':! stack exec hasktags -- --ctags . && stack hoogle -- generate --local ${your_package_name}' \ # re-index source info
-     --outputfile ghcid.txt) || true # write errors and warnings to ghcid.txt
-   (pkill ghcid && echo "Killed Ghcid.") || echo "No Ghcid process to kill." # superstitiously cleanup ghcid process (ctrl+c should have done it, though)
-   (pkill hoogle && echo "Killed Hoogle.") || echo "No Hoogle process to kill." # really cleanup Hoogle process
-   ```
+{% highlight json %}
+// ./.vscode/settings.json
+{
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.quickSuggestions":
+  {
+    "comments": "inline",
+    "other": "inline",
+    "strings":  "inline"
+  },
+  "editor.quickSuggestionsDelay": 2000,
+  "editor.snippetSuggestions": "none",
+  "editor.suggest.filterGraceful": false,
+  "editor.suggest.preview": true,
+  "editor.suggest.showStatusBar": true,
+  "editor.suggest.showWords": true,
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.suggestSelection": "first",
+  "editor.wordBasedSuggestionsMode": "matchingDocuments",
+  "goto-documentation.customDocs": {
+    "hs": "http://localhost:8080/?hoogle=${query}"
+  }
+}
+{% endhighlight %}
+
+{% highlight yaml %}
+# add to ./stack.yaml
+system-ghc: true
+install-ghc: false
+skip-ghc-check: true
+{% endhighlight %}
+
+{% highlight shell %}
+# ./start-ide.sh
+stack hoogle --rebuild
+stack hoogle --server 2> /dev/null 1> /dev/null &
+(stack exec ghcid -- \
+  --command 'stack repl --ghc-options "-fno-code -ignore-dot-ghci -ferror-spans"' \
+  --test ':! stack exec hasktags -- --ctags . && stack hoogle -- generate --local ${your_package_name}' \
+  --warnings \
+  --outputfile ghcid.txt) || true
+(pkill ghcid && echo "Killed Ghcid.") || echo "No Ghcid process to kill."
+(pkill hoogle && echo "Killed Hoogle.") || echo "No Hoogle process to kill."
+{% endhighlight %}
 
 **Every time you work on your project:**
 
 1. Run `./start-ide.sh` in a terminal and minimize it.
+
+2. Each time you modify your _.cabal_ file, _stack.yaml_, or _package.yaml_, you need to kill Ghcid and restart `./start-ide.sh`.
