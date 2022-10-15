@@ -119,7 +119,7 @@ none = Set $ const False
 every :: Set a
 every = Set $ const True
 
-instance Num (Set a) where
+instance Ring (Set a) where
   s1 + s2 = union s1 s2 `exclusion` intersection s1 s2
   (*) = intersection
   negate = id
