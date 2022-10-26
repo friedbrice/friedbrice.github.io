@@ -233,7 +233,7 @@ If we assume for the moment that we are clairvoyant and we know that \\( \phi \\
 
 What's still not clear to me is how \\( \mathtt{tychonoff} \, (\mathtt{const} \, \mathtt{search}) \, \phi \\) terminates in the case where \\( \phi \\) is not satisfiable.
 Here's my best guess, though.
-Suppose a predicate \\( \phi) \\) is not satisfiable.
+Suppose a predicate \\( \phi \\) is not satisfiable.
 For each non-bottom sequence \\( x \\), let \\( N_\phi(x) \\) be the smallest natural number \\( n \\) where
 
 $$
