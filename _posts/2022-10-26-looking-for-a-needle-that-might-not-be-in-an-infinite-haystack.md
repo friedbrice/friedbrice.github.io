@@ -17,7 +17,7 @@ tags:
 Hand-wavy explanations of my lightning talk of the same title at Mercury's October 2022 PDX Haskell meetup.
 Based on "Infinite sets that admit fast exhaustive search" by Martín Escardó.
 
-<!-- break -->
+<!--break-->
 
 {% highlight haskell %}
 {-# OPTIONS_GHC -Wall -fno-warn-orphans -fno-warn-name-shadowing #-}
@@ -34,9 +34,9 @@ import Numeric.Natural (Natural)
 
 ## Searchable types
 
-We start by defining a class, `Searchable a` for types `a` that admit exhaustive search.
-Given `phi :: a -> Bool` and `a0 :: a`, we say `a0` _satisfies_ `phi` if `phi a0 == True`.
-We say `phi` is _satisfiable_ if at least one non-bottom member of `a` satisfies `phi`.
+We start by defining a class, \\( \mathtt{Searchable} \, a \\) for types \\( a \\) that admit exhaustive search.
+Given \\( \phi : a \to \mathtt{Bool} \\) and \\( a_0 : a \\), we say \\( a_0 \\) _satisfies_ \\( \phi \\) if \\( \phi \, a_0 = \mathtt{True} \\).
+We say \\( \phi \\) is _satisfiable_ if at least one non-bottom member of \\( a \\) satisfies \\( \phi \\).
 
 {% highlight haskell %}
 type Search a = (a -> Bool) -> a
@@ -46,7 +46,7 @@ class Searchable a where
   search :: Search a
 {% endhighlight %}
 
-A type `a` is _searchable_ if there is a total function `search :: Search a` where `search phi` is non-bottom and satisfies `phi` for every satisfiable total predicate `phi :: a -> Bool`.
+A type \\( a \\) is _searchable_ if there is a total function \\( \mathtt{search} : (a \to \mathtt{Bool}) \to a \\) where \\( \mathtt{search} \, \phi \\) satisfies \\( \phi \\) for every satisfiable total predicate \\( \phi : a \to \mathtt{Bool} \\).
 
 $$
   \mathtt{Searchable} \, a
@@ -59,10 +59,8 @@ $$
   \right)
 $$
 
-In other words, `search phi` will find a member of `a` that satisfies `phi`, if such a member exists.
-
-If `phi` is unsatisfiable, `search` still has to return some member of `a`, so it's the caller's responsibility to check to see whether or not the search result satisfies `phi`.
-Let's automate that check.
+In other words, \\( \mathtt{search} \, \phi \\) will find a member of \\( a \\) that satisfies \\( \phi \\), if such a member exists. \\( \mathtt{search} \, \phi \\) still produces a member of \\( a \\) even if \\( \phi \\) is not satisfiable, though, so it's the caller's responsibility to check and see whether or not the search result satisfies \\( \phi \\).
+Let's automate that check!
 
 {% highlight haskell %}
 query :: Searchable a => (a -> Bool) -> Maybe a
@@ -73,8 +71,8 @@ query phi =
 {% endhighlight %}
 
 In typical Haskell fashion, we use our API to eliminate ambiguity.
-If `query phi` is `Just a0`, then `phi` is satisfiable _and_ `a0` satisfies `phi`.
-If `query phi` is `Nothing`, then no member of `a` will satisfy `phi`: `phi` is just not satisfiable.
+If \\( \mathtt{query} \, \phi \\) is \\( \mathtt{Just} \, a_0 \\), then \\( \phi \\) is satisfiable and \\( a_0 \\) satisfies \\( \phi \\).
+If \\( \mathtt{query} \, \phi \\) is \\( \mathtt{Nothing} \\), then no member of \\( a \\) will satisfy \\( \phi \\), so \\( \phi \\) is not satisfiable.
 Let's automate that reasoning, too!
 
 {% highlight haskell %}
@@ -85,16 +83,16 @@ forAll :: Searchable a => (a -> Bool) -> Bool
 forAll phi = (not . exists) (not . phi)
 {% endhighlight %}
 
-Given this framework, Our basic problem is to discover which types are `Searchable` and to implement `search` for such types.
+Given this framework, Our basic problem is to discover which types are searchable and to implement \\( \mathtt{search} \\) for such types.
 
 ## Finite types are searchable
 
 Duh...
 
-A finite type `a` is searchable, because we can implement `search` as follows.
-When given a predicate `phi :: a -> Bool` we can iterating over the members of `a`, applying `phi` to each.
-If we find a member of `a` that satisfies `phi`, we stop and return it.
-If we exhaust `a`, we return the last member we checked.
+A finite type \\( a \\) is searchable, because we can implement \\( \mathtt{search} \\) as follows.
+When given a predicate \\( \phi : a \to \mathtt{Bool} \\) we can iterating over the members of \\( a \\), applying \\( \phi \\) to each.
+If we find a member of \\( a \\) that satisfies \\( \phi \\), we stop and return it.
+If we exhaust \\( a \\), we return the last member we checked.
 
 {% highlight haskell %}
 newtype Finite a = Finite a
@@ -104,8 +102,8 @@ instance (Bounded a, Enum a) => Searchable (Finite a) where
   search phi = fromMaybe maxBound (find phi [minBound .. maxBound])
 {% endhighlight %}
 
-This is a brute-force approach, and many searchable types will have a more-elegant and more-efficient implementation of `search`.
-Here's the implementation for `Bool`
+This is a brute-force approach, and many searchable types will have a more-elegant, more-efficient implementation of \\( \mathtt{search} \\).
+Here's an implementation for \\( \mathtt{Bool} \\)
 
 {% highlight haskell %}
 instance Searchable Bool where
@@ -114,30 +112,26 @@ instance Searchable Bool where
 
 To verify that our instance is lawful, we consider three cases.
 
-_Case 1:_ Suppose $\phi \, \mathtt{True}$ is $\mathtt{True}$.
-Then $\mathtt{search} \, \phi$ satisfies $\phi$, as required.
+1. Suppose \\( \phi \, \mathtt{True} \\) is \\( \mathtt{True} \\).
+   Then \\(
+   \phi \left( \mathtt{search} \, \phi \right)
+     = \phi \left( \phi \, \mathtt{True} \right)
+     = \phi \, \mathtt{True}
+     = \mathtt{True}
+   \\), as required.
 
-$$
-\phi \left( \mathtt{search} \, \phi \right)
-  = \phi \left( \phi \, \mathtt{True} \right)
-  = \phi \, \mathtt{True}
-  = \mathtt{True}
-$$
+2. Suppose \\( \phi \, \mathtt{True} = \mathtt{False} \\) and \\( \phi \, \mathtt{False} = \mathrm{True} \\).
+   Then \\(
+   \phi \left( \mathtt{search} \, \phi \right)
+     = \phi \left( \phi \, \mathtt{True} \right)
+     = \phi \, \mathtt{False}
+     = \mathtt{True}
+   \\), as required.
 
-_Case 2:_ Supposed $\phi \, \mathtt{True} = \mathtt{False}$ and $\phi \, \mathtt{False} = \mathrm{True}$.
-Then $\mathtt{search} \, \phi$ satisfies $\phi$, as required.
+3. Suppose \\( \phi \, \mathtt{True} = \phi \, \mathtt{False} = \mathrm{False} \\).
+   Then \\( \mathtt{search} \, \phi \\) is not required to satisfy \\( \phi \\), so there's nothing to check: we're done.
 
-$$
-\phi \left( \mathtt{search} \, \phi \right)
-  = \phi \left( \phi \, \mathtt{True} \right)
-  = \phi \, \mathtt{False}
-  = \mathtt{True}
-$$
-
-_Case 3:_ Supposed $\phi \, \mathtt{True} = \phi \, \mathtt{False} = \mathrm{False}$.
-Then $\mathtt{search} \, \phi$ is not required to satisfy $\phi$, so we are done.
-
-The cases exhaust all possibilities, thus the claim is verified.
+These cases exhaust all possibilities, thus the claim is verified.
 
 This is effectively the solution to the _Knight/Knave Riddle._
 Two guards stand in front of two doors; one door leads to certain death
@@ -148,7 +142,7 @@ You need to craft your question so that it's guaranteed to reveal which door is 
 
 ## Building searchable types inductively
 
-If each of `a` and `b` is searchable, then their product is searchable.
+If each of \\( a \\) and \\( b \\) is searchable, then their product is searchable.
 
 {% highlight haskell %}
 instance (Searchable a, Searchable b) => Searchable (a, b) where
@@ -162,23 +156,22 @@ instance (Searchable a, Searchable b) => Searchable (a, b) where
 {% endhighlight %}
 
 We claim that the above instance is lawful.
-To that end, suppose `phi` is satisfiable.
-We need to show that `(a0, b0)` satisfies `phi`.
-Since `phi` is satisfiable, `phi1` is satisfiable, because `fst :: (a,b) -> a` maps solutions of `phi` to solutions of `phi1`.
-Since `phi1` is satisfiable, `a0 = search phi1` satisfies `phi1`.
-Since `a0` satisfies `phi1`, `exists (\b -> phi (a0,b))` is `True`.
-But notice `exists (\b -> phi (a0,b))` is identically `exists phi2`, thus `exists phi2` is `True`.
-Since `exists phi2` is `True`, `phi2` is satisfiable.
-Since `phi2` is satisfiable, `b0 = search phi2` satisfies `phi2`.
-That is to say `phi (a0, b0)` is `True`, completing the proof.
-(This proof would be _way_ simpler if I didn't have to do it constructively. Constructive logic is _way_ harder than the logic I'm used to doing.)
+To that end, suppose \\( \phi \\) is satisfiable.
+We need to show that \\( (a_0, b_0) \\) satisfies \\( \phi \\).
+Since \\( \phi \\) is satisfiable, \\( \phi_1 \\) is satisfiable, because \\( \mathtt{fst} : a \times b \to a \\) maps solutions of \\( \phi \\) to solutions of \\( \phi_1 \\).
+Since \\( \phi_1 \\) is satisfiable, \\( a_0 = \mathtt{search} \, \phi_1 \\) satisfies \\( \phi_1 \\).
+Since \\( a_0 \\) satisfies \\( \phi_1 \\), \\( \mathtt{exists} \left( b \mapsto \phi (a_0,b) \right) \\) is \\( \mathtt{True} \\).
+But notice \\( \mathtt{exists} \left( b \mapsto \phi (a0,b) \right) \\) is identically \\( \mathtt{exists} \, \phi_2 \\), thus \\( \mathtt{exists} \phi_2 \\) is \\( \mathtt{True} \\).
+Since \\( \mathtt{exists} \phi_2 \\) is \\( \mathtt{True} \\), \\( \phi_2 \\) is satisfiable.
+Since \\( \phi_2 \\) is satisfiable, \\( b_0 = \mathtt{search} \phi_2 \\) satisfies \\( \phi_2 \\).
+That is to say \\( \phi (a_0, b_0) \\) is \\( \mathtt{True} \\), completing the proof.
 
 So we now know that the product of any two searchable types is searchable.
 This generalizes in a straight-forward manner, allowing us to conclude that the product of finitely-many searchable types is searchable.
 What about the product of infinitely-many searchable types?
-In particular, let's consider infinite-length tuples of a searchable type `a`.
-Such infinite tuples are, of course, more appropriately thought of as infinite sequences of members of `a`.
-If `a` is searchable, is the type comprised of infinite sequences of members of `a` searchable?
+In particular, let's consider infinite-length tuples of a searchable type \\( a \\).
+Such infinite tuples are, of course, more appropriately thought of as infinite sequences of members of \\( a \\).
+If \\( a \\) is searchable, is the type comprised of infinite sequences of members of \\( a \\) searchable?
 Surprisingly, it is!
 
 {% highlight haskell %}
@@ -188,10 +181,10 @@ instance Searchable a => Searchable (Sequence a) where
   search = tychonoff (const search)
 {% endhighlight %}
 
-`Sequence a` has infinitely-many non-bottom members as long as `a` has at least two non-bottom members, so we now how examples of _infinite_ types that are still searchable.
-`tychonoff` is doing all the heavy lifting here.
-`tychonoff` is a function that takes a sequence of searchers and uses that to build a searcher of sequences.
-We thus define `search :: Search (Sequence a)` by applying `tychonoff` to the constant sequence that identically returns `search :: Search a`.
+\\( \mathtt{Sequence} \, a \\) has infinitely-many non-bottom members as long as \\( a \\) has at least two non-bottom members, so we now how examples of _infinite_ types that are still searchable.
+\\( \mathtt{tychonoff} \\) is doing all the heavy lifting here.
+\\( \mathtt{tychonoff} \\) is a function that takes a sequence of searchers and uses that to build a searcher of sequences.
+We thus define \\( \mathtt{search} \\) on \\( \mathtt{Sequence} \, a \\) by applying \\( \mathtt{tychonoff} \\) to the constant sequence that identically returns \\( \mathtt{search} \\) on \\( a \\).
 
 {% highlight haskell %}
 tychonoff :: Sequence (Search a) -> Search (Sequence a)
@@ -211,14 +204,14 @@ tychonoff searchers phi = result
         GT -> as (i' - i - 1)
 {% endhighlight %}
 
-I've read Escardó's paper four times now, and I still have no idea how `tychonoff` works.
+I've read Escardó's paper four times now, and I still have no idea how \\( \mathtt{tychonoff} \\) works.
 Maybe on my fifth reading I'll see the light.
 I will attempt to convey the gist of why this is even plausible in the first place, though.
 I defined _searchable_ using the word _total_ to describe predicates.
-The crucial fact that this gives us is that a total predicate $\phi : a \to \mathtt{Bool}$ must be non-bottom for all non-bottom members of a $a$.
+The crucial fact that this gives us is that a total predicate \\( \phi : a \to \mathtt{Bool} \\) must be non-bottom for all non-bottom members of a \\( a \\).
 Now, consider the case of a predicate defined on infinite sequences.
-In order for a predicate $\phi : \mathtt{Sequence} \, a \to \mathtt{Bool}$ to be non-bottom on all non-bottom members of $\mathtt{Sequence} \, a$, there must necessarily be a largest natural number $n$ beyond which $\phi \, x$ does not use any information from $x$ for each non-bottom sequence $x$.
-This is because the expression $\langle\phi \, x\rangle$ reduces to an expression $\langle\phi_1 \, [x \, 1] \, x\rangle$ which reduces to an expression $\langle\phi_2 \, [x \, 1] \, [x \, 2] \, x\rangle$ and so on.
+In order for a predicate \\( \phi : \mathtt{Sequence} \, a \to \mathtt{Bool} \\) to be non-bottom on all non-bottom members of \\( \mathtt{Sequence} \, a \\), there must necessarily be a largest natural number \\( n \\) beyond which \\( \phi \, x \\) does not use any terms of \\( x \\).
+This is because the expression \\( \langle\phi \, x\rangle \\) reduces to an expression \\( \langle\phi_1 \, [x \, 1] \, x\rangle \\) which reduces to an expression \\( \langle\phi_2 \, [x \, 1] \, [x \, 2] \, x\rangle \\) and so on.
 
 $$
 \langle\phi \, x\rangle \Rightarrow
@@ -229,19 +222,19 @@ $$
 \dots
 $$
 
-(Where $\langle\cdot\rangle$ is $\mathtt{apply}$ and $[\cdot]$ is $\mathtt{eval}$.)
+(Where \\( \langle\cdot\rangle \\) is \\( \mathtt{apply} \\) and \\( [\cdot] \\) is \\( \mathtt{eval} \\).)
 
 This reduction process generates an infinite sequence of expressions.
-Because we require $\phi \, x$ be non-bottom, the tail of the sequence eventually stabilizes at either the expression $\mathtt{True}$ or the expression $\mathtt{False}$.
-So given any non-bottom sequence $x$, we know that $\phi \, x$ will terminate.
+Because we require \\( \phi \, x \\) be non-bottom, the tail of the sequence eventually stabilizes at either the expression \\( \langle\mathtt{True}\rangle \\) or the expression \\( \langle\mathtt{False}\rangle \\).
+So given any non-bottom sequence \\( x \\), we know that \\( \phi \, x \\) will terminate.
 
-This explains how `tychonoff (const search) phi` terminates in the case where `phi` is satisfiable.
-If we assume for the moment that we are clairvoyant and we know that `phi` is satisfiable before the fact, then we further know that iterating over all non-bottom sequences will eventually yield a sequence that satisfies `phi`.
+This explains how \\( \mathtt{tychonoff} \, (\mathtt{const} \, \mathtt{search}) \, \phi \\) terminates in the case where \\( \phi \\) is satisfiable.
+If we assume for the moment that we are clairvoyant and we know that \\( \phi \\) is satisfiable before the fact, then we further know that iterating over all non-bottom sequences will eventually yield a sequence that satisfies \\( \phi \\).
 
-What's still not clear to me is how `tychonoff (const search) phi` terminates in the case where `phi` is not satisfiable.
+What's still not clear to me is how \\( \mathtt{tychonoff} \, (\mathtt{const} \, \mathtt{search}) \, \phi \\) terminates in the case where \\( \phi \\) is not satisfiable.
 Here's my best guess, though.
-Suppose a predicate $\phi$ is not satisfiable.
-For each non-bottom sequence $x$, let $N_\phi(x)$ be the smallest natural number $n$ where
+Suppose a predicate \\( \phi) \\) is not satisfiable.
+For each non-bottom sequence \\( x \\), let \\( N_\phi(x) \\) be the smallest natural number \\( n \\) where
 
 $$
 \langle\phi_n \, [x \, 1] \, ... \, [x \, n] \, x\rangle
@@ -249,13 +242,13 @@ $$
 \text{.}
 $$
 
-(I.e., $N_\phi(x)$ is the point at which $\phi \, x$ terminates.)
-We know that $N_\phi(x) < \infty$ for each non-bottom $x$.
-What we'd like is for $N_\phi$ to have a maximum, and we'd like to be able to compute that maximum.
-If $N_\phi$ had a computable maximum, then we'd know when to make $\mathtt{tychonoff} \, (\mathtt{const} \, \mathtt{search}) \, \phi$ stop looking.
+(I.e., \\( N_\phi(x) \\) is the point at which the sequence of reductions of the expression \\( \langle \phi \, x \rangle \\) stabilizes.)
+We know that \\( N_\phi(x) < \infty \\) for each non-bottom \\( x \\).
+What we'd like is for \\( N_\phi \\) to have a maximum, and we'd like to be able to compute that maximum.
+If \\( N_\phi \\) had a computable maximum, we'd then know when to make \\( \mathtt{tychonoff} \, (\mathtt{const} \, \mathtt{search}) \, \phi \\) stop looking.
 Now, this is just one approach, one _very hopeful_ approach.
-It's totally conceivable that there's some predicate $\phi$ out there where $N_\phi$ doesn't have a maximum.
-So maybe the stopping condition for $\mathtt{tychonoff} \, (\mathtt{const} \, \mathtt{search}) \, \phi$ is found some other way.
+It's totally conceivable that there's some predicate \\( \phi \\) out there where \\( N_\phi \\) doesn't have a maximum.
+So maybe the stopping condition for \\( \mathtt{tychonoff} \, (\mathtt{const} \, \mathtt{search}) \, \phi \\) is found some other way.
 
 Tangentially, we want our search to be fast, so we memoize our sequence.
 A common memoization strategy in Haskell is passing a function through a concrete data structure; here we use a binary tree.
@@ -278,15 +271,15 @@ decode (Branch x l r) n =
 {% endhighlight %}
 
 Here's where we stand.
-Pick your favorite searchable type `a`.
-Thanks to `tychonoff`, we know that the type comprised of _infinite sequences_ of members of `a`—clearly an infinite type—is also searchable.
+Pick your favorite searchable type \\( a \\).
+Thanks to \\( \mathtt{tychonoff} \\), we know that the type comprised of _infinite sequences_ of members of \\( a \\)—clearly an infinite type if \\( a \\) has at least two non-bottom members—is also searchable.
 Exhaustively.
 In finite time.
 Mind blowing.
 
 ## Equality of functions
 
-Functions from `a` to `b` may be tested for equality—extensional equality, not reference equality—deterministically and in finite time if `a` is searchable and `b` instances `Eq`.
+Functions from \\( a \\) to \\( b \\) may be tested for equality—extensional equality, not reference equality—deterministically and in finite time if `a` is searchable and `b` instances `Eq`.
 
 {% highlight haskell %}
 instance (Searchable a, Eq b) => Eq (a -> b) where
