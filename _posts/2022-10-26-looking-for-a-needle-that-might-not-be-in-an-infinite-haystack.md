@@ -181,7 +181,7 @@ instance Searchable a => Searchable (Sequence a) where
   search = tychonoff (const search)
 {% endhighlight %}
 
-\\( \mathtt{Sequence} \, a \\) has infinitely-many non-bottom members as long as \\( a \\) has at least two non-bottom members, so we now how examples of _infinite_ types that are still searchable.
+\\( \mathtt{Sequence} \, a \\) has infinitely-many non-bottom members as long as \\( a \\) has at least two non-bottom members, so we now have examples of _infinite_ types that are still searchable.
 \\( \mathtt{tychonoff} \\) is doing all the heavy lifting here.
 \\( \mathtt{tychonoff} \\) is a function that takes a sequence of searchers and uses that to build a searcher of sequences.
 We thus define \\( \mathtt{search} \\) on \\( \mathtt{Sequence} \, a \\) by applying \\( \mathtt{tychonoff} \\) to the constant sequence that identically returns \\( \mathtt{search} \\) on \\( a \\).
