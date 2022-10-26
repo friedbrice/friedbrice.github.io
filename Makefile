@@ -1,6 +1,6 @@
 .PHONY: list
 list: ## Show available targets
-	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##\s*\(.*\)/\n\t\1\n/'
+	@grep -F -h "##" $(MAKEFILE_LIST) | grep -F -v grep -F | sed -e 's/\\$$//' | sed -e 's/##\s*\(.*\)/\n\t\1\n/'
 
 .PHONY: reset
 reset: clean ## Remove project build artifacts and 'bundle' and 'gem' caches
