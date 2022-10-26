@@ -208,7 +208,7 @@ I've read Escardó's paper four times now, and I still have no idea how \\( \mat
 Maybe on my fifth reading I'll see the light.
 I will attempt to convey the gist of why this is even plausible in the first place, though.
 I defined _searchable_ using the word _total_ to describe predicates.
-The crucial fact that this gives us is that a total predicate \\( \phi : a \to \mathtt{Bool} \\) must be non-bottom for all non-bottom members of a \\( a \\).
+The crucial fact that this gives us is that a total predicate \\( \phi : a \to \mathtt{Bool} \\) must be non-bottom for all non-bottom members of \\( a \\).
 Now, consider the case of a predicate defined on infinite sequences.
 In order for a predicate \\( \phi : \mathtt{Sequence} \, a \to \mathtt{Bool} \\) to be non-bottom on all non-bottom members of \\( \mathtt{Sequence} \, a \\), there must necessarily be a largest natural number \\( n \\) beyond which \\( \phi \, x \\) does not use any terms of \\( x \\).
 This is because the expression \\( \langle\phi \, x\rangle \\) reduces to an expression \\( \langle\phi_1 \, [x \, 1] \, x\rangle \\) which reduces to an expression \\( \langle\phi_2 \, [x \, 1] \, [x \, 2] \, x\rangle \\) and so on.
