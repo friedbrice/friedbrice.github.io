@@ -134,7 +134,7 @@ To verify that our instance is lawful, we consider three cases.
 These cases exhaust all possibilities, thus the claim is verified.
 
 This is effectively the solution to the _Knight/Knave Riddle._
-Two guards stand in front of two doors; one door leads to certain death
+Two guards stand in front of two doors; one door leads to certain death.
 One guard, the knave, always lies, and the other, the knight, always tells the truth.
 You have no way of telling which is which.
 You may ask a single question to one of the guards.
@@ -161,9 +161,9 @@ We need to show that \\( (a_0, b_0) \\) satisfies \\( \phi \\).
 Since \\( \phi \\) is satisfiable, \\( \phi_1 \\) is satisfiable, because \\( \mathtt{fst} : a \times b \to a \\) maps solutions of \\( \phi \\) to solutions of \\( \phi_1 \\).
 Since \\( \phi_1 \\) is satisfiable, \\( a_0 = \mathtt{search} \, \phi_1 \\) satisfies \\( \phi_1 \\).
 Since \\( a_0 \\) satisfies \\( \phi_1 \\), \\( \mathtt{exists} \left( b \mapsto \phi (a_0,b) \right) \\) is \\( \mathtt{True} \\).
-But notice \\( \mathtt{exists} \left( b \mapsto \phi (a0,b) \right) \\) is identically \\( \mathtt{exists} \, \phi_2 \\), thus \\( \mathtt{exists} \phi_2 \\) is \\( \mathtt{True} \\).
-Since \\( \mathtt{exists} \phi_2 \\) is \\( \mathtt{True} \\), \\( \phi_2 \\) is satisfiable.
-Since \\( \phi_2 \\) is satisfiable, \\( b_0 = \mathtt{search} \phi_2 \\) satisfies \\( \phi_2 \\).
+But notice \\( \mathtt{exists} \left( b \mapsto \phi (a0,b) \right) \\) is identically \\( \mathtt{exists} \, \phi_2 \\), thus \\( \mathtt{exists} \, \phi_2 \\) is \\( \mathtt{True} \\).
+Since \\( \mathtt{exists} \, \phi_2 \\) is \\( \mathtt{True} \\), \\( \phi_2 \\) is satisfiable.
+Since \\( \phi_2 \\) is satisfiable, \\( b_0 = \mathtt{search} \, \phi_2 \\) satisfies \\( \phi_2 \\).
 That is to say \\( \phi (a_0, b_0) \\) is \\( \mathtt{True} \\), completing the proof.
 
 So we now know that the product of any two searchable types is searchable.
