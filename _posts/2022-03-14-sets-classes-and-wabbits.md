@@ -59,7 +59,7 @@ is the proposition that \\(y\\) is barber to everyone who is not their own barbe
 Assume for contradiction that at least one such barber exists,
 \\[ (\exists y) \Big( (\forall x) \big( B(y,x) \iff \neg B(x,x) \big) \Big) \\]
 Now, let \\(c\\) stand for one such barber in particular, so we have
-\\[ (\forall x) \big( B(c,x) \iff B(x,x) \big) \text{.} \\]
+\\[ (\forall x) \big( B(c,x) \iff \neg B(x,x) \big) \text{.} \\]
 Since this statement applies generally to all \\(x\\), it applies in particular when \\(x\\) is \\(c\\), yielding
 \\[ B(c, c) \iff \neg B(c, c) \text{.} \\]
 At this point, the contradiction should be apparent, but let's finish the proof just out of caution. Splitting the bi-implication, we have
