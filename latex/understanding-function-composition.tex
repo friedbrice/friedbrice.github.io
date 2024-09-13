@@ -1,0 +1,200 @@
+\documentclass[multi=page,margin=1cm,crop]{standalone}
+\usepackage{xypic}
+\usepackage{amsmath}
+\begin{document}
+
+\newcommand{\comp}{\mathop{\circ}}
+
+\newcommand{\PatientId}{\mathtt{PatientId}}
+\newcommand{\Allergen}{\mathtt{Allergen}}
+\newcommand{\Bool}{\mathtt{Bool}}
+\newcommand{\allergies}{\mathtt{allergies}}
+\newcommand{\elem}{\mathtt{elem}}
+\newcommand{\A}{\mathtt{A}}
+\newcommand{\B}{\mathtt{B}}
+\newcommand{\f}{\mathtt{f}}
+\newcommand{\is}{\mathop{=}}
+
+\newcommand{\preap}[1]{\widehat{#1}}
+\newcommand{\Fun}[2]{#1 \Rightarrow #2}
+
+\begin{page}
+  \begin{tabular}{c}
+    $$
+    \xymatrix{
+        \A
+          \ar[dd]_{\f}
+        \\
+        \\ \B
+      }
+    $$
+  \\
+  \\
+    $$
+    \xymatrix{
+      \PatientId
+        \ar[dd]_{\allergies}
+      \\
+      \\ [\Allergen]
+    }
+    $$
+  \end{tabular}
+\end{page}
+
+\begin{page}
+  \begin{tabular}{c}
+    $$
+    \xymatrix{
+      \A
+        \ar[dd]_{\f}
+        \ar@{-->}@/_2em/[ddrr]^(0.5){\mathop{\preap{f}} g \is g \comp \f}
+      \\
+      \\ \B
+        \ar[rr]_{g}
+      &
+      & w
+    }
+    $$
+  \\
+  \\
+    $$
+    \xymatrix{
+      \PatientId
+        \ar[dd]_{\allergies}
+        \ar@{-->}@/_2em/[ddrr]^(0.4){\mathop{\preap{\allergies}} g \is g \comp \allergies}
+      \\
+      \\ [\Allergen]
+        \ar[rr]_{g}
+      &
+      & w
+    }
+    $$
+  \end{tabular}
+\end{page}
+
+\begin{page}
+  \begin{tabular}{c}
+    $$
+    \xymatrix{
+      \A
+        \ar@/^1em/@{.>}[r]
+        \ar[dd]_{\f}
+      % & \A \To w
+      & \Fun{\A}{w}
+      \\
+      \ar@{.>}@/^1em/[r]|{\preap{(\;)}}
+      &
+      \\ \B
+        \ar@/^1em/@{.>}[r]
+      & \Fun{\B}{w}
+        \ar[uu]_{\preap{\f}}
+    }
+    $$
+  \\
+  \\
+    $$
+    \xymatrix{
+      \PatientId
+        \ar@/^1em/@{.>}[r]
+        \ar[dd]_{\allergies}
+      & \Fun{\PatientId}{w}
+      \\
+      \ar@{.>}@/^1em/[r]|{\preap{(\;)}}
+      &
+      \\ [\Allergen]
+        \ar@/^1em/@{.>}[r]
+      & \Fun{[\Allergen]}{w}
+        \ar[uu]_{\preap{\allergies}}
+    }
+    $$
+  \end{tabular}
+\end{page}
+
+\begin{page}
+  \begin{tabular}{c}
+    $$
+    \xymatrix{
+      \\
+      \Fun{\A}{\B}
+        \ar@/^2em/[rr]^{\preap{(\;)}}
+      &
+      & \Fun{(\Fun{\B}{w})}{(\Fun{\A}{w})}
+    }
+    $$
+  \\
+  \\
+    $$
+    \xymatrix{
+      \\
+      \Fun{\PatientId}{[\Allergen]}
+        \ar@/^2em/[rr]^{\preap{(\;)}}
+      &
+      & \Fun{(\Fun{[\Allergen]}{w})}{(\Fun{\PatientId}{w})}
+    }
+    $$
+  \end{tabular}
+\end{page}
+
+\begin{page}
+  \begin{tabular}{c}
+    $$
+    \xymatrix{
+      \B
+        \ar[rr]^{g}
+      &
+        \ar@/^1em/[dd]^{\preap{\f}}
+      & w
+      \\
+      \\ \A
+        \ar[rr]_{\mathop{\preap{\f}} g}
+      &
+      & w
+    }
+    $$
+  \\
+  \\
+    $$
+    \xymatrix{
+      [\Allergen]
+        \ar[rr]^{g}
+      &
+        \ar@/^1em/[dd]^{\preap{\allergies}}
+      & w
+      \\
+      \\ \PatientId
+        \ar[rr]_{\mathop{\preap{\allergies}} g}
+      &
+      & w
+    }
+    $$
+  \end{tabular}
+\end{page}
+
+\begin{page}
+  $$
+  \xymatrix{
+    \Allergen
+      \ar[rr]_{\elem}
+    &
+    & \Fun{[\Allergen]}{\Bool}
+  }
+  $$
+\end{page}
+
+\begin{page}
+  $$
+  \xymatrix{
+    &
+    & \Fun{\PatientId}{\Bool}
+    \\
+    \\ \Allergen
+      \ar@{-->}@/_2em/[uurr]^(0.65){\preap{\allergies} \comp \elem}
+      \ar[rr]_{\elem}
+    &
+    & \Fun{[\Allergen]}{\Bool}
+      \ar[uu]_{\preap{\allergies}}
+  }
+  $$
+\end{page}
+
+\end{document}

@@ -2,7 +2,7 @@
 
 The personal website of Daniel Brice, PhD.
 
-Copyright © 2014-2022 Daniel Brice [CC BY 4.0][1]
+Copyright © 2014-2024 Daniel Brice [CC BY 4.0][1]
 
 ## Setup Development Environment
 
@@ -19,7 +19,7 @@ The Ruby world is active, packages are improved, APIs change, and projects break
     Ubuntu should come preloaded with `ruby` and `gem`. If not, just install them via `apt-get`.
     Once they're installed, you can install `bundle` through `gem`, but I prefer to install it through `apt-get`.
 
-    macOS comes preloaded with `ruby` and `gem`, but you'd rather use the up-to-date one available through Homebrew. The Homebrew formula _ruby_ will include `ruby`, `gem`, and `bundle`, but make sure you add _/usr/local/opt/ruby/bin_ to your path, as instructed.
+    macOS comes preloaded with `ruby` and `gem`, but you'd rather use the up-to-date one available through Homebrew. The Homebrew formula _ruby_ will include `ruby`, `gem`, and `bundle`, but make sure you follow all the Homebrew caveats so that its `ruby` will be first on your `PATH`.
 
     I should mention that you need Ruby version 2 or higher.
     To learn more, see the [Bundler project page][2] or the [GitHub Pages help page][3].

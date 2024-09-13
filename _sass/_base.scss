@@ -54,10 +54,12 @@ img {
  */
 figure > img {
     display: block;
+    margin: auto;
 }
 
 figcaption {
     font-size: $small-font-size;
+    text-align: center;
 }
 
 
@@ -184,7 +186,10 @@ pre {
     }
 }
 
-
+x-var {
+    font-family: serif;
+    font-style: italic;
+}
 
 /**
  * Clearfix
