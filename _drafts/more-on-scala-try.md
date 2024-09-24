@@ -5,7 +5,6 @@ date: 1999-12-31
 permalink: /blog/more-on-scala-try/
 comments: true
 tags:
-  - code
   - scala
   - style
   - types
@@ -93,4 +92,3 @@ In other words, it's fine that `Try` offers this functionality, but it shouldn't
 Scala's `Try` class manages to defy our expectation, making it harder for us to reuse code with confidence.
 
 # _Try_'s _flatMap_ Method
-

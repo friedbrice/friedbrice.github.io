@@ -1,15 +1,12 @@
 ---
 layout: post
-title: Functor the Ultimate Delegate
-date: 2022-09-07
+title: "Functor the Ultimate Delegate"
+date: 1999-12-31
 permalink: /blog/functor-the-ultimate-delegate/
-redirect_from:
-  - /blog/2022-09-07/
 comments: true
 tags:
   - math
   - category theory
-  - code
   - haskell
 ---
 

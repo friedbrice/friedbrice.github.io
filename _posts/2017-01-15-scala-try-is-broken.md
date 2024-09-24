@@ -3,12 +3,11 @@ layout: post
 title: "Scala Try is Broken"
 date: 2017-01-15
 permalink: /blog/scala-try-is-broken/
-redirect_from: 
+redirect_from:
   - /blog/16/
   - /blog/2017-01-15/
 comments: true
 tags:
-  - code
   - scala
   - style
   - types

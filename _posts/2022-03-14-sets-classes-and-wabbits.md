@@ -29,17 +29,12 @@ We'd like a mathematical theory of sets that corresponds to our intuitive notion
 That is, we'd like to be able to take an arbitrary logical predicate and then form the set of all things that satisfy said predicate.
 Unfortunately, such a vision is untenable, as its unrestricted application leads to paradox.
 
-<figure>
-  <blockquote>
-    How about a nice, close shave? Teach your whiskers to behave.<br />
-    Lots of lather, lots of soap. Please hold still, don't be a dope.<br />
-    Now we're ready for the scraping There's no use to try escaping.<br />
-    Yell and scream and rant and rave. It's no use, you need a shave!
-  </blockquote>
-  <figcaption>
-    Bugs Bunny, from <cite>The Rabbit of Seville</cite>
-  </figcaption>
-</figure>
+{% quotation Bugs Bunny, from <cite>The Rabbit of Seville</cite> %}
+How about a nice, close shave? Teach your whiskers to behave.<br />
+Lots of lather, lots of soap. Please hold still, don't be a dope.<br />
+Now we're ready for the scraping There's no use to try escaping.<br />
+Yell and scream and rant and rave. It's no use, you need a shave!
+{% endquotation %}
 
 In Seville, Spain there lives and works a sole barber, Conejito.
 Now, Seville is a rather big city, with the better part of a million sevillians.

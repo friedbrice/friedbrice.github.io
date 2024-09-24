@@ -1,17 +1,14 @@
 ---
 layout: post
-title: "Graham&#8217;s Scan Convex Hull Algorithm"
+title: "Graham's Scan Convex Hull Algorithm"
 date: 2015-12-07
 permalink: /blog/grahams-scan-convex-hull-algorithm/
-redirect_from: 
+redirect_from:
   - /blog/11/
   - /blog/2015-12-07/
 comments: true
 tags:
-  - code
-  - convex hull
   - geometry
-  - graham scan
   - haskell
   - math
   - real world haskell

@@ -9,9 +9,11 @@ redirect-from:
 comments: true
 tags:
   - haskell
-  - exception handling
+  - failure handling
   - monad
   - monad transformer
+  - design patterns
+  - style
 ---
 
 This post is Part 3 of a series on type-safe failure handling.

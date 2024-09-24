@@ -3,13 +3,12 @@ layout: post
 title: "If Hemingway Wrote Javascript"
 date: 2015-01-30
 permalink: /blog/if-hemingway-wrote-javascript/
-redirect_from: 
+redirect_from:
   - /blog/05/
   - /blog/2015-01-30/
 comments: true
 tags:
-  - c
-  - code
+  - c lang
   - python
   - haskell
   - javascript

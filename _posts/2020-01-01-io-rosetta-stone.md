@@ -11,6 +11,7 @@ tags:
   - haskell
   - functional programming
   - types
+  - effects
 ---
 
 Recently to a friend, I quipped that it'd be a good exercise towards demystifying Haskell's `IO` type to write a comparable `IO` type in your favorite language. In this blog post, I do that for Java, Javascript, Python, and Scala.

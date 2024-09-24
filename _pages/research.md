@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Research
+title: "Research"
 permalink: /research/
 date: 2014-12-03
 topnav: true

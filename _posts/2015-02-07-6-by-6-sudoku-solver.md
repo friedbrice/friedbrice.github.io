@@ -3,12 +3,11 @@ layout: post
 title: "6-by-6 Sudoku Solver"
 date: 2015-02-07
 permalink: /blog/6-by-6-sudoku-solver/
-redirect_from: 
+redirect_from:
   - /blog/06/
   - /blog/2015-02-07/
 comments: true
 tags:
-  - code
   - haskell
   - puzzles
 ---
@@ -22,7 +21,7 @@ I decided it'd be an instructive use of my time to modify an existing solver to 
 
 The solver I chose to modify is the almost-ten-year-old [Haskell sudoku solver in 707 bytes][1].
 I chose this solver mostly because of its small size: there'd be fewer moving parts to understand.
-This first thing I tried, in order to turn a 9-by-9 sudoku solver into a 6-by-6 sudoku solver, was a naive <code>s/9/6/g</code>.
+This first thing I tried, in order to turn a 9-by-9 sudoku solver into a 6-by-6 sudoku solver, was a naive `s/9/6/g`.
 It compiled, but it didn't work.
 
   [1]: http://web.math.unifi.it/~maggesi/haskell_sudoku_solver.html

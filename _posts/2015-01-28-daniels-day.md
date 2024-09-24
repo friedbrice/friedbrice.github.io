@@ -1,15 +1,14 @@
 ---
 layout: post
-title: Daniel&#8217;s Day
+title: "Daniel's Day"
 date: 2015-01-28
 permalink: /blog/daniels-day/
-redirect_from: 
+redirect_from:
   - /blog/03/
   - /blog/2015-01-28/
 comments: true
 tags:
   - bash
-  - code
   - haskell
   - jekyll
 ---

@@ -158,15 +158,9 @@ I like thinking in pictures.
 We presuppose a function `allergies :: PatientId -> [Allergen]` (or `f :: A -> B`, respectively).
 That looks like this.
 
-<figure>
-  <img
-    src="/assets/img/understanding-function-composition/figure-1.png"
-    alt="Figure 1: the function 'allergies' depicted as an arrow from 'PatientId' to '[Allergen]'"
-  />
-  <figcaption>
-    Figure 1: the function 'allergies' depicted as an arrow from 'PatientId' to '[Allergen]'
-  </figcaption>
-</figure>
+{% figure /assets/img/understanding-function-composition/figure-1.png %}
+Figure 1: the function `allergies` depicted as an arrow from `PatientId` to `[Allergen]`
+{% endfigure %}
 
 In Figure 1 and the subsequent figures, we depict types as nodes in a directed graph.
 Then a function can be visualized as an arrow from its source type to its target type.
@@ -176,15 +170,9 @@ Adding a node for \\( w \\) and an arrow for \\( g \\) gives us a graph with a p
 This graph will also have an implied arrow from `PatientId` (_res._ `A`) to \\( w \\): specifically, I'm talking about the composition of \\( g \\) and `allergies` (_res._ `f`).
 This composed function can be thought of as the result of following the path from `PatientId`, along `allergies` through `[Allergen]`, along \\( g \\) to \\( w \\) (_res._ from `A`, along `f` through `B`, along \\( g \\) to \\( w \\)).
 
-<figure>
-  <img
-    src="/assets/img/understanding-function-composition/figure-2.png"
-    alt="Figure 2: a two-arrow path representing the composition of 'allergies' with a function 'g' from '[Allergen]' to 'w'"
-  />
-  <figcaption>
-    Figure 2: a two-arrow path representing the composition of 'allergies' with a function 'g' from '[Allergen]' to 'w'
-  </figcaption>
-</figure>
+{% figure /assets/img/understanding-function-composition/figure-2.png %}
+Figure 2: a two-arrow path representing the composition of `allergies` with a function `g` from `[Allergen]` to `w`
+{% endfigure %}
 
 Figure 2 has a bonus feature that I haven't brought up yet.
 You may have noticed it.
@@ -226,42 +214,22 @@ Equivalently, we now focus on the function returned by `hat`.
 Figure 3 represents that code visually. It depicts the function \\( \mathtt{f} \\) going from its source type \\( \mathtt{A} \\) to its target type \\( \mathtt{B} \\) and the function \\( \widehat{\mathtt{f}} \\) going from its source type \\( \mathtt{B} \to w \\) to its source type \\( \mathtt{A} \to w \\).
 In the concrete setting, that's the function \\( \mathtt{allergies} \\) going from its source type \\( \mathtt{PatientId} \\) to its target type \\( [\mathtt{Allergen}] \\) and the function \\( \widehat{\mathtt{allergies}} \\) going from its source type \\( [\mathtt{Allergen}] \to w \\) to its target type \\( \mathtt{PatientId} \to w \\).
 
-<figure>
-  <img
-    src="/assets/img/understanding-function-composition/figure-3.png"
-    alt="Figure 3: a series of three arrows representing the action of the 'hat' operation on 'allergies'"
-  />
-  <figcaption>
-    Figure 3: a series of three arrows representing the action of the 'hat' operation on 'allergies'
-  </figcaption>
-</figure>
+{% figure /assets/img/understanding-function-composition/figure-3.png %}
+Figure 3: a series of three arrows representing the action of the `hat` operation on `allergies`
+{% endfigure %}
 
-<aside>
-  <strong>Note:</strong>
-  In Figure 3 and subsequent figures, I write
-  <x-var>x</x-var> ⇒ <x-var>y</x-var>
-  in place of
-  <x-var>x</x-var> → <x-var>y</x-var>
-  to avoid any possibility of confusing the type
-  <x-var>x</x-var> → <x-var>y</x-var>
-  with an actual link in the graph from
-  <x-var>x</x-var> to <x-var>y</x-var>.
-</aside>
+{% aside %}
+**Note:** In Figure 3 and subsequent figures, I write $$x \Rightarrow y$$ in place of $$x \to y$$ to avoid any possibility of confusing the node for the type of functions from $$x$$ to $$y$$ with an actual arrow in the graph from node $$x$$ to node $$y$$.
+{% endaside %}
 
 Here is some intuition we can gain from Figure 3.
 First, in addition to transforming functions, \\( \widehat{(\;)} \\) appears to have some kind of action on types, sending a type \\( x \\) to \\( x \to w \\).
 Second, \\( \widehat{(\;)} \\) seems to reverses the direction of arrows it transforms.
 We depict this in Figure 4.
 
-<figure>
-  <img
-    src="/assets/img/understanding-function-composition/figure-4.png"
-    alt="Figure 4: the 'hat' operation transforming functions with source type 'PatientId' and target type '[Allergen]' into higher-order functions with source type '[Allergen]' to 'w' and target type 'PatientId' to 'w'"
-  />
-  <figcaption>
-    Figure 4: the 'hat' operation transforming functions with source type 'PatientId' and target type '[Allergen]' into higher-order functions with source type '[Allergen]' to 'w' and target type 'PatientId' to 'w'
-  </figcaption>
-</figure>
+{% figure /assets/img/understanding-function-composition/figure-4.png %}
+Figure 4: the `hat` operation transforming functions with source type `PatientId` and target type `[Allergen]` into higher-order functions with source type `[Allergen] -> w` and target type `PatientId -> w`
+{% endfigure %}
 
 So \\( \widehat{(\;)} \\) takes a function and returns a higher-order function with reversed arguments, in some sense.
 That's a start, but it's still very vague.
@@ -279,15 +247,9 @@ $$
 
 Figure 5 depicts the action of \\( \widehat{\mathtt{allergies}} \\) (_res._ \\( \widehat{\mathtt{f}} \\)) on an arbitrary function \\( g \\). You can think of this as "stretching out" the source and target sets in the signature of \\( \widehat{\mathtt{allergies}} \\) (_res._ \\( \widehat{\mathtt{f}} \\)) given above.
 
-<figure>
-  <img
-    src="/assets/img/understanding-function-composition/figure-5.png"
-    alt="Figure 5: the action of the 'hat'-transformed 'allergies' function on an arbitrary function 'g'."
-  />
-  <figcaption>
-    Figure 5: the action of the 'hat'-transformed 'allergies' function on an arbitrary function 'g'.
-  </figcaption>
-</figure>
+{% figure /assets/img/understanding-function-composition/figure-5.png %}
+Figure 5: the action of the `hat`-transformed `allergies` function on an arbitrary function `g`.
+{% endfigure %}
 
 And this is the lesson. \\( \widehat{\mathtt{f}} \\) is a function that you use in order to modify the source type of other functions.
 Specifically, `hat f` changes a function's source type from `B` to `A`.
@@ -329,15 +291,9 @@ allergies :: PatientId -> [Allergen]
 For any particular allergen, it's a straightforward task to write a function that checks for the presence of that allergen in any given list of allergens.
 In fact, this is such a common, formulaic task that the standard library provides a function for generating such allergen-list-checking functions.
 
-<figure>
-  <img
-    src="/assets/img/understanding-function-composition/figure-6.png"
-    alt="Figure 6: 'elem' is a function that generates functions that check lists of allergens"
-  />
-  <figcaption>
-    Figure 6: 'elem' is a function that generates functions that eat lists of allergens
-  </figcaption>
-</figure>
+{% figure /assets/img/understanding-function-composition/figure-6.png %}
+Figure 6: `elem` is a function that generates functions that eat lists of allergens
+{% endfigure %}
 
 `elem` takes us from `Allergen` to `[Allergen] -> Bool`.
 The last thing we need is a way to get from `[Allergen] -> Bool` to `PatientId -> Bool`.
@@ -353,15 +309,9 @@ Thus, `(. allergen)` takes us from `[Allergen] -> Bool` to `PatientId -> Bool`.
 The function we'd like to have is the result of following the path from `Allergen`, along `elem` through `[Allergen] -> Bool`, then along `(. allergies)` to `PatientId -> Bool`.
 Following a path of arrows represents the composition of the functions represented by those arrows.
 
-<figure>
-  <img
-    src="/assets/img/understanding-function-composition/figure-7.png"
-    alt="Figure 7: following the path along 'elem' and the 'hat'-transformed 'allergies' function gives us the function we needed"
-  />
-  <figcaption>
-    Figure 7: following the path along 'elem' and the 'hat'-transformed 'allergies' function gives us the function we needed
-  </figcaption>
-</figure>
+{% figure /assets/img/understanding-function-composition/figure-7.png %}
+Figure 7: following the path along `elem` and the `hat`-transformed `allergies` function gives us the function we needed
+{% endfigure %}
 
 Hence
 

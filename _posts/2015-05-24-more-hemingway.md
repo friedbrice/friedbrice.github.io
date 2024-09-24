@@ -3,12 +3,11 @@ layout: post
 title: "More Hemingway"
 date: 2015-05-24
 permalink: /blog/more-hemingway/
-redirect_from: 
+redirect_from:
   - /blog/08/
   - /blog/2015-05-24/
 comments: true
 tags:
-  - code
   - haskell
   - python
 ---

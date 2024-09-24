@@ -11,7 +11,6 @@ tags:
   - java
   - design patterns
   - abstract factory
-  - haskell gof
 ---
 
 The beginning of a series wherein we show how to implement selected design patterns from
@@ -29,7 +28,9 @@ Expect new posts once every blue moon.
 
 We should begin our explorations with a shared understanding of the topic at hand. In particular, what makes something a _design pattern?_ The concept of a design pattern became popular in programming circles due to the broadly influential book on (brick and mortar) architectural design, [The Timeless Way of Building](https://en.wikipedia.org/wiki/The_Timeless_Way_of_Building) by Christopher Alexander, architect and emeritus professor at the University of California, Berkeley.
 
-> Each pattern describes a problem which occurs over and over again in our environment, and then describes the core of the solution to that problem, in such a way that you can use this solution a million times over, without ever doing it the same way twice. -- Christopher Alexander
+{% quotation Christopher Alexander %}
+Each pattern describes a problem which occurs over and over again in our environment, and then describes the core of the solution to that problem, in such a way that you can use this solution a million times over, without ever doing it the same way twice.
+{% endquotation %}
 
 To paraphrase Dr. Alexander, a design pattern is an _outline of a solution_ to a common problem that _does not admit a generic solution._ In programming, we often come across a problem that does admit its own generic solution. Since the solution to such a problem is generic, we need only write the solution down once, package that solution into a library, and import the library wherever the need arises. Such solutions are not design patterns. A design pattern for a recurring programming problem is a solution template that resists codification.
 
@@ -37,7 +38,7 @@ Next, we need to understand why certain solutions (or outlines of solutions) can
 
 Another reason a solution might not be realizable as a library is that we might be missing the right language features. There's lots of talk about the relative abstraction power of various programming languages. Really, this so-called power of abstraction is simply the ability to parametrize repeated syntactical forms by the sub-expressions by which those forms vary, enabling elimination of the syntactic repetition. (What else do you think a function is?) Through their features and syntactic rules, different languages enable and prohibit abstraction of various syntactical forms.[^lisp] The repeated syntactic forms that can't be abstracted become design patterns [instead of libraries](http://wiki.c2.com/?DesignPatternsAreMissingLanguageFeatures).
 
-[^lisp]: Notice that the incredible facility for abstraction in Lisp has less to do with having copious language features (as Lisp has  hardly any) and more to do with the elegant simplicity of its syntax.
+[^lisp]: Notice that the incredible facility for abstraction in Lisp has less to do with having copious language features (as Lisp has hardly any) and more to do with the elegant simplicity of its syntax.
 
 Before proceeding, there's one more point of terminology on which we should agree, since it shows up so frequently in discussions of patterns: the usage of the word _abstract._ Programmers tend to attach a peculiar meaning to the word _abstract_. They often mean "complicated implementation hidden behind a simple API," but this is not a description of something abstract. On the contrary, this is a description of something very real and concrete; we have a full implementation inside there, after all. A human body is quite complex inside, but the (non-lethal) ways in and out are clearly defined and simple, so should we call human bodies abstract? On top of that, programmers already have another word for this concept of implementation hiding: _encapsulation._ Let's not use the term _abstract_ to describe a complex, concrete system with a small, tidy surface when we already have a much more evocative word to describe it. _Abstract_ and _concrete_ are at odds, anyway.
 
@@ -51,7 +52,9 @@ Now that we agree (at least for the purposes of this discussion) on what our wor
 
 ## Abstract Factory
 
-> Provide an interface for creating families of related or dependent objects without specifying their concrete classes. -- GoF
+{% quotation GoF %}
+Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
+{% endquotation %}
 
 Suppose we'd like to write an algorithm or build up a data structure using a bespoke set of primitives while allowing the interpretation of that algorithm or data structure into several different concrete forms. The Abstract Factory Pattern gives us a way to accomplish this.
 
@@ -393,7 +396,9 @@ Our `Widget` typeclass represents the notion that certain types can be said to b
 
 The most important question is this: does the Haskell version solve the core problem that the _Abstract Factory Pattern_ is meant to solve? Recall the core problem, as stated by GoF.
 
-> Provide an interface for creating families of related or dependent objects without specifying their concrete classes. -- GoF
+{% quotation %}
+Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
+{% endquotation %}
 
 We see that, indeed, the `Widget` typeclass provides us with a means of creating GUI widgets without specifying their concrete ~~classes~~ types. The evidence lies in `table` and `aboutMe`.
 

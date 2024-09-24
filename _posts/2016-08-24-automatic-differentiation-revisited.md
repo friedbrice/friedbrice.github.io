@@ -3,14 +3,13 @@ layout: post
 title: "Automatic Differentiation Revisited"
 date: 2016-08-24
 permalink: /blog/automatic-differentiation-revisited/
-redirect_from: 
+redirect_from:
   - /blog/15/
   - /blog/2016-08-24/
 comments: true
 tags:
   - automatic differentiation
   - calculus
-  - code
   - haskell
   - math
   - symbolic differentiation

@@ -4,7 +4,6 @@ title: "Why Generality Matters"
 date: 1999-12-31
 permalink: /blog/why-generality-matters/
 tags:
-  - code
   - haskell
   - math
   - philosophy

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Teaching
+title: "Teaching"
 permalink: /teaching/
 date: 2016-08-30
 topnav: true

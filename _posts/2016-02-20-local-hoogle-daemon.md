@@ -3,12 +3,11 @@ layout: post
 title: "Local Hoogle Daemon"
 date: 2016-02-20
 permalink: /blog/local-hoogle-daemon/
-redirect_from: 
+redirect_from:
   - /blog/13/
   - /blog/2016-02-20/
 comments: true
 tags:
-  - code
   - haskell
   - linux
   - systemd

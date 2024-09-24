@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About Me
+title: "About Me"
 permalink: /about/
 date: 2020-01-01
 topnav: true

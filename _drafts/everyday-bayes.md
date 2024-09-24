@@ -1,10 +1,8 @@
 ---
 layout: post
-title: Everyday Bayes
-date: 2022-08-21
+title: "Everyday Bayes"
+date: 1999-12-31
 permalink: /blog/everyday-bayes/
-redirect_from:
-  - /blog/2022-08-21/
 comments: true
 tags:
   - math
@@ -33,5 +31,3 @@ Using log odds and a few innocuous simplifying assumptions, we can quickly estim
 - **Exhaustive:**
   To call a set of claims _exhaustive_ is to say that it is impossible that fewer than one of the claims is true.
   Collectively, they include every possibility.
-
-

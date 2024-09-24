@@ -10,7 +10,7 @@ tags:
   - haskell
   - commutative ring theory
   - polynomials
-  - universal algebra
+  - algebra
   - tagless final
 ---
 
@@ -175,10 +175,10 @@ $$
 where the \\(n_i\\) are integers, the \\(k_i\\) and \\(m\\) are non-negative integers,
 and the \\(x_{i,j}\\) are elements of \\(X\\).
 
-<aside>
-<strong>Note:</strong> when math folk say <em>formal expression</em> they mean <em>abstract
-syntax</em>.
-</aside>
+{% aside %}
+_Note:_ when math folk say _formal expression_ they mean _abstract
+syntax_.
+{% endaside %}
 
 Put more constructively:
 

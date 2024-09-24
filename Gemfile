@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 gem 'github-pages'
 gem 'jekyll-redirect-from'
 gem 'webrick'
+gem 'nokogiri'
 
 # Filter gems (https://github.com/gjtorikian/html-pipeline#dependencies)
 # gem 'commonmarker'

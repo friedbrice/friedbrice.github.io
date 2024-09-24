@@ -8,7 +8,6 @@ redirect-from:
 comments: true
 tags:
   - haskell
-  - programming
   - math
   - topology
   - computability

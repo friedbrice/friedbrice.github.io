@@ -4,7 +4,6 @@ title: "Getting Used to Jekyll"
 date: 1999-12-31
 permalink: /blog/getting-used-to-jekyll/
 tags:
-  - code
   - jekyll
   - yaml
   - liquid

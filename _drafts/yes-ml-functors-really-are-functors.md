@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "Yes, ML Functors Really Are Functors"
-date: 2022-01-22
+date: 1999-12-31
 permalink: /blog/yes-ml-functors-really-are-functors/
 redirect-from:
   - /blog/2022-01-22/
 comments: true
 tags:
-  - ml
+  - standard ml
   - haskell
   - functional programming
   - category theory

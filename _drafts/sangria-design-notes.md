@@ -5,7 +5,6 @@ date: 1999-12-31
 permalink: /blog/sangria-design-notes/
 comments: true
 tags:
-  - code
   - scala
   - style
   - types
@@ -19,7 +18,7 @@ Before we begin, let's get a few things out of the way.
 
 First, it bears repeating that these notes represent about two week's worth of working with GraphQL and Sangria. I can't really claim any expertise here. If you notice something that I could be doing better, or something that I shouldn't be doing, or if this advice is total crap (for a reason that you can articulate), please let me know in the comments right away.
 
-Second, this post assumes you've read the GraphQL [sales pitches][3] and that you're familiar with the basic concepts. We won't define terms like __resolver__ or explain GraphQL SDL syntax. We'll go a little bit into the basic system architecture we chose and we'll 
+Second, this post assumes you've read the GraphQL [sales pitches][3] and that you're familiar with the basic concepts. We won't define terms like __resolver__ or explain GraphQL SDL syntax. We'll go a little bit into the basic system architecture we chose and we'll
 
 Third, we're building a read-only service with a single entry point, using GraphQL to aggregate multiple legacy and internal APIs. If you're building a different flavor of service, or if you're using Sangria on the front end, your mileage may vary.
 

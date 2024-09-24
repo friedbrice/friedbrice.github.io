@@ -3,12 +3,11 @@ layout: post
 title: "Self-returning Function"
 date: 2015-05-25
 permalink: /blog/self-returning-function/
-redirect_from: 
+redirect_from:
   - /blog/09/
   - /blog/2015-05-25/
 comments: true
 tags:
-  - code
   - python
 ---
 

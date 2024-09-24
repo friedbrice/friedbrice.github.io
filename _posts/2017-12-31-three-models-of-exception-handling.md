@@ -3,18 +3,15 @@ layout: post
 title: "Three Models of Exception Handling"
 date: 2017-12-31
 permalink: /blog/three-models-of-exception-handling/
-redirect_from: 
+redirect_from:
   - /blog/17/
   - /blog/2017-12-31/
 comments: true
 tags:
-  - code
   - scala
-  - exception handling
-  - error handling
   - failure handling
   - effects
-  - continuation
+  - continuations
   - monad
   - types
   - style

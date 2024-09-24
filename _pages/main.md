@@ -1,5 +1,6 @@
 ---
 layout: default
+skiptop: true
 permalink: /
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Two-player Settlers of Catan
+title: "Two-player Settlers of Catan"
 date: 2014-12-03
 permalink: /blog/two-player-settlers-of-catan/
 redirect_from:

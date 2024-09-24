@@ -7,9 +7,8 @@ comments: true
 tags:
   - math
   - calculus
-  - automatic
-  - symbolic
-  - differentiation
+  - automatic differentiation
+  - symbolic differentiation
   - haskell
 ---
 
