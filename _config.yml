@@ -13,7 +13,18 @@ stackex_username: '2387766'
 
 # Build settings
 markdown: 'kramdown'
-exclude: [ 'README.md', 'Gemfile', 'Gemfile.lock', vendor ]
+exclude:
+  - '.bundle'
+  - '.DS_Store'
+  - '.gems'
+  - '.github'
+  - '.gitignore'
+  - '.sass-cache'
+  - 'Gemfile.lock'
+  - 'Gemfile'
+  - 'Makefile'
+  - 'README.md'
+  - 'vendor'
 plugins: [ 'jekyll-redirect-from' ]
 whitelist: [ 'jekyll-redirect-from' ]
 excerpt_separator: "<!-- break -->"
