@@ -28,8 +28,6 @@ jobs:
       - name: Configure Pages
         id: configure
         uses: actions/configure-pages@v5
-        with:
-          generator_config_file: _config.yml
       - name: Check Outputs from Configure Pages
         run: |
           echo "${{ steps.configure.outputs.base_url }}"
@@ -38,7 +36,7 @@ jobs:
           echo "${{ steps.configure.outputs.base_path }}"
       - name: Build with Jekyll
         run: |
-          bundle exec jekyll build --source "${{ steps.configure.outputs.base_path }}" --baseurl "${{ steps.configure.outputs.base_url }}"
+          bundle exec jekyll build --source "${{ steps.configure.outputs.base_path }}" --baseurl "${{ steps.configure.outputs.base_url }}" --config "_config.yml"
           ls -lR ./_site/
         env:
           JEKYLL_ENV: production
