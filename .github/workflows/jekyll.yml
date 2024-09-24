@@ -28,14 +28,24 @@ jobs:
       - name: Configure Pages
         id: configure_pages
         uses: actions/configure-pages@v5
+      - name: Check Outputs from Configure Pages
+        run: |
+          echo "${steps.configure_pages.outputs.base_url}"
+          echo "${steps.configure_pages.outputs.origin}"
+          echo "${steps.configure_pages.outputs.host}"
+          echo "${steps.configure_pages.outputs.base_path}"
       - name: Build with Jekyll
         run: |
-          echo "${steps.configure_pages.outputs.base_path}"
-          bundle exec jekyll build --source "${{ steps.configure_pages.outputs.base_path }}" --baseurl "${{ steps.configure_pages.outputs.base_path }}"
+          bundle exec jekyll build --source "${{ steps.configure_pages.outputs.base_path }}" --baseurl "${{ steps.configure_pages.outputs.base_url }}"
+          ls -lR ./_site/
         env:
           JEKYLL_ENV: production
       - name: Upload Pages Artifact
+        id: upload_pages_artifact
         uses: actions/upload-pages-artifact@v3
+      - name: Check Outputs from Upload Pages Artifact
+        run: |
+          echo "${steps.upload_pages_artifact.outputs.artifact_id}"
 
   deploy:
     environment:
@@ -50,3 +60,6 @@ jobs:
       - name: Deploy Pages
         id: deploy_pages
         uses: actions/deploy-pages@v4
+      - name: Check Outputs from Deploy Pages
+        run: |
+          echo ${{ steps.deploy_pages.outputs.page_url }}
