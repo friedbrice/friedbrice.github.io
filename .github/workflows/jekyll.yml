@@ -30,10 +30,10 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Check Outputs from Configure Pages
         run: |
-          # echo "${steps.configure.outputs.base_url}"
-          # echo "${steps.configure.outputs.origin}"
-          # echo "${steps.configure.outputs.host}"
-          echo "${steps.configure.outputs.base_path}"
+          echo "${{ steps.configure.outputs.base_url }}"
+          echo "${{ steps.configure.outputs.origin }}"
+          echo "${{ steps.configure.outputs.host }}"
+          echo "${{ steps.configure.outputs.base_path }}"
       - name: Build with Jekyll
         run: |
           bundle exec jekyll build --source "${{ steps.configure.outputs.base_path }}" --baseurl "${{ steps.configure.outputs.base_url }}"
@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
       - name: Check Outputs from Upload Pages Artifact
         run: |
-          echo "${steps.upload.outputs.artifact_id}"
+          echo "${{ steps.upload.outputs.artifact_id }}"
 
   deploy:
     environment:
