@@ -11,7 +11,7 @@ tags:
   - functional programming
 ---
 
-A recent post on on _r/haskell_ solicited help understanding the expression
+A recent post on _r/haskell_ solicited help understanding the expression
 
 {% highlight haskell %}
 isAllergicTo :: Allergen -> Int -> Bool
@@ -35,7 +35,7 @@ data PatientId
 data Allergen
 instance Eq Allergen
 
-allergies :: PatientId -> Allergen
+allergies :: PatientId -> [Allergen]
 allergies = undefined "elided"
 
 isAllergicTo :: Allergen -> PatientId -> Bool
