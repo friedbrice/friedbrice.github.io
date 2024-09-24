@@ -25,26 +25,26 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
           cache-version: 0
-      - name: Setup Pages
-        id: pages
+      - name: Configure Pages
+        id: configure_pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
-        run: bundle exec jekyll build --source "${{ steps.pages.outputs.base_path }}" --baseurl "${{ steps.pages.outputs.base_path }}"
+        run: bundle exec jekyll build --source "${{ steps.configure_pages.outputs.base_path }}" --baseurl "${{ steps.configure_pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-      - name: Upload artifact
+      - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
 
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploy_pages.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     permissions:
       pages: write
       id-token: write
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - name: Deploy Pages
+        id: deploy_pages
         uses: actions/deploy-pages@v4
