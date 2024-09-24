@@ -26,31 +26,31 @@ jobs:
           bundler-cache: true
           cache-version: 0
       - name: Configure Pages
-        id: configure_pages
+        id: configure
         uses: actions/configure-pages@v5
       - name: Check Outputs from Configure Pages
         run: |
-          echo "${steps.configure_pages.outputs.base_url}"
-          echo "${steps.configure_pages.outputs.origin}"
-          echo "${steps.configure_pages.outputs.host}"
-          echo "${steps.configure_pages.outputs.base_path}"
+          echo "${steps.configure.outputs.base_url}"
+          echo "${steps.configure.outputs.origin}"
+          echo "${steps.configure.outputs.host}"
+          echo "${steps.configure.outputs.base_path}"
       - name: Build with Jekyll
         run: |
-          bundle exec jekyll build --source "${{ steps.configure_pages.outputs.base_path }}" --baseurl "${{ steps.configure_pages.outputs.base_url }}"
+          bundle exec jekyll build --source "${{ steps.configure.outputs.base_path }}" --baseurl "${{ steps.configure.outputs.base_url }}"
           ls -lR ./_site/
         env:
           JEKYLL_ENV: production
       - name: Upload Pages Artifact
-        id: upload_pages_artifact
+        id: upload
         uses: actions/upload-pages-artifact@v3
       - name: Check Outputs from Upload Pages Artifact
         run: |
-          echo "${steps.upload_pages_artifact.outputs.artifact_id}"
+          echo "${steps.upload.outputs.artifact_id}"
 
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deploy_pages.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     permissions:
@@ -58,8 +58,8 @@ jobs:
       id-token: write
     steps:
       - name: Deploy Pages
-        id: deploy_pages
+        id: deploy
         uses: actions/deploy-pages@v4
       - name: Check Outputs from Deploy Pages
         run: |
-          echo ${{ steps.deploy_pages.outputs.page_url }}
+          echo ${{ steps.deploy.outputs.page_url }}
