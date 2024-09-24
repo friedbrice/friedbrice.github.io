@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Math-Haskell Rosetta Stone - Part 1"
-date: 2024-09-14
+date: 2024-09-24
 permalink: /blog/math-haskell-rosetta-stone/
 comments: true
 tags:
