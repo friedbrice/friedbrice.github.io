@@ -28,6 +28,8 @@ jobs:
       - name: Configure Pages
         id: configure
         uses: actions/configure-pages@v5
+        with:
+          generator_config_file: _config.yml
       - name: Check Outputs from Configure Pages
         run: |
           echo "${{ steps.configure.outputs.base_url }}"
