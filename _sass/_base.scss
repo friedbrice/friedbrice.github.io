@@ -228,9 +228,14 @@ figure.proof {
 pre,
 code {
   font-size: 15px;
-  border: 1px solid $grey-color;
-  border-radius: 3px;
   background-color: $grey-color-light;
+}
+
+figure.highlight {
+  > pre {
+    border: 1px solid $grey-color;
+    border-radius: 3px;
+  }
 }
 
 code {
